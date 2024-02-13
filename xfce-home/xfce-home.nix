@@ -22,6 +22,7 @@
        "Xft/Antialias" = "1";
        "Xft/Hinting" = "1";
        "Gtk/FontName" = "Helvetica 8";
+       "/Gtk/CursorThemeName" = "Chicago95 Standard Cursors"
      };
   };
 }
