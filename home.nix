@@ -19,8 +19,8 @@
   #   executable = true;  # make all files executable
   # };
   home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
-    source = ./xfce-home/xfce4-panel.xml;
-    force = true;
+     source = ./xfce-home/xfce4-panel.xml;
+     force = true;
     };
 
   home.file.".themes" = {
@@ -32,14 +32,14 @@
   home.file.".icons" = {
     source = ./xfce-home/icons;
 #    recursive = true;
-    executable = true;
+#    executable = true;
    };
 
-#  home.file.".fonts" = {
-#    source = ./xfce-home/fonts;
+  home.file.".local/share/fonts" = {
+    source = ./xfce-home/fonts;
 #    recursive = true;
 #    executable = true;
-#   };
+   };
 
 
 
@@ -47,7 +47,8 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
-
+   
+  fonts.fontconfig.enable = true;
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -62,7 +63,7 @@
     #audio-relay.packages.${pkgs.system}.audio-relay
     
     htop
-    xorg.fontcronyxcyrillic
+    #xorg.fontcronyxcyrillic
 
     pavucontrol
     
