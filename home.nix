@@ -131,6 +131,7 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
+    syntaxHighlighting.enable = true;
     oh-my-zsh.enable = true;
     oh-my-zsh.theme = "Chicago95";
     oh-my-zsh.custom = "/etc/nixos/xfce-home/ohmyzsh";
