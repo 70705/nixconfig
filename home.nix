@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, audiorelay, ... }:
 
 {
   
@@ -6,6 +6,7 @@
     ./xfce-home/xfce-home.nix
     ./misc/desktop-entries.nix
     ./misc/misc-symlinks.nix
+    ./spicetify.nix
   ];
 
   home.username = "victor";
@@ -15,16 +16,17 @@
 
   home.packages = with pkgs; [
     
-    spotify
     vesktop
     steam
     gamemode
     mpv    
+    stremio
 
     # Audio related
     easyeffects
     pavucontrol
     alsa-utils
+    audiorelay.packages.${pkgs.system}.audio-relay
 
     # archives
     zip
@@ -38,6 +40,7 @@
     #yq-go # yaml processer https://github.com/mikefarah/yq’
     fzf # A command-line fuzzy finder
     git-credential-oauth
+    qbittorrent
 
     # password thingies
     keeweb
@@ -108,6 +111,7 @@
     enable = true;
     shadow = false;
     vSync = true;
+    extraArgs = [ "--unredir-if-possible" ];
     backend = "glx";
   };
 
