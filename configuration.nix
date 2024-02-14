@@ -10,6 +10,45 @@
       ./hardware-configuration.nix
     ];
 
+  boot = {
+    kernelPackages = pkgs.linuxPackages_lqx;
+    supportedFilesystems = [ "ntfs" ];
+
+    postBootCommands = ''
+    echo 2048 > /sys/class/rtc/rtc0/max_user_freq
+    echo 2048 > /proc/sys/dev/hpet/max-user-freq
+   '';
+  };
+  fileSystems."/media/gamedisk1" =
+    { device = "/dev/disk/by-uuid/7CDC89CEDC8982DE";
+      fsType = "lowntfs-3g"; 
+      options = [ "async" "big_writes" "nofail" "noatime" "rw" "uid=1000"];
+    };
+
+  fileSystems."/media/gamedisk2" =
+    { device = "/dev/disk/by-uuid/D8129D31129D161A";
+      fsType = "lowntfs-3g"; 
+      options = [ "async" "big_writes" "nofail" "noatime" "rw" "uid=1000"];
+    };
+
+  # NVIDIA
+  hardware.opengl = { 
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+   };
+   
+   services.xserver.videoDrivers = ["nvidia"];
+  
+   hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+   };
+
+
   nixpkgs.config.allowUnfree = true;  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
@@ -31,17 +70,8 @@
   # Set your time zone.
   time.timeZone = "America/Recife";
 
-# Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-   # Select internationalisation properties.
-   i18n.defaultLocale = "en_US.UTF-8";
-#   console = {
-#     font = "Lat2-Terminus16";
-#     keyMap = "br-abnt2";
-#     useXkbConfig = true; # use xkb.options in tty.
-#   };
+  # Select internationalisation properties.
+  i18n.defaultLocale = "pt_BR.UTF-8";
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -60,12 +90,7 @@
 
   services.gvfs.enable = true;
   services.tumbler.enable = true;
-  services.picom = {
-    enable = true;
-    shadow = false;
-    backend = "glx";
-  };
-
+  services.gnome.gnome-keyring.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
@@ -94,7 +119,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.victor = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel"]; # Enable ‘sudo’ for the user.
     # packages = with pkgs; [
 #       vivaldi
 #       steam
