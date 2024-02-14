@@ -4,45 +4,22 @@
   
   imports = [ 
     ./xfce-home/xfce-home.nix
+    ./misc/desktop-entries.nix
   ];
 
   home.username = "victor";
   home.homeDirectory = "/home/victor";
-
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
-#  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
-#     source = ./xfce-home/xfce4-panel.xml;
-#     force = true;
-#    };
-
-  # encode the file content in nix configuration file directly
-  # home.file.".xxx".text = ''
-  #     xxx
-  # '';
    
   fonts.fontconfig.enable = true;
 
-
-  # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
-
-    neofetch
+    
     spotify
     vesktop
     steam
-    htop
     gamemode
-    
+    mpv    
+
     # Audio related
     easyeffects
     pavucontrol
@@ -56,15 +33,15 @@
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processer https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
+    #jq # A lightweight and flexible command-line JSON processor
+    #yq-go # yaml processer https://github.com/mikefarah/yq’
     fzf # A command-line fuzzy finder
     
+
+    # password thingies
     keeweb
     libsecret
     gnome.gnome-keyring
-
 
     # misc
     file
@@ -75,6 +52,9 @@
     gawk
     zstd
     gnupg
+    neofetch
+    
+    # fonts
     noto-fonts-cjk-sans
 
     # system tools
@@ -83,38 +63,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    htop
   ];
-
-  xdg.desktopEntries.keeweb = {
-    name="KeeWeb";
-    genericName="Password Manager";
-    exec="keeweb --no-sandbox %u";
-    icon="keeweb";
-    terminal=false;
-    type="Application";
-    categories= [ "Utility" ];
-    mimeType=[ "application/x-keepass2" ];
-  };
-
-  xdg.desktopEntries.xfce4-web-browser = {
-    name="Navegador";
-    exec="vivaldi %u";
-    icon="org.xfce.webbrowser";
-    terminal=false;
-    type="Application";
-    categories= [ "Network" "X-XFCE" "X-Xfce-Toplevel" ];
-    mimeType=[ "x-scheme-handler/http" "x-scheme-handler/https" ];
-  };
-
- xdg.desktopEntries.xfce4-file-manager = {
-    name="Gerenciador de Arquivos";
-    exec="thunar /home/victor %u";
-    icon="org.xfce.filemanager";
-    terminal=false;
-    type="Application";
-    categories= [ "Utility" "X-XFCE" "X-Xfce-Toplevel" ];
-    mimeType=[ "inode/directory" "x-scheme-handler/trash" ];
-  };
 
   programs.chromium = {
     enable = true;
@@ -136,13 +86,6 @@
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
-
-    # set some aliases, feel free to add more or remove some
-    shellAliases = {
-      k = "kubectl";
-      urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
-    };
   };
 
   services.picom = {
