@@ -11,7 +11,7 @@
     ];
    
   boot = {
-    kernelPackages = pkgs-unstable.linuxPackages_lqx;
+    kernelPackages = pkgs.linuxPackages_lqx;
     supportedFilesystems = [ "ntfs" ];
 
     postBootCommands = ''
