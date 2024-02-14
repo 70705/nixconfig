@@ -36,7 +36,7 @@
     #jq # A lightweight and flexible command-line JSON processor
     #yq-go # yaml processer https://github.com/mikefarah/yq’
     fzf # A command-line fuzzy finder
-    
+    git-credential-oauth
 
     # password thingies
     keeweb
@@ -66,10 +66,22 @@
     htop
   ];
 
+
+  programs.vscode = {
+    enable = true;
+    extensions = [ pkgs.vscode-extensions.ms-python.python 
+                   pkgs.vscode-extensions.enkia.tokyo-night
+                   pkgs.vscode-extensions.esbenp.prettier-vscode
+                   pkgs.vscode-extensions.formulahendry.code-runner ];
+  };
+
   programs.chromium = {
     enable = true;
     package = pkgs-unstable.vivaldi;
-    commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll" "--enable-features=VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,WebUIDarkMode" "--force-dark-mode" "--start-maximized" ];
+    commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll"
+                        "--enable-features=VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,WebUIDarkMode"
+                        "--force-dark-mode"
+                        "--start-maximized" ];
   };
 
 
