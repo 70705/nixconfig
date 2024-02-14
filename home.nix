@@ -18,27 +18,21 @@
   #   recursive = true;   # link recursively
   #   executable = true;  # make all files executable
   # };
-  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
-     source = ./xfce-home/xfce4-panel.xml;
-     force = true;
-    };
+#  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
+#     source = ./xfce-home/xfce4-panel.xml;
+#     force = true;
+#    };
 
   home.file.".themes" = {
     source = ./xfce-home/themes;
-#    recursive = true;
-#    executable = true;
    };
 
   home.file.".icons" = {
     source = ./xfce-home/icons;
-#    recursive = true;
-#    executable = true;
    };
 
   home.file.".local/share/fonts" = {
     source = ./xfce-home/fonts;
-#    recursive = true;
-#    executable = true;
    };
 
 
@@ -56,17 +50,17 @@
     # feel free to add your own or remove some of them
 
     neofetch
-   # vivaldi
     spotify
     vesktop
     steam
-    #audio-relay.packages.${pkgs.system}.audio-relay
-    
     htop
-    #xorg.fontcronyxcyrillic
-
-    pavucontrol
+    gamemode
     
+    # Audio related
+    easyeffects
+    pavucontrol
+    alsa-utils
+
     # archives
     zip
     xz
@@ -79,6 +73,11 @@
     yq-go # yaml processer https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    
+    keeweb
+    libsecret
+    gnome.gnome-keyring
+
 
     # misc
     file
@@ -89,6 +88,7 @@
     gawk
     zstd
     gnupg
+    noto-fonts-cjk-sans
 
     # system tools
     sysstat
@@ -97,12 +97,25 @@
     pciutils # lspci
     usbutils # lsusb
   ];
+
+  xdg.desktopEntries.keeweb = {
+    name="KeeWeb";
+    genericName="Password Manager";
+    exec= "keeweb --no-sandbox %u";
+    icon="keeweb";
+    terminal=false;
+    type="Application";
+    categories= [ "Utility" ];
+    mimeType=[ "application/x-keepass2" ];
+  };
+
   programs.chromium = {
     enable = true;
     package = pkgs.vivaldi;
     commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll" "--enable-features=VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,WebUIDarkMode" "--force-dark-mode" "--start-maximized" ];
   };
-  # basic configuration of git, please change to your own
+
+
   programs.git = {
     enable = true;
     userName = "70705";
@@ -125,17 +138,28 @@
     };
   };
 
-  #programs.audio-relay.enable = true;
+  services.picom = {
+    enable = true;
+    shadow = false;
+    vSync = true;
+    backend = "glx";
+  };
+
+  services.kdeconnect.enable = true;
   
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    shellAliases = {
+      keeweb = "keeweb --no-sandbox";
+     };
     oh-my-zsh.enable = true;
     oh-my-zsh.theme = "Chicago95";
     oh-my-zsh.custom = "/etc/nixos/xfce-home/ohmyzsh";
   };
+  
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
