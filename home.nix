@@ -5,6 +5,7 @@
   imports = [ 
     ./xfce-home/xfce-home.nix
     ./misc/desktop-entries.nix
+    ./misc/misc-symlinks.nix
   ];
 
   home.username = "victor";
