@@ -48,7 +48,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
    };
 
-
   nixpkgs.config.allowUnfree = true;  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
