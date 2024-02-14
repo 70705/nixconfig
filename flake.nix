@@ -33,8 +33,6 @@
           inherit system;
           inherit specialArgs;
 
- 
-#          specialArgs = {inherit inputs outputs;};
           modules = [
                ./configuration.nix
 
