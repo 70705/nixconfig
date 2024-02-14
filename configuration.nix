@@ -145,6 +145,7 @@
      xfce.xfce4-whiskermenu-plugin
      gtk_engines
      pulseaudio
+     ffmpegthumbnailer
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
