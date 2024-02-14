@@ -23,20 +23,6 @@
 #     force = true;
 #    };
 
-  home.file.".themes" = {
-    source = ./xfce-home/themes;
-   };
-
-  home.file.".icons" = {
-    source = ./xfce-home/icons;
-   };
-
-  home.file.".local/share/fonts" = {
-    source = ./xfce-home/fonts;
-   };
-
-
-
   # encode the file content in nix configuration file directly
   # home.file.".xxx".text = ''
   #     xxx

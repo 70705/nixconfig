@@ -13,8 +13,8 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
         <value type="int" value="2"/>
-        <value type="int" value="14"/>
-        <value type="int" value="16"/>
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
         <value type="int" value="9"/>
         <value type="int" value="13"/>
         <value type="int" value="3"/>
@@ -58,13 +58,16 @@
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
       </property>
       <property name="recent" type="array">
+        <value type="string" value="xfce-settings-manager.desktop"/>
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
         <value type="string" value="xfce4-file-manager.desktop"/>
-        <value type="string" value="xfce-ui-settings.desktop"/>
-        <value type="string" value="xfce4-notifyd-config.desktop"/>
-        <value type="string" value="xfce4-mime-settings.desktop"/>
-        <value type="string" value="xfce-wm-settings.desktop"/>
-        <value type="string" value="xfce-mouse-settings.desktop"/>
+        <value type="string" value="org.kde.kdeconnect-settings.desktop"/>
+        <value type="string" value="keeweb.desktop"/>
+        <value type="string" value="xfce4-web-browser.desktop"/>
+        <value type="string" value="vencorddesktop.desktop"/>
+        <value type="string" value="AudioRelay.desktop"/>
+        <value type="string" value="com.github.wwmm.easyeffects.desktop"/>
+        <value type="string" value="steam.desktop"/>
       </property>
     </property>
     <property name="plugin-10" type="string" value="pulseaudio">
@@ -73,6 +76,7 @@
       <property name="mixer-command" type="string" value="pavucontrol"/>
       <property name="mpris-players" type="string" value="parole"/>
       <property name="show-notifications" type="bool" value="true"/>
+      <property name="known-players" type="string" value="Vivaldi"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="expand" type="bool" value="false"/>
@@ -85,16 +89,6 @@
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-14" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16480889531.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-16" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16480894231.desktop"/>
-      </property>
     </property>
     <property name="plugin-2" type="string" value="separator">
       <property name="expand" type="bool" value="false"/>
@@ -114,9 +108,13 @@
     <property name="plugin-5" type="string" value="systray">
       <property name="icon-size" type="int" value="16"/>
       <property name="known-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
+        <value type="string" value="steam"/>
         <value type="string" value="nm-applet"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="conexão de rede ethernet “conexão cabeada 1” ativa"/>
+        <value type="string" value="miniaplicativo gerenciador de redes"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="thunar"/>
@@ -133,5 +131,15 @@
     </property>
     <property name="plugin-6" type="string" value="notification-plugin"/>
     <property name="plugin-9" type="string" value="showdesktop"/>
+    <property name="plugin-7" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17078648101.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-8" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17078648332.desktop"/>
+      </property>
+    </property>
   </property>
 </channel>

@@ -1,10 +1,38 @@
 { config, pkgs, lib, ... }:
 
 {
+
+  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
+    source = ./xfconf/thunar.xml;
+    force = true;
+   };
+
+  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml" = {
+    source = ./xfconf/xfce4-keyboard-shortcuts.xml;
+    force = true;
+   };
+
+  home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
+    source = ./xfconf/xfce4-panel.xml;
+    force = true;
+   };
+
+  home.file.".themes" = {
+    source = ./themes;
+   };
+
+  home.file.".icons" = {
+    source = ./icons;
+   };
+
+  home.file.".local/share/fonts" = {
+    source = ./fonts;
+   };
+
   gtk = {
     enable = true;
-    iconTheme.name = "Chicago95";
-    theme.name = "Chicago95 Tux";  
+    iconTheme.name = "Chicago95-tux";
+    theme.name = "Chicago95";  
   };
 
   xfconf.settings = {
@@ -14,6 +42,7 @@
      xfwm4 = { 
        "general/theme" = "Chicago95";
        "general/use_compositing" = false;
+       "general/workspace_count" = "1";
      };
 
      xsettings = { 
