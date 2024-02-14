@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   
@@ -29,6 +29,7 @@
   # '';
    
   fonts.fontconfig.enable = true;
+
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -87,7 +88,7 @@
   xdg.desktopEntries.keeweb = {
     name="KeeWeb";
     genericName="Password Manager";
-    exec= "keeweb --no-sandbox %u";
+    exec="keeweb --no-sandbox %u";
     icon="keeweb";
     terminal=false;
     type="Application";
@@ -95,9 +96,29 @@
     mimeType=[ "application/x-keepass2" ];
   };
 
+  xdg.desktopEntries.xfce4-web-browser = {
+    name="Navegador";
+    exec="vivaldi %u";
+    icon="org.xfce.webbrowser";
+    terminal=false;
+    type="Application";
+    categories= [ "Network" "X-XFCE" "X-Xfce-Toplevel" ];
+    mimeType=[ "x-scheme-handler/http" "x-scheme-handler/https" ];
+  };
+
+ xdg.desktopEntries.xfce4-file-manager = {
+    name="Gerenciador de Arquivos";
+    exec="thunar /home/victor %u";
+    icon="org.xfce.filemanager";
+    terminal=false;
+    type="Application";
+    categories= [ "Utility" "X-XFCE" "X-Xfce-Toplevel" ];
+    mimeType=[ "inode/directory" "x-scheme-handler/trash" ];
+  };
+
   programs.chromium = {
     enable = true;
-    package = pkgs.vivaldi;
+    package = pkgs-unstable.vivaldi;
     commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll" "--enable-features=VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,WebUIDarkMode" "--force-dark-mode" "--start-maximized" ];
   };
 
