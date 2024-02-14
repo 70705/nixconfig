@@ -95,14 +95,8 @@
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
 
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  #sound.enable = true;
-  #hardware.pipewire.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -112,8 +106,6 @@
   };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # env shit below
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -126,17 +118,13 @@
 #       spotify
 #       neofetch
 #       vesktop
-       #audiorelay.packages.x86_64-linux.audio-relay
 #     ];
 };
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      curl
      git
@@ -156,21 +144,12 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  #system.copySystemConfiguration = true;
+  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
