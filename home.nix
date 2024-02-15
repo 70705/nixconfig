@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, audiorelay, ... }:
+{ config, pkgs, pkgs-unstable, audiorelay, nix-alien, ... }:
 
 {
   
@@ -16,9 +16,14 @@
 
   home.packages = with pkgs; [
     
-    vesktop
+    pkgs-unstable.vesktop
+    
+    # gaeming!!!!!
     steam
     gamemode
+    lutris
+    bottles
+
     mpv    
     stremio
 
@@ -41,6 +46,8 @@
     fzf # A command-line fuzzy finder
     git-credential-oauth
     qbittorrent
+    nix-alien.packages.${pkgs.system}.nix-alien
+    python3
 
     # password thingies
     keeweb
@@ -56,8 +63,10 @@
     gawk
     zstd
     gnupg
-    neofetch
-    
+    neofetch    
+    nix-index
+
+
     # fonts
     noto-fonts-cjk-sans
 
@@ -69,7 +78,6 @@
     usbutils # lsusb
     htop
   ];
-
 
   programs.vscode = {
     enable = true;
