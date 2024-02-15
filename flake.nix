@@ -5,6 +5,7 @@
   inputs = {
      nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
      nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+     nix-alien.url = "github:thiagokokada/nix-alien";
      spicetify-nix.url = "github:A1ca7raz/spicetify-nix";
      audiorelay.url = "github:70705/audiorelay-flake-fork";
      home-manager = {
@@ -13,7 +14,7 @@
      };
    }; 
  
-   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, spicetify-nix, audiorelay, ... }@inputs: let
+   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, spicetify-nix, audiorelay, nix-alien, ... }@inputs: let
        system = "x86_64-linux";
         specialArgs = {
         pkgs-unstable = import nixpkgs-unstable {
@@ -21,6 +22,7 @@
           config.allowUnfree = true;
         };
        
+        inherit nix-alien;
         inherit audiorelay;
         inherit spicetify-nix;
         inherit system;
