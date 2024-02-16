@@ -23,6 +23,8 @@
     gamemode
     lutris
     bottles
+    mangohud
+
 
     mpv    
     stremio
