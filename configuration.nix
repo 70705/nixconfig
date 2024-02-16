@@ -36,6 +36,13 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+#      vulkan-loader
+      libGL
+      libGLU
+    ];
+
    };
    
    services.xserver.videoDrivers = ["nvidia"];
