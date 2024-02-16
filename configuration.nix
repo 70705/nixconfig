@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, nix-gaming, ... }:
 
 {
   imports =
@@ -11,7 +11,7 @@
     ];
    
   boot = {
-    kernelPackages = pkgs.linuxPackages_lqx;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     supportedFilesystems = [ "ntfs" ];
 
     postBootCommands = ''
@@ -38,13 +38,20 @@
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       vaapiVdpau
-#      vulkan-loader
+      libvdpau-va-gl
+      nvidia-vaapi-driver
+      vulkan-loader
+      vulkan-tools
       libGL
       libGLU
     ];
 
    };
-   
+
+   environment.variables = {
+      LIBVA_DRIVER_NAME = "vdpau";
+    };
+
    services.xserver.videoDrivers = ["nvidia"];
   
    hardware.nvidia = {
@@ -58,6 +65,10 @@
   nixpkgs.config.allowUnfree = true;  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
+  nix.settings = {
+    substituters = ["https://nix-gaming.cachix.org"];
+    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+  };
 
   # boot loader
 
@@ -216,14 +227,25 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    lowLatency = {
+      enable = true;
+      quantum = 64;
+      rate = 48000;
+    };
+
+
+
   };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
