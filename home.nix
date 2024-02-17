@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, audiorelay, nix-alien, ... }:
+{ config, pkgs, ... }:
 
 {
   
