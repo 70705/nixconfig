@@ -31,7 +31,6 @@
                      "editor.lineNumbers" = "on";
                      "editor.bracketPairColorization.independentColorPoolPerBracketType" = "true";
                      "breadcrumbs.enabled" = "false";
-                    # "window.title" = "${dirty}${activeEditorShort}";
                      "editor.smoothScrolling" = "true";
                      "workbench.editor.empty.hint" = "hidden";
                      "security.workspace.trust.untrustedFiles" = "open";
