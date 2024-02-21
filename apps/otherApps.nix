@@ -41,6 +41,7 @@
     nix-alien.packages.${pkgs.system}.nix-alien
     python3
     pinta
+    nomacs
 
     # password thingies
     keeweb
@@ -58,7 +59,8 @@
     gnupg
     neofetch    
     nix-index
-
+    maim
+    xclip
 
     # fonts
     noto-fonts-cjk-sans
