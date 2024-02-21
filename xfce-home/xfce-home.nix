@@ -7,8 +7,8 @@
     force = true;
    };
 
-  home.file.".config/pcmanfm/default/pcmanfm.xml" = {
-    source = ./pcmanfm.xml;
+  home.file.".config/pcmanfm/default/pcmanfm.conf" = {
+    source = ./pcmanfm.conf;
     force = true;
    };
 
