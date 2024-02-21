@@ -45,7 +45,15 @@
       libGL
       libGLU
     ];
-
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      vaapiVdpau
+      libvdpau-va-gl
+      nvidia-vaapi-driver
+      vulkan-loader
+      vulkan-tools
+      libGL
+      libGLU
+    ];
    };
 
    environment.variables = {
