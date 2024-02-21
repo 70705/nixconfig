@@ -37,7 +37,7 @@
       <property name="override" type="bool" value="true"/>
       <property name="Insert" type="string" value="amixer set Capture toggle"/>
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -r -c"/>
+      <property name="Print" type="string" value="/etc/nixos/scripts/screenshot.sh"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
