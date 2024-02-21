@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, audiorelay, nix-alien, ... }:
+{ config, pkgs, pkgs-unstable, audiorelay, nix-alien, nix-gaming, ... }:
 
 {
   home.packages = with pkgs; [
@@ -12,6 +12,7 @@
     bottles
     mangohud
     prismlauncher
+    nix-gaming.packages.${pkgs.system}.wine-ge
 
     mpv    
     stremio

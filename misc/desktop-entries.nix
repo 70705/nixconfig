@@ -24,7 +24,7 @@
 
  xdg.desktopEntries.xfce4-file-manager = {
     name="Gerenciador de Arquivos";
-    exec="thunar /home/victor %u";
+    exec="pcmanfm";
     icon="org.xfce.filemanager";
     terminal=false;
     type="Application";
