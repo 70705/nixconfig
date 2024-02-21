@@ -11,6 +11,7 @@
     lutris
     bottles
     mangohud
+    prismlauncher
 
     mpv    
     stremio
@@ -23,8 +24,10 @@
 
     # archives
     zip
-    xz
     unzip
+    rar
+    p7zip
+    xz
     xarchiver
 
     # utils
