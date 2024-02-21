@@ -109,6 +109,11 @@
   
    programs.thunar.enable = lib.mkForce false;
 
+   # Do not ask me why Thunar and Tumbler aren't here. It just doesn't work
+   environment.xfce.excludePackages = with pkgs.xfce; [ 
+    ristretto 
+    xfce4-screenshooter  
+   ];
 #  programs.thunar.plugins = with pkgs.xfce; [
 #    thunar-archive-plugin
 #    thunar-volman
