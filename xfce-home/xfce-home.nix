@@ -7,6 +7,11 @@
     force = true;
    };
 
+  home.file.".config/pcmanfm/default/pcmanfm.xml" = {
+    source = ./pcmanfm.xml;
+    force = true;
+   };
+
   home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml" = {
     source = ./xfconf/xfce4-keyboard-shortcuts.xml;
     force = true;
