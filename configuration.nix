@@ -107,11 +107,13 @@
       displayManager.defaultSession = "xfce";
    };
   
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-    thunar-media-tags-plugin
-   ];
+   programs.thunar.enable = lib.mkForce false;
+
+#  programs.thunar.plugins = with pkgs.xfce; [
+#    thunar-archive-plugin
+#    thunar-volman
+#    thunar-media-tags-plugin
+#   ];
   
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [ 
@@ -226,7 +228,8 @@
      
 
   services.gvfs.enable = true;
-  services.tumbler.enable = true;
+  services.tumbler.enable = lib.mkForce false;
+
   services.gnome.gnome-keyring.enable = true;
 
   # Configure keymap in X11
@@ -282,6 +285,7 @@
      gtk_engines
      pulseaudio
      ffmpegthumbnailer
+     pcmanfm
    ];
 
   networking.firewall.enable = false;

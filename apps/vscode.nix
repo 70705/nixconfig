@@ -9,7 +9,7 @@
                    pkgs.vscode-extensions.enkia.tokyo-night
                    pkgs.vscode-extensions.esbenp.prettier-vscode
                    pkgs.vscode-extensions.formulahendry.code-runner ];
-    userSettings = { "[python]"."editor.formatOnType" = "true";
+    userSettings = { "[python]"."editor.formatOnSave" = "true";
                      "editor.formatOnSave" = "true";
                      "editor.defaultFormatter" = "esbenp.prettier-vscode";
                      "editor.largeFileOptimizations" =  "false";
@@ -38,6 +38,7 @@
                      "security.workspace.trust.enabled" = "false";
                      "workbench.editor.tabActionCloseVisibility" = "false";
                      "workbench.colorTheme" = "Tokyo Night";
+		     "workbench.startupEditor" = "none";
           };
     };
 }

@@ -8,8 +8,12 @@
     ./apps
   ];
 
-  home.username = "victor";
-  home.homeDirectory = "/home/victor";
+  home = {
+     username = "victor";
+     homeDirectory = "/home/victor";
+   };
+
+  nixpkgs.config = { allowUnfree = true; };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
