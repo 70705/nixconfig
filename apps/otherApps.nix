@@ -42,7 +42,9 @@
     python3
     pinta
     nomacs
+    lazygit
 
+ 
     # password thingies
     keeweb
     libsecret

@@ -9,5 +9,6 @@
     ./shells.nix
     ./picom.nix
     ./otherApps.nix
+    ./kitty.nix
    ];
 }
