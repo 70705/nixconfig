@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-maim -s | xclip -selection clipboard -t image/png
+maim -o -s | xclip -selection clipboard -t image/png
