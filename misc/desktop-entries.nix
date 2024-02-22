@@ -32,4 +32,13 @@
     mimeType=[ "inode/directory" "x-scheme-handler/trash" ];
   };
 
+ xdg.desktopEntries.xfce4-terminal-emulator = {
+    name="Emulador de terminal";
+    exec="kitty";
+    icon="org.xfce.terminalemulator";
+    terminal=false;
+    type="Application";
+    categories= [ "Utility" "X-XFCE" "X-Xfce-Toplevel" ];
+  };
+
 }
