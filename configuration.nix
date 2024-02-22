@@ -113,6 +113,7 @@
    environment.xfce.excludePackages = with pkgs.xfce; [ 
     ristretto 
     xfce4-screenshooter  
+    xfce4-terminal
    ];
 #  programs.thunar.plugins = with pkgs.xfce; [
 #    thunar-archive-plugin
