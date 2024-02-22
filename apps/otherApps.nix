@@ -66,6 +66,7 @@
 
     # fonts
     noto-fonts-cjk-sans
+    hack-font
 
     # system tools
     sysstat
