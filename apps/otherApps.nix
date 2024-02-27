@@ -18,7 +18,6 @@
     stremio
 
     # Audio related
-    easyeffects
     pavucontrol
     alsa-utils
     audiorelay.packages.${pkgs.system}.audio-relay
