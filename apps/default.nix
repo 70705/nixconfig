@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./rnnoise.nix
     ./spicetify.nix
     ./vscode.nix
     ./vivaldi.nix
