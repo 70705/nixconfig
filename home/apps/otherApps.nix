@@ -13,6 +13,7 @@
     mangohud
     prismlauncher
     nix-gaming.packages.${pkgs.system}.wine-ge
+    nix-gaming.packages.${pkgs.system}.osu-lazer-bin
 
     mpv    
     stremio
