@@ -35,7 +35,6 @@
     firewall.enable = false;
   };
 
-
   time.timeZone = "America/Recife";
   i18n.defaultLocale = "pt_BR.UTF-8";
 
