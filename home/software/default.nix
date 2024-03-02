@@ -1,6 +1,15 @@
-{ config, pkgs, pkgs-unstable, audiorelay, nix-alien, nix-gaming, ... }:
+{ config, pkgs, lib, pkgs-unstable, audiorelay, nix-alien, nix-gaming, ... }:
 
 {
+  imports = [
+    ./spicetify.nix
+    ./vscode.nix
+    ./vivaldi.nix
+    ./git.nix
+    ./picom.nix
+    ./kitty.nix
+   ];
+
   home.packages = with pkgs; [
     
     pkgs-unstable.vesktop
@@ -15,6 +24,8 @@
     nix-gaming.packages.${pkgs.system}.wine-ge
     nix-gaming.packages.${pkgs.system}.osu-lazer-bin
 
+ 
+    # media
     mpv    
     stremio
 
@@ -43,7 +54,8 @@
     pinta
     nomacs
     lazygit
-
+    comma
+    thefuck
  
     # password thingies
     keeweb
@@ -63,6 +75,7 @@
     nix-index
     maim
     xclip
+    vivid
 
     # fonts
     noto-fonts-cjk-sans
@@ -81,3 +94,4 @@
   services.kdeconnect.enable = true;
 
 }
+
