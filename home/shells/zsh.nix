@@ -1,15 +1,6 @@
 { config, pkgs, lib, ... }:
 
-
 {
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-    '';
-  };
-
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -27,5 +18,5 @@
      custom = "/etc/nixos/home/xfce/ohmyzsh";
     };
   };
-
 }
+

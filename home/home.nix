@@ -3,9 +3,10 @@
 {
   
   imports = [ 
-    ./xfce/xfce-home.nix
+    ./denv
     ./misc
-    ./apps
+    ./software
+    ./shells
   ];
 
   home = {
