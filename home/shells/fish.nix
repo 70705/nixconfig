@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 
 {
   programs.fish = {
@@ -8,13 +8,16 @@
       set fish_greeting # Disable greeting
       set pure_symbol_prompt '$'
       set pure_enable_single_line_prompt true
+      set -g async_prompt_functions _pure_prompt_git
     
       any-nix-shell fish --info-right | source
     '';
-    plugins = [ { name = "pure";
-                src = pkgs.fetchFromGitHub { owner = "pure-fish"; repo = "pure";
-                rev = "28447d2e7a4edf3c954003eda929cde31d3621d2"; sha256 = "sha256-8zxqPU9N5XGbKc0b3bZYkQ3yH64qcbakMsHIpHZSne4="; };
- } ]; 
+    plugins = [ 
+         { name = "pure"; src = pkgs-unstable.fishPlugins.pure.src; }
+         { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+         { name = "fish-async-prompt"; src = pkgs.fishPlugins.async-prompt.src; }
+       ];
+ 
     shellAliases = {
       keeweb = "keeweb --no-sandbox";
       suna = "sudo nano";
