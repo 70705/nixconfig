@@ -52,6 +52,7 @@
    };
 
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.victor.shell = pkgs.fish;
 
