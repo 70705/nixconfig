@@ -42,7 +42,7 @@
 
   xfconf.settings = {
 
-     xfce4-desktop = { "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "/etc/nixos/home/xfce/wallpaper.png";};
+     xfce4-desktop = { "backdrop/screen0/monitorHDMI-0/workspace0/last-image" = "/etc/nixos/home/denv/wallpaper.png";};
      
      xfwm4 = { 
        "general/theme" = "Chicago95";

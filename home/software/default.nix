@@ -55,7 +55,7 @@
     nomacs
     lazygit
     comma
-    thefuck
+    any-nix-shell
  
     # password thingies
     keeweb

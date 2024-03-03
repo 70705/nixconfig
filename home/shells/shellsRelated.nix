@@ -23,9 +23,9 @@
    };
 
    starship = {
-     enable = true;
-     enableFishIntegration = true;
-     enableNushellIntegration = true;
+     enable = false;
+     enableFishIntegration = false;
+     enableNushellIntegration = false;
      enableZshIntegration = false;
    };
 
@@ -40,6 +40,15 @@
    zellij = {
      enable = true;
      settings = {};
+     enableFishIntegration = true;
+
+   };
+
+   thefuck = {
+     enable = true;
+     package = pkgs.thefuck;
+     enableFishIntegration = true;
+     
    };
 
  };
