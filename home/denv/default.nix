@@ -13,12 +13,12 @@
    };
 
   home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml" = {
-    source = ./xfconf/xfce4-keyboard-shortcuts.xml;
+    source = ./xfconf/xfce4-keyboard-shortcuts-i3.xml;
     force = true;
    };
 
   home.file.".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" = {
-    source = ./xfconf/xfce4-panel.xml;
+    source = ./xfconf/xfce4-panel-i3.xml;
     force = true;
    };
 
