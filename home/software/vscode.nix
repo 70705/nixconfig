@@ -1,28 +1,33 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 
 {
   programs.vscode = {
     enable = true;
+    package = pkgs-unstable.vscodium;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     extensions = [ pkgs.vscode-extensions.ms-python.python 
                    pkgs.vscode-extensions.enkia.tokyo-night
+                   pkgs.vscode-extensions.wakatime.vscode-wakatime
                    pkgs.vscode-extensions.esbenp.prettier-vscode
-                   pkgs.vscode-extensions.formulahendry.code-runner ];
+                   pkgs.vscode-extensions.formulahendry.code-runner
+                   pkgs.vscode-extensions.jnoortheen.nix-ide ];
     userSettings = { "[python]"."editor.formatOnSave" = true;
-                     "editor.formatOnSave" = true;
-                     "editor.defaultFormatter" = "esbenp.prettier-vscode";
-                     "editor.largeFileOptimizations" =  false;
-                     "editor.fontSize" = 19;
+		     "nix.enableLanguageServer" = true;
+		     "nix.serverPath" = "nil";
                      "zenMode.centerLayout" = false;
                      "zenMode.fullScreen" = false;
-                     "editor.glyphMargin" = false;
                      "explorer.compactFolders" = false;
-                     "editor.minimap.enabled" = false;
                      "python.analysis.typeCheckingMode" = "basic";
                      "code-runner.runInTerminal" = true;
                      "code-runner.clearPreviousOutput" = true;
                      "code-runner.executorMap"."python" = "clear ; python -u";
+                     "editor.formatOnSave" = true;
+                     "editor.defaultFormatter" = "esbenp.prettier-vscode";
+                     "editor.largeFileOptimizations" =  false;
+                     "editor.fontSize" = 19;
+                     "editor.minimap.enabled" = false;
+                     "editor.glyphMargin" = false;
                      "editor.fontLigatures" = true;
                      "editor.fontVariations" = true;
                      "editor.cursorBlinking" = "phase";
@@ -30,15 +35,16 @@
                      "editor.lineHeight" = 26;
                      "editor.lineNumbers" = "on";
                      "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
-                     "breadcrumbs.enabled" = false;
-                     "editor.smoothScrolling" = true;
-                     "workbench.editor.empty.hint" = "hidden";
-                     "security.workspace.trust.untrustedFiles" = "open";
                      "editor.inlayHints.fontFamily" = "monospace";
+                     "editor.smoothScrolling" = true;
+                     "breadcrumbs.enabled" = false;
+                     "security.workspace.trust.untrustedFiles" = "open";
                      "security.workspace.trust.enabled" = false;
+                     "workbench.editor.empty.hint" = "hidden";
                      "workbench.editor.tabActionCloseVisibility" = false;
                      "workbench.colorTheme" = "Tokyo Night";
-		     "workbench.startupEditor" = "none";
+		                 "workbench.startupEditor" = "none";
+                     "window.menuBarVisibility" = "hidden";
           };
     };
 }
