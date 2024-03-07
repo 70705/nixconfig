@@ -56,7 +56,8 @@
     lazygit
     comma
     any-nix-shell
- 
+    nil
+
     # password thingies
     keeweb
     libsecret
@@ -76,7 +77,8 @@
     maim
     xclip
     vivid
-
+    appimage-run
+ 
     # fonts
     noto-fonts-cjk-sans
     hack-font
