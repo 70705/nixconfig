@@ -58,16 +58,16 @@
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
       </property>
       <property name="recent" type="array">
+        <value type="string" value="vesktop.desktop"/>
+        <value type="string" value="xfce4-file-manager.desktop"/>
+        <value type="string" value="pinta.desktop"/>
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="codium.desktop"/>
         <value type="string" value="steam.desktop"/>
         <value type="string" value="spotify.desktop"/>
-        <value type="string" value="vesktop.desktop"/>
         <value type="string" value="xfce-settings-manager.desktop"/>
-        <value type="string" value="xfce4-terminal-emulator.desktop"/>
-        <value type="string" value="xfce4-file-manager.desktop"/>
         <value type="string" value="xfce4-web-browser.desktop"/>
         <value type="string" value="org.kde.kdeconnect-settings.desktop"/>
-        <value type="string" value="keeweb.desktop"/>
-        <value type="string" value="AudioRelay.desktop"/>
       </property>
     </property>
     <property name="plugin-10" type="string" value="pulseaudio">
@@ -128,6 +128,7 @@
       <property name="show-frame" type="bool" value="true"/>
       <property name="size-max" type="uint" value="19"/>
       <property name="square-icons" type="bool" value="false"/>
+      <property name="single-row" type="bool" value="true"/>
     </property>
     <property name="plugin-6" type="string" value="notification-plugin"/>
     <property name="plugin-7" type="string" value="launcher">
