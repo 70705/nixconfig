@@ -18,6 +18,7 @@
     postBootCommands = ''
     echo 2048 > /sys/class/rtc/rtc0/max_user_freq
     echo 2048 > /proc/sys/dev/hpet/max-user-freq
+    xsetroot -xcf /etc/nixos/home/denv/icons/Chicago95\ Standard\ Cursors/cursors/left_ptr 16
    '';
   };
 
@@ -60,6 +61,7 @@
      wget
      curl
      git
+     xfce.xfce4-i3-workspaces-plugin
      xfce.xfce4-pulseaudio-plugin
      xfce.xfce4-panel-profiles
      xfce.xfce4-whiskermenu-plugin

@@ -5,8 +5,12 @@
      enable = true;
      xkb.layout = "br";
      desktopManager = {
-        xfce.enable = true;
+        xterm.enable = false;
+        xfce = {
+          enable = true;
+        };
       };
+
       displayManager.defaultSession = "xfce";
    };
   
@@ -18,6 +22,7 @@
     ristretto 
     xfce4-screenshooter  
     xfce4-terminal
+    xfdesktop
    ];       
 
   services = {
