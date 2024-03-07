@@ -13,6 +13,8 @@
       };
 
       displayManager.defaultSession = "xfce+i3";
+      displayManager.autoLogin.user = "victor";
+      displayManager.autoLogin.enable = true;
       windowManager.i3 = {
         enable = true;
         configFile = ./i3/config;
