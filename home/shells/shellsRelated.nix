@@ -22,33 +22,12 @@
      package = pkgs-unstable.carapace;
    };
 
-   starship = {
-     enable = false;
-     enableFishIntegration = false;
-     enableNushellIntegration = false;
-     enableZshIntegration = false;
-   };
-
    atuin = {
      enable = true;
      package = pkgs-unstable.atuin;
      enableNushellIntegration = true;
      enableZshIntegration = false;
      enableFishIntegration = true;
-   };
-
-   zellij = {
-     enable = true;
-     settings = {};
-     enableFishIntegration = true;
-
-   };
-
-   thefuck = {
-     enable = true;
-     package = pkgs.thefuck;
-     enableFishIntegration = true;
-     
    };
 
  };
