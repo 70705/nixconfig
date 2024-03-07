@@ -11,6 +11,8 @@
        enable_layouts = "grid";
     };
 
+     extraConfig = "confirm_os_window_close 0";
+
      shellIntegration.enableZshIntegration = true;
      package = pkgs-unstable.kitty;
      theme = "Dark Pastel";
