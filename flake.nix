@@ -39,7 +39,7 @@
 
           modules = [
                ./configuration.nix
-		nix-gaming.nixosModules.pipewireLowLatency
+		# nix-gaming.nixosModules.pipewireLowLatency
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
