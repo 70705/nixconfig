@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, nix-gaming, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -14,11 +14,18 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     supportedFilesystems = [ "ntfs" ];
+    binfmt.registrations.appimage = {
+      wrapInterpreterInShell = false;
+      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+      recognitionType = "magic";
+      offset = 0;
+      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+      magicOrExtension = ''\x7fELF....AI\x02'';
+    };
 
     postBootCommands = ''
     echo 2048 > /sys/class/rtc/rtc0/max_user_freq
     echo 2048 > /proc/sys/dev/hpet/max-user-freq
-    xsetroot -xcf /etc/nixos/home/denv/icons/Chicago95\ Standard\ Cursors/cursors/left_ptr 16
    '';
   };
 
@@ -49,7 +56,8 @@
 
   users.users.victor = {
      isNormalUser = true;
-     extraGroups = [ "wheel"];
+     initialPassword = "1337";
+     extraGroups = [ "wheel" ];
    };
 
   programs.zsh.enable = true;
