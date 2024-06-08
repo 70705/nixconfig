@@ -13,6 +13,15 @@
      homeDirectory = "/home/victor";
    };
 
+  xdg.mimeApps = {
+    defaultApplications = {
+      "x-scheme-handler/https"= ["org.qutebrowser.qutebrowser.desktop"];
+      "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+      "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+      "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+    };
+  };
+
   nixpkgs.config = { allowUnfree = true; };
 
   # This value determines the home Manager release that your
