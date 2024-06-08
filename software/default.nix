@@ -29,6 +29,7 @@
     # media    
     stremio
     mpv
+    strawberry-qt6
  
     # Audio related
     pavucontrol
