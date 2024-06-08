@@ -3,14 +3,14 @@
 
 
   inputs = {
-     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
      nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
      nix-alien.url = "github:thiagokokada/nix-alien";
      spicetify-nix.url = "github:A1ca7raz/spicetify-nix";
      audiorelay.url = "github:70705/audiorelay-flake-fork";
      nix-gaming.url = "github:fufexan/nix-gaming";
      home-manager = {
-         url = "github:nix-community/home-manager/release-23.11";
+         url = "github:nix-community/home-manager/release-24.05";
 #         inputs.nixpkgs.follows = "nixpkgs";
      };
    }; 
@@ -39,12 +39,13 @@
 
           modules = [
                ./configuration.nix
-		# nix-gaming.nixosModules.pipewireLowLatency
+	  nix-gaming.nixosModules.pipewireLowLatency
+          nix-gaming.nixosModules.platformOptimizations
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.victor = import ./home/home.nix;
+            home-manager.users.victor = import ./home.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];

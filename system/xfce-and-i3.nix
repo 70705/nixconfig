@@ -12,9 +12,7 @@
         };
       };
 
-      displayManager.defaultSession = "xfce+i3";
-      displayManager.autoLogin.user = "victor";
-      displayManager.autoLogin.enable = true;
+      displayManager.lightdm.enable = true;
       windowManager.i3 = {
         enable = true;
         configFile = ./i3/config;
@@ -37,5 +35,9 @@
     gvfs.enable = true;
     tumbler.enable = lib.mkForce false;
     gnome.gnome-keyring.enable = true;
+    displayManager.enable = true;
+    displayManager.defaultSession = "xfce+i3";
+    displayManager.autoLogin.user = "victor";
+    displayManager.autoLogin.enable = true;
   };
 }
