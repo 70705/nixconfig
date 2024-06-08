@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -12,7 +12,7 @@
     ];
    
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     supportedFilesystems = [ "ntfs" ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -54,10 +54,12 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
+  programs.steam.platformOptimizations.enable = true; 
+
   users.users.victor = {
      isNormalUser = true;
      initialPassword = "1337";
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "video" "render"];
    };
 
   programs.zsh.enable = true;
@@ -68,7 +70,6 @@
   environment.systemPackages = with pkgs; [
      wget
      curl
-     git
      xfce.xfce4-i3-workspaces-plugin
      xfce.xfce4-pulseaudio-plugin
      xfce.xfce4-panel-profiles
@@ -77,6 +78,7 @@
      pulseaudio
      ffmpegthumbnailer
      pcmanfm
+     dconf
    ];
 
   # Copy the NixOS configuration file and link it from the resulting system

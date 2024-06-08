@@ -8,6 +8,6 @@ imports = [
     ./grub.nix
     ./nix-ld.nix
     ./pipewire.nix
-    ./xfce-and-i3.nix
+    ./i3.nix
    ];
 }
