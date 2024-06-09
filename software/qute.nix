@@ -33,7 +33,6 @@
 
     aliases = { "mpv" = "spawn --userscript /home/victor/.config/qutebrowser/greasemonkey/view_in_mpv.user.js";};
 
-    session.lazy_restore = true;
 
     settings = {
       auto_save.session = true;
@@ -42,6 +41,8 @@
       darkmode.policy.images = "never";
       preferred_color_scheme = "dark";
     };
+
+    session.lazy_restore = true;
 
       content = {
         autoplay = false;
