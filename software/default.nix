@@ -23,8 +23,8 @@
     mangohud
     prismlauncher
     steam
-    nix-gaming.packages.${pkgs.system}.wine-ge
-    nix-gaming.packages.${pkgs.system}.osu-stable
+    winePackages.staging
+#    (nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = pkgs.winePackages.staging; })
  
     # media    
     stremio
@@ -91,6 +91,7 @@
     noto-fonts-cjk-sans
     hack-font
     font-awesome
+    (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
 
     # system tools
     sysstat
