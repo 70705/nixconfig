@@ -90,7 +90,7 @@
     # fonts
     noto-fonts-cjk-sans
     hack-font
-    nerdfonts.override { fonts = ["Symbols"]; };
+    font-awesome
 
     # system tools
     sysstat
