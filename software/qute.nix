@@ -16,47 +16,50 @@
     programs.qutebrowser = {
       enable = true;
       package = pkgs.qutebrowser.override { 
-	 enableWideVine = true;
-     };
+      enableWideVine = true;
+    };
 
-    extraConfig = "
-import dracula.draw
+    extraConfig = ''
+      import dracula.draw
 
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})";
+      dracula.draw.blood(c, {
+          'spacing': {
+              'vertical': 6,
+              'horizontal': 8
+          }
+      })'';
 
     searchEngines = { "DEFAULT" = "https://www.google.com/search?q={}";};
 
     aliases = { "mpv" = "spawn --userscript /home/victor/.config/qutebrowser/greasemonkey/view_in_mpv.user.js";};
 
+    session.lazy_restore = true;
+
     settings = {
       auto_save.session = true;
       colors.webpage = {
-	darkmode.enabled = true;
-	darkmode.policy.images = "never";
-	preferred_color_scheme = "dark";
-      };
+      darkmode.enabled = true;
+      darkmode.policy.images = "never";
+      preferred_color_scheme = "dark";
+    };
 
       content = {
-	autoplay = false;
-	blocking.enabled = true;
-	blocking.method = "both";
-	blocking.adblock.lists = ["https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt" "https://easylist.to/easylist/easylist.txt" "https://easylist.to/easylist/easyprivacy.txt"];
-      };
+        autoplay = false;
+        blocking.enabled = true;
+        blocking.method = "both";
+        blocking.adblock.lists = ["https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt" "https://easylist.to/easylist/easylist.txt" "https://easylist.to/easylist/easyprivacy.txt"];
+    };
 
       url = {
-	default_page = "https://google.com";
-	start_pages = "https://google.com";
-      };
+        default_page = "https://google.com";
+        start_pages = "https://google.com";
+    };
 
       tabs = {
         position = "left";
         width = "11%";
       };
+
     };
   };
 }
