@@ -85,6 +85,7 @@
     vivid
     appimage-run
     widevine-cdm
+    zscroll
  
     # fonts
     noto-fonts-cjk-sans
