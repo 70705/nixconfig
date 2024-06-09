@@ -35,6 +35,7 @@
     pavucontrol
     alsa-utils
     audiorelay.packages.${pkgs.system}.audio-relay
+    playerctl
 
     # archives
     zip
