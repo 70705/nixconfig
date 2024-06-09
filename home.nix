@@ -22,6 +22,7 @@
       "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
       "inode/directory" = ["pcmanfm.desktop"];
       "x-scheme-handler/trash" = ["pcmanfm.desktop"];
+      "application/zip" = ["xarchiver.desktop"];
     };
   };
 
