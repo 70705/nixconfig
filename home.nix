@@ -4,7 +4,6 @@
   
   imports = [ 
     ./software
-    ./shells
     ./system/i3config
   ];
 
