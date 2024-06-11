@@ -57,20 +57,21 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  users.users.victor = {
-     isNormalUser = true;
-     initialPassword = "1337";
-     extraGroups = [ "wheel" "video" "render"];
+  users = {
+     defaultUserShell = pkgs.zsh;
+ 
+     users.victor = {
+        isNormalUser = true;
+        initialPassword = "1337";
+        extraGroups = [ "wheel" "video" "render"];
+        shell = pkgs.fish;
+      };
    };
 
    programs = {
       steam.platformOptimizations.enable = true;
       zsh.enable = true;
       fish.enable = true;
-   };
-   users = {
-     defaultUserShell = pkgs.zsh;
-     users.victor.shell = pkgs.fish;
    };
 
   environment.systemPackages = with pkgs; [
