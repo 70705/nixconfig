@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
 
   boot.loader = {
-    grub.enable = true;
-    grub.efiSupport = true;
-    grub.efiInstallAsRemovable = true;
-    grub.useOSProber = true;
-    grub.device = "nodev";
+    grub = {
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      useOSProber = true;
+      device = "nodev";
+    };
+
     efi.canTouchEfiVariables = false;
   };
 }

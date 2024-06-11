@@ -2,7 +2,8 @@
   pkgs, 
   pkgs-unstable,
   inputs,
-  ... }:
+  ... 
+}:
 
 {
   imports = [
