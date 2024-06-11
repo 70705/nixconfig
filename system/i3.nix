@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ 
+  pkgs, 
+  ... 
+}:
 
 {
 
@@ -21,7 +24,6 @@
     libinput = {
       enable = true;
 
-      # disabling mouse acceleration
       mouse = {
         accelProfile = "flat";
       };
@@ -32,11 +34,14 @@
     };
 
     gvfs.enable = true;
-    tumbler.enable = lib.mkForce false;
     gnome.gnome-keyring.enable = true;
-    displayManager.enable = true;
-    displayManager.defaultSession = "none+i3";
-    displayManager.autoLogin.user = "victor";
-    displayManager.autoLogin.enable = true;
+
+    displayManager = {
+      enable = true;
+      defaultSession = "none+i3";
+      autoLogin.user = "victor";
+      autoLogin.enable = true;
+    };
+
   };
 }

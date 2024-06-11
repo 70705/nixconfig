@@ -1,4 +1,8 @@
-{ config, pkgs, pkgs-unstable, lib, ... }:
+{ 
+  pkgs, 
+  pkgs-unstable, 
+  ... 
+}:
 
 {
   programs.fish = {

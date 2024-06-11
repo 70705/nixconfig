@@ -39,10 +39,12 @@
             home-manager.nixosModules.home-manager
 	          inputs.nix-gaming.nixosModules.platformOptimizations            
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.victor = import ./home.nix;
-            home-manager.extraSpecialArgs = specialArgs;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.victor = import ./home.nix;
+              extraSpecialArgs = specialArgs;
+            };
           }
         ];
       };

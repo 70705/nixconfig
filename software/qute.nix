@@ -1,4 +1,7 @@
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ 
+  pkgs,
+  ...
+}:
 
 {
 
@@ -46,9 +49,11 @@
 
       content = {
         autoplay = false;
-        blocking.enabled = true;
-        blocking.method = "both";
-        blocking.adblock.lists = ["https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt" "https://easylist.to/easylist/easylist.txt" "https://easylist.to/easylist/easyprivacy.txt"];
+        blocking = {
+          enabled = true;
+          method = "both";
+          adblock.lists = ["https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/adblock.txt" "https://easylist.to/easylist/easylist.txt" "https://easylist.to/easylist/easyprivacy.txt"];
+      };
     };
 
       url = {

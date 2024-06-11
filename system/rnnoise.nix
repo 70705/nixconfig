@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{ 
+  pkgs,
+  ... 
+}:
 
 # Stole this from here: https://github.com/NixOS/nixpkgs/issues/193176#issuecomment-1263567627. Thanks!
 

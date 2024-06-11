@@ -2,7 +2,10 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ 
+  pkgs, 
+  ...
+}:
 
 {
   imports =
@@ -30,9 +33,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.auto-optimise-store = true;
   nix.settings = {
+    experimental-features = [ "nix-command" "flakes"];
+    auto-optimise-store = true;
     substituters = ["https://nix-gaming.cachix.org"];
     trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
@@ -54,18 +57,21 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  programs.steam.platformOptimizations.enable = true;
-
   users.users.victor = {
      isNormalUser = true;
      initialPassword = "1337";
      extraGroups = [ "wheel" "video" "render"];
    };
 
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  users.users.victor.shell = pkgs.fish;
+   programs = {
+      steam.platformOptimizations.enable = true;
+      zsh.enable = true;
+      fish.enable = true;
+   };
+   users = {
+     defaultUserShell = pkgs.zsh;
+     users.victor.shell = pkgs.fish;
+   };
 
   environment.systemPackages = with pkgs; [
      wget
