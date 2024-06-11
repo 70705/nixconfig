@@ -54,7 +54,7 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  programs.steam.platformOptimizations.enable = true; 
+  programs.steam.platformOptimizations.enable = true;
 
   users.users.victor = {
      isNormalUser = true;

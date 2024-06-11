@@ -11,7 +11,8 @@
                    pkgs.vscode-extensions.wakatime.vscode-wakatime
                    pkgs.vscode-extensions.esbenp.prettier-vscode
                    pkgs.vscode-extensions.formulahendry.code-runner
-                   pkgs.vscode-extensions.jnoortheen.nix-ide ];
+                   pkgs.vscode-extensions.jnoortheen.nix-ide
+                   pkgs-unstable.vscode-extensions.asvetliakov.vscode-neovim ];
     userSettings = { "[python]"."editor.formatOnSave" = true;
 		     "nix.enableLanguageServer" = true;
 		     "nix.serverPath" = "nil";
@@ -45,6 +46,7 @@
                      "workbench.colorTheme" = "Tokyo Night";
 		                 "workbench.startupEditor" = "none";
                      "window.menuBarVisibility" = "hidden";
+                     "extensions.experimental.affinity"."asvetliakov.vscode-neovim" = 1;
           };
     };
 }

@@ -1,7 +1,10 @@
-{ config, lib, pkgs, nix-gaming, ... }:
+{ config, lib, pkgs, inputs,  ... }:
 
 {
-  imports = [ ./rnnoise.nix ];
+  imports = [ 
+	./rnnoise.nix 
+	inputs.nix-gaming.nixosModules.pipewireLowLatency
+      ];
 
   security.rtkit.enable = true;
   services.pipewire = {

@@ -1,4 +1,8 @@
-{ config, pkgs, lib, pkgs-unstable, audiorelay, nix-alien, nix-gaming, ... }:
+{
+  pkgs, 
+  pkgs-unstable,
+  inputs,
+  ... }:
 
 {
   imports = [
@@ -24,7 +28,7 @@
     prismlauncher
     steam
     winePackages.staging
-#    (nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = pkgs.winePackages.staging; })
+    (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = pkgs.winePackages.staging; tricks = [ "gdiplus" "dotnet48" "meiryo" "allfonts"]; })
  
     # media    
     stremio
@@ -34,7 +38,7 @@
     # Audio related
     pavucontrol
     alsa-utils
-    audiorelay.packages.${pkgs.system}.audio-relay
+    inputs.audiorelay.packages.${pkgs.system}.audio-relay
     playerctl
 
     # archives
@@ -52,7 +56,7 @@
     fzf # A command-line fuzzy finder
     git-credential-oauth
     qbittorrent
-    nix-alien.packages.${pkgs.system}.nix-alien
+    inputs.nix-alien.packages.${pkgs.system}.nix-alien
     python3
     pinta
     nomacs
@@ -62,6 +66,7 @@
     nil
     python312Packages.adblock
     polybarFull
+    inputs.nixvim-config.packages.${pkgs.system}.default
 
     # password thingies
     keepass
