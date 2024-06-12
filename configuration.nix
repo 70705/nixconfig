@@ -68,8 +68,10 @@
       };
    };
 
-  gvfs.enable = true;
-  gnome.gnome-keyring.enable = true;
+  services = {
+    gvfs.enable = true;
+    gnome.gnome-keyring.enable = true;
+  };
 
   programs = {
       steam.platformOptimizations.enable = true;
