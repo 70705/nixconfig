@@ -65,17 +65,18 @@
       
       keybindings = let
         modifier = config.xsession.windowManager.i3.config.modifier;
-        in lib.mkForce {
+      in lib.mkForce {
+          "Print" = "exec --no-startup-id /etc/nixos/software/i3/scripts/screenshot.sh";
           "${modifier}+q" = "kill";
           "${modifier}+space" = "exec --no-startup-id rofi -show drun -theme /etc/nixos/software/i3/rofi/launcher.rasi";
-          "${modifier}+h" = "exec --no-startup-id /etc/nixos/software/scripts/script.sh";
+          "${modifier}+h" = "exec --no-startup-id /etc/nixos/software/i3/scripts/script.sh";
           "${modifier}+v" = "move scratchpad";
           "${modifier}+s" = "floating toggle";
           "${modifier}+Return" = "exec --no-startup-id kitty";
           "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status";
           "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status";
           "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
-          "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
+          "Insert" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
           "${modifier}+Left" = "focus left";
           "${modifier}+Up" = "focus up";
           "${modifier}+Right" = "focus right";

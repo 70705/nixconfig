@@ -4,16 +4,17 @@
   imports = [
     ./picom.nix
     ./i3.nix
+    ./polybar.nix
   ];
 
     home = {
-    file = {
-      ".config/pcmanfm/default/pcmanfm.conf" = {
+      file = {
+        ".config/pcmanfm/default/pcmanfm.conf" = {
           source = ./pcmanfm.conf;
           force = true;
         };
 
-      ".themes" = {
+        ".themes" = {
           source = ./themes;
         };
 
