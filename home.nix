@@ -4,7 +4,6 @@
   
   imports = [ 
     ./software
-    ./system/i3config
   ];
 
   home = {

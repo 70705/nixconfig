@@ -7,5 +7,5 @@ polybar-msg cmd quit
 # killall -q polybar
 
 # Launch bar1 and bar2
-polybar --config=/etc/nixos/system/i3config/polybar/config.ini | tee -a /tmp/polybar1.log & disown
+polybar --config=/etc/nixos/software/i3/polybar/config.ini | tee -a /tmp/polybar1.log & disown
 
