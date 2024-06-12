@@ -3,7 +3,7 @@
 {
   
   imports = [ 
-    ./software
+    ./pkgs
   ];
 
   home = {

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -6,6 +6,16 @@
     ./i3.nix
     ./polybar.nix
   ];
+
+  home.packages = with pkgs; [
+
+    autotiling
+    setroot
+    rofi
+    zscroll
+
+  ];
+
 
     home = {
       file = {
@@ -22,9 +32,9 @@
           source = ./icons;
         };
 
-        ".local/share/fonts" = {
-          source = ./fonts;
-        };
+#        ".local/share/fonts" = {
+#          source = ./fonts;
+#        };
     };
 };
 
