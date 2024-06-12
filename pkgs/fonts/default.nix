@@ -9,7 +9,7 @@
     noto-fonts-cjk-sans
     hack-font
     font-awesome
-    (pkgs.nerdfonts.override {fonts = ["nerdfontssymbolsonly"];})
+    (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     xorg.fontcronyxcyrillic
 
   ];
