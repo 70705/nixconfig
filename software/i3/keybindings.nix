@@ -5,7 +5,7 @@
 }:
 {
       
-      i3.config.keybindings = let
+      xsession.windowManager.i3.config.keybindings = let
         modifier = config.xsession.windowManager.i3.config.modifier;
       in lib.mkForce {
           "Print" = "exec --no-startup-id /etc/nixos/software/i3/scripts/screenshot.sh";

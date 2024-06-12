@@ -54,7 +54,7 @@
       };
 
       startup = [
-        { command = "polybar"; always = true; notification = false; }
+        { command = "polybar-msg cmd quit && polybar bar &"; always = true; notification = false; }
         { command = "setroot -z /etc/nixos/software/i3/wallpaper.png"; always = true; notification = false; }
         { command = "autotiling"; always = true; notification = false; }
         { command = "AudioRelay"; always = true; notification = false; }
