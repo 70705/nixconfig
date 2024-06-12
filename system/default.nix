@@ -8,6 +8,6 @@ imports = [
     ./grub.nix
     ./nix-ld.nix
     ./pipewire.nix
-    ./i3.nix
+    ./x11.nix
    ];
 }

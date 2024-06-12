@@ -68,7 +68,10 @@
       };
    };
 
-   programs = {
+  gvfs.enable = true;
+  gnome.gnome-keyring.enable = true;
+
+  programs = {
       steam.platformOptimizations.enable = true;
       zsh.enable = true;
       fish.enable = true;
