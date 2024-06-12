@@ -1,10 +1,10 @@
 { 
-  pkgs,
-  lib,
+  pkgs, 
   ... 
 }:
 
 {
+
   services.xserver = {
      enable = true;
      xkb.layout = "br";
@@ -13,11 +13,11 @@
       };
 
       displayManager.lightdm.enable = true;
-#      windowManager.i3 = {
-#        enable = true;
+      windowManager.i3 = {
+        enable = true;
 #        configFile = ./i3config/config-i3;
-#        extraPackages = [ pkgs.autotiling pkgs.setroot pkgs.rofi ];
-#     };
+ #       extraPackages = [ pkgs.autotiling pkgs.setroot pkgs.rofi ];
+     };
    };
 
   services = {
@@ -38,9 +38,9 @@
 
     displayManager = {
       enable = true;
-      defaultSession = "none+i3";
+ #     defaultSession = "none+i3";
       autoLogin.user = "victor";
-      autoLogin.enable = false;
+#      autoLogin.enable = true;
     };
 
   };
