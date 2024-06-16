@@ -10,29 +10,46 @@
     force = true;
    };
 
-  programs = {
-    zoxide = {
-     enable = true;
-     enableNushellIntegration = true;
-     enableFishIntegration = true;
-     package = pkgs-unstable.zoxide;
-    };
- 
-   carapace = {
-     enable = true;
-     enableFishIntegration = true;
-     enableNushellIntegration = true;
-     package = pkgs-unstable.carapace;
-   };
+   programs = {
+     zoxide = {
+       enable = true;
+       enableFishIntegration = true;
+       package = pkgs-unstable.zoxide;
+     };
+
+     carapace = {
+       enable = true;
+       enableFishIntegration = true;
+       package = pkgs-unstable.carapace;
+     };
 
    atuin = {
      enable = true;
      package = pkgs-unstable.atuin;
-     enableNushellIntegration = true;
-     enableZshIntegration = false;
+     enableFishIntegration = true;
+   };
+
+   eza = {
+     enable = true;
+     package = pkgs-unstable.eza;
+     enableFishIntegration = true;
+     git = true;
+     icons = true;
+
+     extraOptions = [ 
+       "--group-directories-first"
+       "--header"
+       "--long"
+       "--no-permissions"
+       "--no-user"
+     ];
+   };
+
+   yazi = {
+     enable = true;
+     package = pkgs-unstable.yazi;
      enableFishIntegration = true;
    };
 
  };
-
 }
