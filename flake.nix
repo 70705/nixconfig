@@ -10,13 +10,14 @@
      audiorelay.url = "github:70705/audiorelay-flake-fork";
      nix-gaming.url = "github:fufexan/nix-gaming";
      nixvim-config.url = "github:70705/nixvim-config";
+     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
      home-manager = {
          url = "github:nix-community/home-manager/release-24.05";
 #         inputs.nixpkgs.follows = "nixpkgs";
      };
    }; 
  
-   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: let
+   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, chaotic, ... }@inputs: let
        system = "x86_64-linux";
         specialArgs = {
         pkgs-unstable = import nixpkgs-unstable {
@@ -37,7 +38,8 @@
           modules = [
             ./configuration.nix
             home-manager.nixosModules.home-manager
-	          inputs.nix-gaming.nixosModules.platformOptimizations            
+            inputs.nix-gaming.nixosModules.platformOptimizations
+            chaotic.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;
