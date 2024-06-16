@@ -23,8 +23,7 @@
      keybindings = { "ctrl+shift+left" = "previous_window"; "ctrl+shift+right" = "next_window"; "ctrl+q" = "close_window"; };
 
      font = {
-       name = "Hack";
-       package = pkgs.hack-font;
+       name = "IosevkaTerm NFM";
        size = 14;
     };
   };
