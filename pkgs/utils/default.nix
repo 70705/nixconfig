@@ -19,8 +19,8 @@
     zip
     unzip
     rar
-    p7zip
     xz
+    ouch
     xarchiver
     
     comma
@@ -44,6 +44,8 @@
     zstd
     gnupg
     neofetch
+
+    jq
 
     sysstat
     lm_sensors
