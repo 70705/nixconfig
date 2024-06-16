@@ -13,7 +13,6 @@
     setroot
     rofi
     zscroll
-
   ];
 
 

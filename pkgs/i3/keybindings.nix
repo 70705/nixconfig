@@ -28,6 +28,8 @@
           "${modifier}+Shift+Up" = "focus up";
           "${modifier}+Shift+Right" = "focus right";
           "${modifier}+f" = "fullscreen toggle";
+          "${modifier}+Alt+1" = "exec --no-startup-id kill picom";
+          "${modifier}+Alt+2" = "exec --no-startup-id picom &";
           "${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
           "${modifier}+3" = "workspace number 3";

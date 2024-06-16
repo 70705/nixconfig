@@ -7,5 +7,8 @@ polybar-msg cmd quit
 # killall -q polybar
 
 # Launch bar1 and bar2
-polybar --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar1.log & disown
-
+polybar workspaces --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar1.log & disown
+polybar active_window --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar1.log & disown
+polybar center --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar2.log & disown
+polybar right --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar2.log & disown
+polybar right2 --config=/etc/nixos/pkgs/i3/polybar/config.ini | tee -a /tmp/polybar2.log & disown

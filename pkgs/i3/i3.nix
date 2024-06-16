@@ -22,11 +22,14 @@
 
       gaps = {
         smartBorders = "on";
+        top = 29;
+        inner = 10;
+        outer = 10;
       };
 
       window = {
         hideEdgeBorders = "smart";
-        border = 3;
+        border = 0;
         titlebar = false;
 
         commands = [
