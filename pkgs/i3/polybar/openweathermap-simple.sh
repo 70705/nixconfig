@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/usr/bin/env bash
 get_icon() {
     case $1 in
         # Icons for weather-icons
@@ -42,7 +41,7 @@ get_icon() {
 }
 
 KEY="bd5e378503939ddaee76f12ad7a97608"
-CITY="2607901"
+CITY="6320527"
 UNITS="metric"
 SYMBOL="°"
 
