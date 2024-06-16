@@ -9,6 +9,8 @@
     ./mpv.nix
     ./spicetify.nix
     ./gallery-dl.nix
+    ./mpd.nix
+    ./ncmpcpp.nix
   ];
   home.packages = with pkgs; [
 
@@ -16,7 +18,6 @@
     mpv
     pavucontrol
     alsa-utils
-    musikcube
     inputs.audiorelay.packages.${pkgs.system}.audio-relay
     playerctl
     nomacs
