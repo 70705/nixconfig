@@ -9,6 +9,7 @@
   home = {
      username = "victor";
      homeDirectory = "/home/victor";
+     sessionVariables = { EDITOR = "nvim"; };
    };
 
   xdg.mimeApps = {
@@ -18,7 +19,7 @@
       "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
       "text/html" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
       "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
-      "inode/directory" = ["pcmanfm.desktop"];
+      "inode/directory" = ["yazi.desktop"];
       "x-scheme-handler/trash" = ["pcmanfm.desktop"];
       "application/zip" = ["xarchiver.desktop"];
     };
