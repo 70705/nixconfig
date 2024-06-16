@@ -15,7 +15,7 @@
     ];
    
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
     supportedFilesystems = [ "ntfs" ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -47,7 +47,15 @@
   };
 
   time.timeZone = "America/Recife";
-  i18n.defaultLocale = "pt_BR.UTF-8";
+  i18n = {
+    defaultLocale = "pt_BR.UTF-8";
+    supportedLocales = [ 
+      "en_US.UTF-8/UTF-8"
+      "pt_BR.UTF-8/UTF-8"
+      "C.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+    ];
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
