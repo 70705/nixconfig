@@ -8,7 +8,7 @@
   programs = {
     ncmpcpp = {
       enable = true;
-      packages = pkgs-unstable.ncmpcpp; 
+      package = pkgs-unstable.ncmpcpp; 
     };
   };
 }
