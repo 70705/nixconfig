@@ -11,6 +11,7 @@
     ./gallery-dl.nix
     ./mpd.nix
     ./ncmpcpp.nix
+    ./yams.nix
   ];
   home.packages = with pkgs; [
 
@@ -23,6 +24,5 @@
     nomacs
     pinta
     strawberry-qt6
-    yams
   ];
 }
