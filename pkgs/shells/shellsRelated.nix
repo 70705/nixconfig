@@ -25,14 +25,14 @@
 
    atuin = {
      enable = true;
-     package = pkgs-unstable.atuin;
      enableFishIntegration = true;
+     package = pkgs-unstable.atuin;
    };
 
    eza = {
      enable = true;
-     package = pkgs-unstable.eza;
      enableFishIntegration = true;
+     package = pkgs-unstable.eza;
      git = true;
      icons = true;
 
@@ -44,12 +44,5 @@
        "--no-user"
      ];
    };
-
-   yazi = {
-     enable = true;
-     package = pkgs-unstable.yazi;
-     enableFishIntegration = true;
-   };
-
  };
 }
