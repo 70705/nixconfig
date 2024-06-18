@@ -8,6 +8,7 @@
   imports = [
     ./git.nix
     ./vscode.nix
+    ./yazi.nix
   ];
   home.packages = with pkgs; [
 
