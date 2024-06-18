@@ -25,8 +25,8 @@
           "${modifier}+Down" = "focus down";
           "${modifier}+Shift+Left" = "move left";
           "${modifier}+Shift+Down" = "move down";
-          "${modifier}+Shift+Up" = "focus up";
-          "${modifier}+Shift+Right" = "focus right";
+          "${modifier}+Shift+Up" = "move up";
+          "${modifier}+Shift+Right" = "move right";
           "${modifier}+f" = "fullscreen toggle";
           "${modifier}+Alt+1" = "exec --no-startup-id kill picom";
           "${modifier}+Alt+2" = "exec --no-startup-id picom &";
