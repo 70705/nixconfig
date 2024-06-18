@@ -1,17 +1,17 @@
-{ ... }:
+{ 
+  pkgs,
+  ... 
+}:
 
 {
 
   services.xserver = {
-     enable = true;
-     xkb.layout = "br";
-     desktopManager = {
-        xterm.enable = false;
-      };
-
-      displayManager.lightdm.enable = true;
-      windowManager.i3 = {
-        enable = true;
+    enable = true;
+    xkb.layout = "br";
+    excludePackages = with pkgs; [ xterm ];
+    displayManager.lightdm.enable = true;
+    windowManager.i3 = {
+      enable = true;
      };
    };
 
