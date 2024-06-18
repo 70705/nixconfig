@@ -9,7 +9,7 @@
   home = {
      username = "victor";
      homeDirectory = "/home/victor";
-     sessionVariables = { EDITOR = "nvim"; };
+     sessionVariables = { EDITOR = "nvim"; TERM = "kitty"; };
    };
 
   xdg.mimeApps = {
