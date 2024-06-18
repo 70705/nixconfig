@@ -23,6 +23,6 @@
     nomacs
     pinta
     strawberry-qt6
-
+    yams
   ];
 }
