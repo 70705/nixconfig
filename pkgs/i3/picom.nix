@@ -17,6 +17,7 @@
       "100:class_g = 'Vivaldi-stable'"
       "100:class_g = 'mpv'"
       "100:class_g = 'Chromium-browser'"
+      "100:class_g = 'org.wezfurlong.wezterm'"
     ];
 
     settings = {

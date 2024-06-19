@@ -11,7 +11,7 @@
       
       bars = [];
       modifier = "Mod4";
-      terminal = "kitty";
+      terminal = "wezterm";
       floating.titlebar = false;
       defaultWorkspace = "workspace number 1";
 
