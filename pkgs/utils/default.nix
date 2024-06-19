@@ -48,6 +48,8 @@
 
     jq
 
+    trashy
+
     sysstat
     lm_sensors
     ethtool
