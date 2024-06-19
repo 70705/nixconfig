@@ -14,7 +14,7 @@
           "${modifier}+h" = "exec --no-startup-id /etc/nixos/pkgs/i3/scripts/script.sh";
           "${modifier}+v" = "move scratchpad";
           "${modifier}+s" = "floating toggle";
-          "${modifier}+Return" = "exec --no-startup-id kitty";
+          "${modifier}+Return" = "exec --no-startup-id wezterm";
           "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status";
           "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status";
           "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
