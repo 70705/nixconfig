@@ -17,6 +17,13 @@
        package = pkgs-unstable.zoxide;
      };
 
+     starship = {
+       enable = true;
+       enableTransience = true;
+       enableFishIntegration = true;
+       package = pkgs-unstable.starship;
+     };
+
      carapace = {
        enable = true;
        enableFishIntegration = true;
