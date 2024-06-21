@@ -18,7 +18,7 @@ command = "nix-shell-info"
 when = "nix-shell-info"
 symbol = ""
 style = "bold cyan"
-format = "[$symbol]($style) [$output]($style) "
+format = "[$symbol]($style)  [$output]($style)"
 os = "linux"
 
 [character]
