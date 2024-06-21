@@ -15,8 +15,9 @@
     mangohud
     prismlauncher
     steam
-    winePackages.staging
-    (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = pkgs.winePackages.staging; tricks = [ "gdiplus" "dotnet48" "meiryo" "allfonts"]; })
+    
+    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg; tricks = [ "gdiplus" "dotnet48" "meiryo" "allfonts"]; })
 
   ];
  
