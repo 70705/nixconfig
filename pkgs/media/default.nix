@@ -24,5 +24,6 @@
     nomacs
     pinta
     strawberry-qt6
+    ani-cli
   ];
 }
