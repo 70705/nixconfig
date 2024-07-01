@@ -6,7 +6,7 @@
 
 {
   programs.vscode = {
-    enable = true;
+    enable = false;
     package = pkgs-unstable.vscodium;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
@@ -47,8 +47,7 @@
                      "security.workspace.trust.enabled" = false;
                      "workbench.editor.empty.hint" = "hidden";
                      "workbench.editor.tabActionCloseVisibility" = false;
-                     "workbench.colorTheme" = "Tokyo Night";
-		                 "workbench.startupEditor" = "none";
+		     "workbench.startupEditor" = "none";
                      "window.menuBarVisibility" = "hidden";
                      "extensions.experimental.affinity"."asvetliakov.vscode-neovim" = 1;
           };

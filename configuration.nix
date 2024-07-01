@@ -3,7 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { 
-  pkgs, 
+  pkgs,
   ...
 }:
 
@@ -15,7 +15,8 @@
     ];
    
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
     supportedFilesystems = [ "ntfs" ];
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -57,6 +58,15 @@
     ];
   };
 
+
+#  Wayland (Niri) related
+#  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+#  environment.variables = { "NIXOS_OZONE_WL" = "1"; };
+#  programs.niri = {
+#    enable = true;
+#  };
+
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -81,20 +91,30 @@
     gnome.gnome-keyring.enable = true;
   };
 
+    stylix = {
+      enable = true;
+      image = /etc/nixos/pkgs/i3/wallpaper.png;
+
+      cursor = {
+        package = pkgs.apple-cursor;
+        name = "macOS-Monterey";
+        size = 18;
+      };
+
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    };
+
   programs = {
       steam.platformOptimizations.enable = true;
       zsh.enable = true;
       fish.enable = true;
-   };
+    };
 
   environment.systemPackages = with pkgs; [
      wget
      curl
-     xfce.xfce4-i3-workspaces-plugin
-     xfce.xfce4-pulseaudio-plugin
-     xfce.xfce4-panel-profiles
-     xfce.xfce4-whiskermenu-plugin
      gtk_engines
+     nh
      pulseaudio
      ffmpegthumbnailer
      pcmanfm

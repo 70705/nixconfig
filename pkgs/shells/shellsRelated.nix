@@ -30,20 +30,20 @@
        package = pkgs-unstable.carapace;
      };
 
-   atuin = {
-     enable = true;
-     enableFishIntegration = true;
-     package = pkgs-unstable.atuin;
-   };
+     atuin = {
+      enable = true;
+      enableFishIntegration = true;
+      package = pkgs-unstable.atuin;
+    };
 
-   eza = {
-     enable = true;
-     enableFishIntegration = true;
-     package = pkgs-unstable.eza;
-     git = true;
-     icons = true;
+     eza = {
+      enable = true;
+      enableFishIntegration = true;
+      package = pkgs-unstable.eza;
+      git = true;
+      icons = true;
 
-     extraOptions = [ 
+      extraOptions = [ 
        "--group-directories-first"
        "--header"
        "--long"
