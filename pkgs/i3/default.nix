@@ -8,7 +8,6 @@
   ];
 
   home.packages = with pkgs; [
-
     autotiling
     setroot
     rofi
@@ -27,9 +26,9 @@
           source = ./themes;
         };
 
-        ".icons" = {
-          source = ./icons;
-        };
+ #       ".icons" = {
+#          source = ./icons;
+#        };
 
 #        ".local/share/fonts" = {
 #          source = ./fonts;
@@ -37,9 +36,9 @@
     };
 };
 
-  gtk = {
-    enable = true;
+#  gtk = {
+#    enable = true;
 #    iconTheme.name = "Chicago95-tux";
-    theme.name = "TokyoNight";  
-  };
+#    theme.name = "TokyoNight";  
+#  };
 }

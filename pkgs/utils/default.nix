@@ -22,10 +22,7 @@
     rar
     xz
     ouch
-    xarchiver
     
-    comma
-
     ripgrep 
     fzf
 
@@ -64,6 +61,7 @@
 
     inputs.nixvim-config.packages.${pkgs.system}.default
   ];
+
 
   services.kdeconnect.enable = true;
 }

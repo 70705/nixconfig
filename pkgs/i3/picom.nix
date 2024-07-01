@@ -9,7 +9,7 @@
     extraArgs = [ "--unredir-if-possible" ];
     backend = "glx";
 
-    activeOpacity = 0.85;
+    activeOpacity = 1;
     inactiveOpacity = 0.85;
     opacityRules = [ 
       "100:class_g = 'qutebrowser'"

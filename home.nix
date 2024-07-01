@@ -12,6 +12,7 @@
      sessionVariables = { EDITOR = "nvim"; TERM = "wezterm"; };
    };
 
+  
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

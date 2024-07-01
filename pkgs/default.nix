@@ -10,6 +10,6 @@
     ./utils
     ./games
     ./fonts
-   ];
+  ];
 }
 
