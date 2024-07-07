@@ -1,6 +1,5 @@
 { 
   pkgs, 
-  pkgs-unstable, 
   ... 
 }:
 
@@ -18,7 +17,7 @@
      extraConfig = "confirm_os_window_close 0";
 
      shellIntegration.enableZshIntegration = true;
-     package = pkgs-unstable.kitty;
+     package = pkgs.kitty;
      theme = "Dark Pastel";
      keybindings = { "ctrl+shift+left" = "previous_window"; "ctrl+shift+right" = "next_window"; "ctrl+q" = "close_window"; };
 

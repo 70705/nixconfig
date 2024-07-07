@@ -11,7 +11,8 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.kernelParams = [ ];
+  boot.resumeDevice = "/dev/disk/by-uuid/ad83d1b9-6e98-4880-abc8-e992a404221b";
+  boot.kernelParams = [ "resume_offset=7677184"];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =

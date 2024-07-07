@@ -1,12 +1,12 @@
 { 
-  pkgs-unstable, 
+  pkgs, 
   ... 
 }:
 
 {
   programs.nushell = {
     enable = true;
-    package = pkgs-unstable.nushellFull;
+    package = pkgs.nushellFull;
     extraConfig = ''
       $env.LS_COLORS = (vivid generate snazzy | str trim)
 

@@ -15,7 +15,7 @@
     keepass
     keepass-keepassrpc
     libsecret
-    gnome.gnome-keyring
+    gnome-keyring
 
     zip
     unzip

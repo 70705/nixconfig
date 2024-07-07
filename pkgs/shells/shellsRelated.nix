@@ -1,5 +1,5 @@
 { 
-  pkgs-unstable, 
+  pkgs, 
   ... 
 }:
 
@@ -14,32 +14,32 @@
      zoxide = {
        enable = true;
        enableFishIntegration = true;
-       package = pkgs-unstable.zoxide;
+       package = pkgs.zoxide;
      };
 
      starship = {
        enable = true;
        enableTransience = true;
        enableFishIntegration = true;
-       package = pkgs-unstable.starship;
+       package = pkgs.starship;
      };
 
      carapace = {
        enable = true;
        enableFishIntegration = true;
-       package = pkgs-unstable.carapace;
+       package = pkgs.carapace;
      };
 
      atuin = {
       enable = true;
       enableFishIntegration = true;
-      package = pkgs-unstable.atuin;
+      package = pkgs.atuin;
     };
 
      eza = {
       enable = true;
       enableFishIntegration = true;
-      package = pkgs-unstable.eza;
+      package = pkgs.eza;
       git = true;
       icons = true;
 
