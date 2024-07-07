@@ -1,5 +1,5 @@
 {
-  pkgs-unstable, 
+  pkgs, 
   ... 
 }:
 
@@ -8,7 +8,7 @@
   services = {
     mpd = {
       enable = true;
-      package = pkgs-unstable.mpd; 
+      package = pkgs.mpd; 
       musicDirectory = /media/gamedisk2/Musicas;
       dataDir = /etc/nixos/pkgs/media/mpdData;
       extraConfig = ''

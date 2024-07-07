@@ -5,10 +5,9 @@
 
 {
 
-  hardware.opengl = { 
+  hardware.graphics = { 
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
 #    extraPackages = with pkgs; [
 #      vaapiVdpau
 #      libvdpau-va-gl
@@ -37,7 +36,7 @@
   
    hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.production;

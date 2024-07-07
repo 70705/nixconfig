@@ -1,6 +1,5 @@
 {
   pkgs, 
-  pkgs-unstable,
   inputs,
   ... 
 }:
@@ -8,7 +7,7 @@
 {
   home.packages = with pkgs; [
 
-    pkgs-unstable.vesktop
+    vesktop
     gamemode
     mangohud
     prismlauncher

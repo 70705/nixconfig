@@ -1,13 +1,12 @@
 {
   pkgs,
-  pkgs-unstable,
   ... 
 }:
 
 {
   programs.vscode = {
     enable = false;
-    package = pkgs-unstable.vscodium;
+    package = pkgs.vscodium;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     extensions = [ pkgs.vscode-extensions.ms-python.python 
@@ -16,7 +15,7 @@
                    pkgs.vscode-extensions.esbenp.prettier-vscode
                    pkgs.vscode-extensions.formulahendry.code-runner
                    pkgs.vscode-extensions.jnoortheen.nix-ide
-                   pkgs-unstable.vscode-extensions.asvetliakov.vscode-neovim ];
+                   pkgs.vscode-extensions.asvetliakov.vscode-neovim ];
     userSettings = { "[python]"."editor.formatOnSave" = true;
 		     "nix.enableLanguageServer" = true;
 		     "nix.serverPath" = "nil";

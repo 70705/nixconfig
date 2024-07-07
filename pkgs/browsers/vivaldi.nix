@@ -1,5 +1,5 @@
 { 
-  pkgs-unstable, 
+  pkgs,
   ... 
 }:
 
@@ -7,7 +7,7 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs-unstable.vivaldi;
+    package = pkgs.vivaldi;
     commandLineArgs = [ "--enable-blink-features=MiddleClickAutoscroll"
                         "--enable-features=VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,WebUIDarkMode"
                         "--force-dark-mode"
