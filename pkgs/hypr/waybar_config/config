@@ -5,8 +5,8 @@
     "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
-    "modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/mode", "mpris"],
+    "modules-center": [ "hyprland/window"],
     "modules-right": ["pulseaudio", "network", "cpu","memory", "clock", "tray"],
     // Modules configuration
     // "hyprland/workspaces": {
@@ -44,11 +44,11 @@
       
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "   {usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "   {}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -63,17 +63,29 @@
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ",
+        "format-disconnected": "󰈂 Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}%  {format_source}",
-        "format-bluetooth": "{volume}%  {format_source}",
-        "format-bluetooth-muted": " {format_source}",
-        "format-muted": " {format_source}",
+        "scroll-step": 5, // %, can be a float
+        "format": "  {volume}%  {format_source}",
+        "format-bluetooth": "  {volume}%  {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": "  {format_source}",
         "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source-muted": " ",
         "on-click": "pavucontrol"
     },
+    "mpris": {
+        "format": "{player_icon}  {artist} - {title}",
+	"format-paused": "{status_icon} <i>{artist} - {title}</i>",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+	},
 }
