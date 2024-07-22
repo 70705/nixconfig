@@ -9,7 +9,6 @@
     enable = true;
     xkb.layout = "br";
     excludePackages = with pkgs; [ xterm ];
-    displayManager.lightdm.enable = true;
     windowManager.i3 = {
       enable = true;
      };
@@ -29,6 +28,10 @@
     };
 
     displayManager = {
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+      };
       enable = true;
       defaultSession = "none+i3";
       autoLogin.user = "victor";
