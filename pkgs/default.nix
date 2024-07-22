@@ -10,6 +10,7 @@
     ./utils
     ./games
     ./fonts
+    ./hypr
   ];
 }
 
