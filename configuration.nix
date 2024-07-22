@@ -3,6 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { 
+  inputs,
   pkgs,
   ...
 }:
@@ -18,27 +19,18 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
     supportedFilesystems = [ "ntfs" ];
-    binfmt.registrations.appimage = {
-      wrapInterpreterInShell = false;
-      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-      recognitionType = "magic";
-      offset = 0;
-      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-      magicOrExtension = ''\x7fELF....AI\x02'';
-    };
-
     postBootCommands = ''
     echo 2048 > /sys/class/rtc/rtc0/max_user_freq
     echo 2048 > /proc/sys/dev/hpet/max-user-freq
    '';
   };
 
-  nixpkgs.config.allowUnfree = true;  
+  nixpkgs.config.allowUnfree = true;
   nix.settings = {
     experimental-features = [ "nix-command" "flakes"];
     auto-optimise-store = true;
-    substituters = ["https://nix-gaming.cachix.org"];
-    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+    substituters = ["https://nix-gaming.cachix.org" "https://hyprland.cachix.org"];
+    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   networking = {
@@ -70,6 +62,12 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  };
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -81,7 +79,7 @@
      users.victor = {
         isNormalUser = true;
         initialPassword = "1337";
-        extraGroups = [ "wheel" "video" "render"];
+        extraGroups = [ "wheel" "video" "render" ];
         shell = pkgs.fish;
       };
    };
@@ -91,24 +89,28 @@
     gnome.gnome-keyring.enable = true;
   };
 
-    stylix = {
-      enable = true;
-      image = /etc/nixos/pkgs/i3/wallpaper.png;
+  stylix = {
+    enable = true;
+    image = /etc/nixos/pkgs/i3/wallpaper.png;
 
-      cursor = {
-        package = pkgs.apple-cursor;
-        name = "macOS-Monterey";
-        size = 18;
-      };
+    cursor = {
+      package = pkgs.apple-cursor;
+      name = "macOS-Monterey";
+      size = 18;
+    };
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     };
 
   programs = {
-      steam.platformOptimizations.enable = true;
-      zsh.enable = true;
-      fish.enable = true;
+    steam.platformOptimizations.enable = true;
+    zsh.enable = true;
+    fish.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
     };
+  };
 
   environment.systemPackages = with pkgs; [
      wget
