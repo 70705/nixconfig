@@ -8,6 +8,6 @@ imports = [
     ./grub.nix
     ./nix-ld.nix
     ./pipewire.nix
-    ./x11.nix
+    ./display-manager.nix
    ];
 }
