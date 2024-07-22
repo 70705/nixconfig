@@ -65,13 +65,13 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  environment.pathsToLink = [ "/share/zsh" ];
 
   users = {
      defaultUserShell = pkgs.zsh;
