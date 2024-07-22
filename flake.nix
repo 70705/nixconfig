@@ -6,7 +6,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim-config.url = "github:70705/nixvim-config";
-    audiorelay.url = "github:70705/audiorelay-flake-fork";
+    audiorelay.url = "github:70705/audiorelay-flake";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
@@ -41,12 +42,11 @@
  
    outputs = { self, nixpkgs, home-manager, ... }@inputs: let
        system = "x86_64-linux";
-        specialArgs = {
+       specialArgs = {
 #        pkgs-unstable = import nixpkgs-unstable {
 #          inherit system;
 #          config.allowUnfree = true;
 #        };
-       
         inherit system;
         inherit inputs;
       };
