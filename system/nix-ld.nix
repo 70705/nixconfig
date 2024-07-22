@@ -1,11 +1,12 @@
 { 
-  pkgs, 
+  pkgs,
+  options,
   ... 
 }:
 
 {
     programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [ 
+    programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
         stdenv.cc.cc
         openssl
         xorg.libXcomposite
@@ -113,5 +114,5 @@
         dbus
         alsaLib
         expat
-   ];
+   ]);
 }
