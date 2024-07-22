@@ -9,7 +9,7 @@
   home = {
      username = "victor";
      homeDirectory = "/home/victor";
-     sessionVariables = { EDITOR = "nvim"; TERM = "wezterm"; };
+     sessionVariables = { EDITOR = "nvim"; TERM = "kitty"; };
    };
 
   
