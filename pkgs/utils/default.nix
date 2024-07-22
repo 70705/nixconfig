@@ -28,7 +28,6 @@
 
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
-    appimage-run
 
     maim
     xclip
@@ -42,6 +41,7 @@
     zstd
     gnupg
     neofetch
+    wofi
 
     jq
 
