@@ -12,6 +12,7 @@
     mangohud
     prismlauncher
     steam
+    gamescope
     
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.rhythia.packages.${pkgs.system}.sound-space-plus
