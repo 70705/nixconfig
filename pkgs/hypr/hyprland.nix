@@ -11,7 +11,7 @@
     systemd.variables = ["--all"];
 
     plugins = [];
-    extraConfig = builtins.readFile ./hyprland.conf;
+    extraConfig = builtins.readFile ./config_hyprland.conf;
   };
 
   services.hyprpaper = {
