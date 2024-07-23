@@ -29,8 +29,10 @@
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
 
-    maim
-    xclip
+    #maim
+    #xclip
+    clipse
+    wl-clipboard
 
     file
     which
