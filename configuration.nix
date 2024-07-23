@@ -74,7 +74,7 @@
   # services.xserver.libinput.enable = true;
 
   users = {
-     defaultUserShell = pkgs.zsh;
+     defaultUserShell = pkgs.bash;
  
      users.victor = {
         isNormalUser = true;
@@ -104,7 +104,6 @@
 
   programs = {
     steam.platformOptimizations.enable = true;
-    zsh.enable = true;
     fish.enable = true;
     appimage = {
       enable = true;
