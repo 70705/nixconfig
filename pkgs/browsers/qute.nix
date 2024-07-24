@@ -5,11 +5,6 @@
 
 {
 
-    home.file.".config/qutebrowser/dracula" = {
-      source = ./qute/dracula;
-      force = true;
-    };
-
     home.file.".config/qutebrowser/greasemonkey" = {
       source = ./qute/greasemonkey;
       force = true;
@@ -21,16 +16,6 @@
       package = pkgs.qutebrowser.override { 
       enableWideVine = true;
     };
-
-    extraConfig = ''
-      import dracula.draw
-
-      dracula.draw.blood(c, {
-          'spacing': {
-              'vertical': 6,
-              'horizontal': 8
-          }
-      })'';
 
     searchEngines = { "DEFAULT" = "https://www.google.com/search?q={}";};
 
