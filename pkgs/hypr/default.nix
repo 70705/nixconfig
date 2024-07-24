@@ -3,9 +3,11 @@
 {
   imports = [
     ./hyprland.nix
-    ./waybar.nix
     ./hypridle.nix
     ./hyprlock.nix
+    ./hyprpaper.nix
     ./gtk.nix
+    ./mako.nix
+    ./waybar.nix
   ];
 }
