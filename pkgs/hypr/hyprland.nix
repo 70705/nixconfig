@@ -14,19 +14,6 @@
     extraConfig = builtins.readFile ./config_hyprland.conf;
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = [ "/etc/nixos/pkgs/hypr/wallpaper.png" ];
-      wallpaper = [",/etc/nixos/pkgs/hypr/wallpaper.png"];
-
-    };
-  };
-
-  services.mako = {
-    enable = true;
-  };
-
   home.packages = with pkgs; [
     hyprshot
   ];
