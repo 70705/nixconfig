@@ -91,7 +91,8 @@
 
   stylix = {
     enable = true;
-    image = /etc/nixos/pkgs/i3/wallpaper.png;
+    image = /etc/nixos/pkgs/hypr/wallpaper.png;
+    autoEnable = true;
 
     cursor = {
       package = pkgs.apple-cursor;
@@ -99,7 +100,7 @@
       size = 18;
     };
 
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
     };
 
   programs = {
