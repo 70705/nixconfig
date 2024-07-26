@@ -8,6 +8,7 @@
     nixvim-config.url = "github:70705/nixvim-config";
     audiorelay.url = "github:70705/audiorelay-flake";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    nur.url = "github:nix-community/NUR";
 
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
@@ -40,7 +41,7 @@
     };
   }; 
  
-   outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+   outputs = { self, nixpkgs, nur, home-manager, ... }@inputs: let
        system = "x86_64-linux";
        specialArgs = {
 #        pkgs-unstable = import nixpkgs-unstable {
@@ -60,6 +61,9 @@
           modules = [
             ./configuration.nix
             home-manager.nixosModules.home-manager
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ nur.overlay ];
+            })
             inputs.stylix.nixosModules.stylix
             inputs.nix-gaming.nixosModules.platformOptimizations
           {
