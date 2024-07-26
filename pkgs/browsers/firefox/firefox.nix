@@ -1,6 +1,5 @@
 { 
   pkgs,
-  config,
   ...
 }:
 
@@ -21,11 +20,10 @@
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
     };
-    profiles = {
-      name = "totos";
+    profiles.totos = {
       id = 0;
 
-      extensions = with config.nur.repos.rycee.firefox-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         auto-tab-discard
         augmented-steam
         canvasblocker
@@ -33,16 +31,27 @@
         darkreader
         fastforwardteam
         ublock-origin
+        enhanced-h264ify
         sponsorblock
+        languagetool
+        sidebery
+        web-scrobbler
+        raindropio
+        tampermonkey
+        to-deepl
+        tab-session-manager
+        tridactyl
       ];
 
-      containers = {
+      containers.spy = {
         id = 0;
-        name = "Bad";
         icon = "dollar";
         color = "red";
 
       };
+
+      userChrome = builtins.readFile ./userChrome.css;
+      userContent = builtins.readFile ./userContent.css;
 
       settings = {
         "extensions.autoDisableScopes" = 0;

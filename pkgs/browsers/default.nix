@@ -7,6 +7,7 @@
   imports = [
     ./qute.nix
     ./vivaldi.nix
+    ./firefox/firefox.nix
   ];
 
   home.packages = with pkgs; [
