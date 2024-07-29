@@ -9,6 +9,7 @@
     ./git.nix
     ./vscode.nix
     ./yazi.nix
+    ./audiothumbs.nix
   ];
   home.packages = with pkgs; [
 
@@ -29,8 +30,8 @@
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
 
-    #maim
-    #xclip
+    graalvm-ce
+    glfw-wayland-minecraft
     clipse
     wl-clipboard
 
@@ -58,6 +59,8 @@
 
     nil
     python3
+
+    ffmpeg-full
 
     qbittorrent
 
