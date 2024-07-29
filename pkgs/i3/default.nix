@@ -12,6 +12,8 @@
     setroot
     rofi
     zscroll
+    xclip
+    maim
   ];
 
 
