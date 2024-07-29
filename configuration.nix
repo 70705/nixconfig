@@ -51,14 +51,6 @@
   };
 
 
-#  Wayland (Niri) related
-#  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-#  environment.variables = { "NIXOS_OZONE_WL" = "1"; };
-#  programs.niri = {
-#    enable = true;
-#  };
-
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -87,6 +79,7 @@
   services = {
     gvfs.enable = true;
     gnome.gnome-keyring.enable = true;
+    tumbler.enable = true;
   };
 
   stylix = {
