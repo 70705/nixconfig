@@ -44,6 +44,7 @@
     zstd
     gnupg
     neofetch
+    qalculate-qt
     wofi
 
     jq
