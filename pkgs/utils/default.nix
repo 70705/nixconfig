@@ -1,5 +1,6 @@
 { 
   pkgs,
+  lib,
   inputs,
   ... 
 }:
@@ -13,8 +14,7 @@
   ];
   home.packages = with pkgs; [
 
-    keepass
-    keepass-keepassrpc
+    keepassxc
     libsecret
     gnome-keyring
 
@@ -68,6 +68,14 @@
     inputs.nixvim-config.packages.${pkgs.system}.default
   ];
 
+  services = {
+    kdeconnect.enable = true;
+    syncthing = {
+      enable = true;
+      tray.enable = true;
+    };
+  };
+  systemd.user.services.syncthingtray.Service.ExecStart = lib.mkForce
+    "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray-minimal}/bin/syncthingtray'";
 
-  services.kdeconnect.enable = true;
 }
