@@ -27,10 +27,10 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "x-scheme-handler/https"= ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
-      "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
-      "text/html" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
-      "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop" "vivaldi-stable.desktop"];
+      "x-scheme-handler/https"= [ "vivaldi-stable.desktop" "org.qutebrowser.qutebrowser.desktop"];
+      "x-scheme-handler/http" = [ "vivaldi-stable.desktop" "org.qutebrowser.qutebrowser.desktop"];
+      "text/html" = [ "vivaldi-stable.desktop" "org.qutebrowser.qutebrowser.desktop" ];
+      "x-scheme-handler/about" = [ "vivaldi-stable.desktop" "org.qutebrowser.qutebrowser.desktop"];
       "inode/directory" = ["yazi.desktop"];
       "x-scheme-handler/trash" = ["pcmanfm.desktop"];
       "application/zip" = ["xarchiver.desktop"];
