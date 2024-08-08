@@ -34,28 +34,23 @@
         enhanced-h264ify
         sponsorblock
         languagetool
-        sidebery
         web-scrobbler
         raindropio
         tampermonkey
-        to-deepl
         tab-session-manager
-        tridactyl
+        keepassxc-browser
+        tree-style-tab
+        gesturefy
+        simple-dark-vlasak
+        move-unloaded-tabs-for-tst
+        multi-account-containers
       ];
 
-      containers.spy = {
-        id = 0;
-        icon = "dollar";
-        color = "red";
-
-      };
-
       userChrome = builtins.readFile ./userChrome.css;
-      userContent = builtins.readFile ./userContent.css;
+#      userContent = builtins.readFile ./userContent.css;
 
       settings = {
         "extensions.autoDisableScopes" = 0;
-        "browser.startup.page" = "3";
 
         # BETTERFOX user.js BELOW
 
@@ -172,7 +167,7 @@
         # MOZILLA
         "permissions.default.desktop-notification" = "2";
         "permissions.default.geo" = "2";
-        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=0";
         "permissions.manager.defaultsUrl" = "";
         "webchannel.allowObject.urlWhitelist" = "";
 
@@ -252,6 +247,9 @@
         # NEW TAB PAGE
         "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+
+        # STARTUP
+        "browser.startup.page" = "3";
 
         # POCKET
         "extensions.pocket.enabled" = false;
