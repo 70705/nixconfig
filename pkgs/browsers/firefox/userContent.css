@@ -1,92 +1,80 @@
-/* =============================== */
-/* START OF SIDEBERY MINIMAL STYLE */
-/* =============================== */
+/*************************************************** Home_screen_wallpaper ***************************************************/
 
-/* Based on https://github.com/ongots/firefox-sidebery-minimal-style */
-
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #80808060 transparent !important
-}
-
-
-/*   Newtab   */
-
-@-moz-document url("about:home"),
-url("about:newtab") {
+@-moz-document url("about:newtab"), url("about:home") {
     body {
-        background-color: #fafafa !important;
-        background-size: 30px 30px
+        overflow: hidden !important;
+    }
+    #root {
+        background-image: url("my_wallpaper.jpg") !important;
+        background-size: cover !important;
+    }
+    /* Hide the ugly logo & wordmark sorry Mozilla */
+    .logo-and-wordmark {
+        visibility: hidden !important;
+    }
+    /* Make the search bar rounded */
+    #newtab-search-text,
+    #searchSubmit {
+		border-radius: 50px !important;
+	}
+	.search-wrapper .search-inner-wrapper {
+		margin: 10px !important; }
+	.search-wrapper{ padding-top: 9px !important}
+}
+
+/*********************************************** TOP_sites_settings **************************************************/
+@-moz-document url-prefix(about:newtab){
+.top-site-outer .title {
+  /*color: black !important;*/ /*change color of the texts of the "top_sites"*/
+  }
+.top-site-outer .title {
+  font-size: 100px;
+  }
+.top-site-outer .title {
+  font-weight: bold;
+  }
+.top-site-outer .top-site-inner {
+  width: 50px !important;
+  height: 50px !important;
+  }
+.top-site-outer .tile {
+  width: 40px !important;
+  height: 40px !important;
+  }
+}
+.top-site-outer:is(.active, :focus, :hover) { /*Remove dark-gray mouse hover box*/
+    box-shadow: none !important;
+    background:transparent !important;
+}
+@-moz-document url("about:home"), url("about:newtab"){
+  .tile > .icon-wrapper{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .icon-pin-small{ display: none !important; }
+}
+
+/*********************************************** Dark_mode_pdf **************************************************/
+@-moz-document regexp(".+\.pdf$"){
+    .pdfViewer .page{ background: #38383D !important }
+    .loadingIcon+.canvasWrapper{ visibility: hidden }
+}
+@-moz-document regexp("^(?!.*\\.pdf\\?n).*") {
+    #sidebarContainer > #sidebarContent > #thumbnailView {
+        --sidebaritem-bg-color: #38383D;
     }
 
-    @media (prefers-color-scheme: dark),
-    (prefers-color-scheme: no-preference) {
-        body {
-            background-color: #0f0f0f !important;
-        }
+    #viewerContainer > #viewer .page > .canvasWrapper > canvas {
+        filter: grayscale(10%) invert(90%);
     }
 
-    .prefs-button {
-        display: none
+    #sidebarContainer > #sidebarContent > #thumbnailView .thumbnailImage {
+        filter: grayscale(10%) invert(90%);
+        box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.5), 0 2px 8px hsla(0, 0%, 100%, 0.3) !important;
     }
 }
 
+/*********************************************** Thin_scroll_bar *****************************************************/
+:root{ scrollbar-color: rgb(210,210,210) rgb(42,42,46) }
+*{ scrollbar-width: thin }
 
-/*   Addons   */
-
-button.category:nth-child(1),
-#help-button,
-#helpButton,
-.addon-badge-recommended,
-.addon-description,
-.back-button,
-.header-name,
-.list-section-heading,
-.search-label,
-#sidebar::after,
-.navigation::after {
-    display: none !important
-}
-
-:root {
-    --addon-icon-size: 26px !important;
-    --card-padding: 14px !important;
-    --in-content-box-border-color: #333 !important
-}
-
-.addon.card {
-    margin-bottom: 5px !important
-}
-
-.addon-name {
-    font-weight: 400 !important
-}
-
-.addon-name-container {
-    margin-top: 0 !important
-}
-
-.main-search {
-    margin: -15px 0 -41px -364px !important
-}
-
-.page-options-menu,
-#updates-message {
-    margin: -22px 0 -10px 0 !important
-}
-
-.sticky-container {
-    position: static !important
-}
-
-.more-options-button {
-    background-color: transparent !important
-}
-
-.more-options-button:hover {
-    background-color: #80808040 !important
-}
-
-/* ============================= */
-/* END OF SIDEBERY MINIMAL STYLE */
-/* ============================= */
