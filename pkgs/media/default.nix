@@ -19,7 +19,7 @@
     mpv
     pavucontrol
     alsa-utils
-    inputs.audiorelay.packages.${pkgs.system}.audio-relay
+ #   inputs.audiorelay.packages.${pkgs.system}.audio-relay
     playerctl
     nomacs
     pinta
