@@ -1,11 +1,17 @@
 { 
   pkgs,
   ...
-}:
+}: let
+  firefox-addons = pkgs.callPackage ./customAddons.nix {
+    inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
+  };
 
+in
 {
   programs.firefox = {
     enable = true;
+    nativeMessagingHosts = with pkgs; [vdhcoapp firefoxpwa];
+
     policies = {
       DisablePocket = true;
       DisableTelemetry = true;
@@ -20,6 +26,7 @@
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
     };
+
     profiles.totos = {
       id = 0;
 
@@ -42,9 +49,16 @@
         tree-style-tab
         gesturefy
         simple-dark-vlasak
-        move-unloaded-tabs-for-tst
         multi-account-containers
-      ];
+        control-panel-for-twitter
+        faststream
+        improved-tube
+        hover-zoom-plus
+        localcdn
+        search-by-image
+        tabliss
+        video-downloadhelper
+      ] ++ (with firefox-addons; [ pwas-for-firefox popupoff ]);
 
       userChrome = builtins.readFile ./userChrome.css;
 #      userContent = builtins.readFile ./userContent.css;
