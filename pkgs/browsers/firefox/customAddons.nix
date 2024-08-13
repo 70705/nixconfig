@@ -14,4 +14,17 @@
       platforms = platforms.all;
     };
   };
+  popupoff = buildFirefoxXpiAddon rec {
+    pname = "popupoff";
+    version = "2.1.3";
+    addonId = "{154cddeb-4c8b-4627-a478-c7e5b427ffdf}";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4150911/popupoff-2.1.3.xpi";
+    sha256 = "1fzq1vlzbqzgq2knqlxrrff889js5ll03r35njs4z6vs5r4czani";
+    meta = with lib; {
+      homepage = "https://popupoff.org/";
+      description = "Removes and prevents popups, overlays and cookie notifications, other tools do not. Enjoy the original look of the internet.";
+      license = licenses.mpl20;
+      platforms = platforms.all;
+    };
+  };
 }
