@@ -3,17 +3,21 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autocd = true;
+    autosuggestion = {
+      enable = true;
+      strategy = [ "history" "completion" "match_prev_cmd"];
+    };
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    shellAliases = {
-      keeweb = "keeweb --no-sandbox";
-      suna = "sudo nano";
-      trash = "nix-collect-garbage && sudo nix-collect-garbage && sudo nix-collect-garbage -d";
-      rebuild = "sudo nixos-rebuild switch";
-     };
+
+    initExtra = ''
+      any-nix-shell zsh --info-right | source /dev/stdin
+    '';
+
     oh-my-zsh = {
-     enable = true;
+      enable = true;
+      plugins = ["starship"];
     };
   };
 }
