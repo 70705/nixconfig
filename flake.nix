@@ -6,7 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim-config.url = "github:70705/nixvim-config";
-    audiorelay.url = "github:70705/audiorelay-flake";
+#    audiorelay.url = "github:70705/audiorelay-flake";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nur.url = "github:nix-community/NUR";
 

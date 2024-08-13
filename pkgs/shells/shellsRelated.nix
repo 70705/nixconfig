@@ -14,6 +14,7 @@
      zoxide = {
        enable = true;
        enableFishIntegration = true;
+       enableZshIntegration = true;
        package = pkgs.zoxide;
      };
 
@@ -21,24 +22,28 @@
        enable = true;
        enableTransience = true;
        enableFishIntegration = true;
+       enableZshIntegration = true;
        package = pkgs.starship;
      };
 
      carapace = {
        enable = true;
        enableFishIntegration = true;
+       enableZshIntegration = true;
        package = pkgs.carapace;
      };
 
      atuin = {
       enable = true;
       enableFishIntegration = true;
+      enableZshIntegration = true;
       package = pkgs.atuin;
     };
 
      eza = {
       enable = true;
       enableFishIntegration = true;
+      enableZshIntegration = true;
       package = pkgs.eza;
       git = true;
       icons = true;

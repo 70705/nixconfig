@@ -7,6 +7,7 @@
   imports = [
     ./shellsRelated.nix
     ./fish.nix
+    ./zsh.nix
   ];
 
   home.packages = with pkgs; [
