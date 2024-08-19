@@ -1,7 +1,13 @@
-{ ... }:
+{ 
+  pkgs,
+  inputs,
+  ...
+}:
+
 {
   programs.hyprlock = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
     settings = {
       general = {
         no_fade_in = true;
@@ -9,7 +15,7 @@
 
       background = [
         {
-          path = "/etc/nixos/pkgs/hypr/wallpaper.png";
+          path = "./wallpaper.png";
           blur_passes = 3;
           blur_size = 8;
         }

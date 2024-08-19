@@ -7,7 +7,7 @@
 {
   
   imports = [ 
-    ./pkgs
+    ../../modules/hm
   ];
 
   home = {
