@@ -49,6 +49,8 @@
 
     jq
 
+    todoist-electron
+
     trashy
 
     sysstat
