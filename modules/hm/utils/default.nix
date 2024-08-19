@@ -8,7 +8,6 @@
 {
   imports = [
     ./git.nix
-    ./vscode.nix
     ./yazi.nix
     ./audiothumbs.nix
   ];
@@ -24,25 +23,23 @@
     xz
     ouch
     
-    ripgrep 
-    fzf
+#    ripgrep 
+#    fzf
 
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
 
-    graalvm-ce
-    glfw-wayland-minecraft
     clipse
     wl-clipboard
 
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
+#    file
+#    which
+#    tree
+#    gnused
+#    gnutar
+#    gawk
+#    zstd
+#    gnupg
     neofetch
     qalculate-qt
     wofi
@@ -53,11 +50,11 @@
 
     trashy
 
-    sysstat
-    lm_sensors
-    ethtool
-    pciutils 
-    usbutils 
+#    sysstat
+#    lm_sensors
+#    ethtool
+#    pciutils 
+#    usbutils 
     btop
 
     nil

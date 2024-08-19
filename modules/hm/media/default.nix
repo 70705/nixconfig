@@ -1,6 +1,5 @@
 { 
   pkgs,
-  inputs,
   ... 
 }:
 
@@ -8,10 +7,6 @@
   imports = [
     ./mpv.nix
     ./spicetify.nix
-    ./gallery-dl.nix
-    ./mpd.nix
-    ./ncmpcpp.nix
-    ./yams.nix
   ];
   home.packages = with pkgs; [
 
@@ -23,6 +18,5 @@
     playerctl
     nomacs
     pinta
-    ani-cli
   ];
 }

@@ -8,10 +8,10 @@
       xsession.windowManager.i3.config.keybindings = let
         modifier = config.xsession.windowManager.i3.config.modifier;
       in lib.mkForce {
-          "Print" = "exec --no-startup-id /etc/nixos/pkgs/i3/scripts/screenshot.sh";
+          "Print" = "exec --no-startup-id /etc/nixos/modules/hm/i3/scripts/screenshot.sh";
           "${modifier}+q" = "kill";
-          "${modifier}+space" = "exec --no-startup-id rofi -terminal wezterm -show drun -theme /etc/nixos/pkgs/i3/rofi/launcher.rasi";
-          "${modifier}+h" = "exec --no-startup-id /etc/nixos/pkgs/i3/scripts/script.sh";
+          "${modifier}+space" = "exec --no-startup-id rofi -terminal wezterm -show drun -theme /etc/nixos/modules/hm/i3/rofi/launcher.rasi";
+          "${modifier}+h" = "exec --no-startup-id /etc/nixos/modules/hm/i3/scripts/script.sh";
           "${modifier}+v" = "move scratchpad";
           "${modifier}+s" = "floating toggle";
           "${modifier}+Return" = "exec --no-startup-id wezterm";

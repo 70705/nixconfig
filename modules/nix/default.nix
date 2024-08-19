@@ -4,9 +4,8 @@
 
 imports = [
     ./disks.nix
-    ./graphics.nix
+    ./nvidia.nix
     ./grub.nix
-    ./nix-ld.nix
     ./pipewire.nix
     ./display-manager.nix
    ];

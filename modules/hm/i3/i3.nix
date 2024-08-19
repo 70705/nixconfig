@@ -57,8 +57,8 @@
       };
 
       startup = [
-        { command = "/etc/nixos/pkgs/i3/polybar/launch.sh"; always = true; notification = false; }
-        { command = "setroot -z /etc/nixos/pkgs/i3/wallpaper.png"; always = true; notification = false; }
+        { command = "/etc/nixos/modules/hm/i3/polybar/launch.sh"; always = true; notification = false; }
+        { command = "setroot -z /etc/nixos/modules/hm/i3/wallpaper.png"; always = true; notification = false; }
         { command = "autotiling"; always = true; notification = false; }
         { command = "AudioRelay"; always = true; notification = false; }
       ];

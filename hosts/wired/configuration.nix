@@ -3,8 +3,8 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { 
-  inputs,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -12,7 +12,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./system
+      ../../modules/nix
     ];
    
   boot = {
@@ -26,6 +26,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ inputs.nur.overlay ];
   nix.settings = {
     experimental-features = [ "nix-command" "flakes"];
     auto-optimise-store = true;
@@ -90,7 +91,7 @@
 
   stylix = {
     enable = true;
-    image = /etc/nixos/pkgs/hypr/wallpaper.png;
+    image = ../../modules/hm/hypr/wallpaper.png;
     autoEnable = true;
 
     cursor = {
