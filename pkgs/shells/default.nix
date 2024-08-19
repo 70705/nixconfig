@@ -6,7 +6,6 @@
 {
   imports = [
     ./shellsRelated.nix
-    ./fish.nix
     ./zsh.nix
   ];
 

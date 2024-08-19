@@ -78,7 +78,7 @@
         isNormalUser = true;
         initialPassword = "1337";
         extraGroups = [ "wheel" "video" "render" ];
-        shell = pkgs.fish;
+        shell = pkgs.zsh;
       };
    };
 
@@ -104,7 +104,7 @@
 
   programs = {
     steam.platformOptimizations.enable = true;
-    fish.enable = true;
+    zsh.enable = true;
     appimage = {
       enable = true;
       binfmt = true;

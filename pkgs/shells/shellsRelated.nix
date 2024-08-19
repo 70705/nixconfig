@@ -13,7 +13,7 @@
    programs = {
      zoxide = {
        enable = true;
-       enableFishIntegration = true;
+       enableFishIntegration = false;
        enableZshIntegration = true;
        package = pkgs.zoxide;
      };
@@ -21,28 +21,28 @@
      starship = {
        enable = true;
        enableTransience = true;
-       enableFishIntegration = true;
+       enableFishIntegration = false;
        enableZshIntegration = true;
        package = pkgs.starship;
      };
 
      carapace = {
        enable = true;
-       enableFishIntegration = true;
+       enableFishIntegration = false;
        enableZshIntegration = true;
        package = pkgs.carapace;
      };
 
      atuin = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
       enableZshIntegration = true;
       package = pkgs.atuin;
     };
 
      eza = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
       enableZshIntegration = true;
       package = pkgs.eza;
       git = true;
