@@ -1,13 +1,8 @@
-{ 
-  pkgs,
-  inputs,
-  ...
-}:
+{ ... }:
 
 {
   services.hypridle = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
     settings = {
       general = {
         before_sleep_cmd = "loginctl lock-session";
