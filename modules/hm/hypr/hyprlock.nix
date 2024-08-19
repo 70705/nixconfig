@@ -1,13 +1,8 @@
-{ 
-  pkgs,
-  inputs,
-  ...
-}:
+{ ... }:
 
 {
   programs.hyprlock = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
     settings = {
       general = {
         no_fade_in = true;
