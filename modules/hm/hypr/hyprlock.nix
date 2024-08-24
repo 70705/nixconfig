@@ -10,7 +10,7 @@
 
       background = [
         {
-          path = "./wallpaper.png";
+          path = "/etc/nixos/modules/hm/hypr/wallpaper.png";
           blur_passes = 3;
           blur_size = 8;
         }

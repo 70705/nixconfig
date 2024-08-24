@@ -73,8 +73,6 @@
   # services.xserver.libinput.enable = true;
 
   users = {
-     defaultUserShell = pkgs.bash;
- 
      users.victor = {
         isNormalUser = true;
         initialPassword = "1337";
@@ -106,6 +104,7 @@
   programs = {
     steam.platformOptimizations.enable = true;
     zsh.enable = true;
+    dconf.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
@@ -115,12 +114,7 @@
   environment.systemPackages = with pkgs; [
      wget
      curl
-     gtk_engines
      nh
-     pulseaudio
-     ffmpegthumbnailer
-     pcmanfm
-     dconf
    ];
 
   # Copy the NixOS configuration file and link it from the resulting system
