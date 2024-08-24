@@ -23,8 +23,9 @@
     xz
     ouch
     
-#    ripgrep 
-#    fzf
+    ripgrep 
+    fzf
+    bc
 
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
@@ -35,11 +36,6 @@
 #    file
 #    which
 #    tree
-#    gnused
-#    gnutar
-#    gawk
-#    zstd
-#    gnupg
     neofetch
     qalculate-qt
     wofi
@@ -61,6 +57,9 @@
     python3
 
     ffmpeg-full
+    ffmpegthumbnailer
+    pcmanfm
+    gtk_engines
 
     qbittorrent
 
