@@ -10,7 +10,6 @@
     gamemode
     mangohud
     prismlauncher
-    steam
     gamescope
     wineWow64Packages.stagingFull
 #    inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin

@@ -1,12 +1,11 @@
-{ ... }:
+{ config, lib, pkgs, ... }:
 
-{
+let
+  cfg = config.nixModules;
 
-imports = [
-    ./disks.nix
-    ./nvidia.nix
-    ./grub.nix
-    ./pipewire.nix
-    ./display-manager.nix
-   ];
-}
+in
+  {
+    imports = [
+      ./gaming/steam.nix
+    ];
+  }
