@@ -1,26 +1,24 @@
 { 
   pkgs,
   config,
+  inputs,
   lib,
   ... 
 }:
 
 let
-  cfg = config.nixModules.x11;
+  cfg = config.nixModules.wayland;
 in
   {
-    options.nixModules.x11 = {
-      enable = lib.mkEnableOption "x11";
+    options.nixModules.wayland = {
+      enable = lib.mkEnableOption "wayland";
   };
 
   config = lib.mkIf cfg.enable {
-    services.xserver = {
+    programs.hyprland = {
       enable = true;
-      xkb.layout = "br";
-      excludePackages = with pkgs; [ xterm ];
-      windowManager.i3 = {
-        enable = true;
-      };
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     services = {
@@ -38,16 +36,18 @@ in
 
       displayManager = {
         enable = true;
-
-        defaultSession = "none+i3";
+        
+        defaultSession = "hyprland";
         autoLogin.user = "victor";
         autoLogin.enable = true;
 
         sddm = {
           enable = true;
           autoNumlock = true;
+          wayland.enable = true;
         };
       };
-    }; 
+    };
   };
 }
+
