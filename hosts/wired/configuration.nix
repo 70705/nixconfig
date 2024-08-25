@@ -28,6 +28,7 @@
   nixModules = {
     audio.enable = true;
     gaming.enable = true;
+    wayland.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -62,29 +63,16 @@
     ];
   };
 
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+  
   users = {
-     users.victor = {
-        isNormalUser = true;
-        initialPassword = "1337";
-        extraGroups = [ "wheel" "video" "render" ];
-        shell = pkgs.zsh;
-      };
-   };
+    users.victor = {
+      isNormalUser = true;
+      initialPassword = "1337";
+      extraGroups = [ "wheel" "video" "render" ];
+      shell = pkgs.zsh;
+    };
+  };
 
   services = {
     gvfs.enable = true;
