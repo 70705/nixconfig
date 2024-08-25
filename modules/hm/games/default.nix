@@ -10,7 +10,6 @@
     gamemode
     mangohud
     prismlauncher
-    gamescope
     wineWow64Packages.stagingFull
 #    inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
     #(wineWow64Packages.full.override { wineRelease = "staging"; waylandSupport = true;})

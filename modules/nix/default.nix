@@ -6,6 +6,7 @@ let
 in
   {
     imports = [
-      ./gaming/steam.nix
+      ./gaming
+      ./system
     ];
   }

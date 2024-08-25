@@ -6,7 +6,7 @@ imports = [
     ./disks.nix
     ./nvidia.nix
     ./grub.nix
-    ./pipewire.nix
+    ./audio
     ./display-manager.nix
    ];
 }

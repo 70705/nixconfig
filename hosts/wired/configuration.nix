@@ -12,7 +12,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nix/system
+      ../../modules/nix
     ];
    
   boot = {
@@ -23,6 +23,11 @@
       echo 2048 > /sys/class/rtc/rtc0/max_user_freq
       echo 2048 > /proc/sys/dev/hpet/max-user-freq
     '';
+  };
+
+  nixModules = {
+    audio.enable = true;
+    gaming.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
