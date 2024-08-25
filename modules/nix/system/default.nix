@@ -6,7 +6,8 @@ imports = [
     ./disks.nix
     ./nvidia.nix
     ./grub.nix
-    ./audio
-    ./display-manager.nix
+    ./audio.nix
+    ./x11.nix
+    ./wayland.nix
    ];
 }

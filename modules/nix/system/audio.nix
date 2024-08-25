@@ -1,12 +1,7 @@
-{ 
-  pkgs,
-  ... 
-}:
+{ inputs, config, lib, pkgs, ... }:
 
-# Stole this from here: https://github.com/NixOS/nixpkgs/issues/193176#issuecomment-1263567627. Thanks!
-
-let
-  json = pkgs.formats.json {};
+let 
+  cfg = config.nixModules.audio;
   pw_rnnoise_config = {
   "context.modules"= [
     { "name" = "libpipewire-module-filter-chain";
@@ -39,8 +34,33 @@ let
     }
 ];
 };
+
 in
-{
-  services.pipewire.extraConfig.pipewire = {
-      "99-input-denoising" = pw_rnnoise_config; };
-}
+  {
+
+    imports = [ inputs.nix-gaming.nixosModules.pipewireLowLatency ];
+
+    options.nixModules.audio = {
+      enable = lib.mkEnableOption "audio";
+    };
+
+    config = lib.mkIf cfg.enable {
+      security.rtkit.enable = true;
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+
+        lowLatency = { 
+          enable = true;
+          quantum = 1024;
+          rate = 48000;
+        };
+
+        extraConfig.pipewire = {
+          "99-input-denoising" = pw_rnnoise_config;
+        };
+      };
+    };
+  }
