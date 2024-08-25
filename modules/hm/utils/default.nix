@@ -1,6 +1,5 @@
 { 
   pkgs,
-  lib,
   inputs,
   ... 
 }:
@@ -10,12 +9,12 @@
     ./git.nix
     ./yazi.nix
     ./audiothumbs.nix
+    ./syncthing.nix
   ];
+
   home.packages = with pkgs; [
 
     keepassxc
-    libsecret
-    gnome-keyring
 
     zip
     unzip
@@ -65,15 +64,4 @@
 
     inputs.nixvim-config.packages.${pkgs.system}.default
   ];
-
-  services = {
-    kdeconnect.enable = true;
-    syncthing = {
-      enable = true;
-      tray.enable = true;
-    };
-  };
-  systemd.user.services.syncthingtray.Service.ExecStart = lib.mkForce
-    "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray-minimal}/bin/syncthingtray'";
-
 }

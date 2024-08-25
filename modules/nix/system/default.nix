@@ -9,5 +9,6 @@ imports = [
     ./audio.nix
     ./x11.nix
     ./wayland.nix
+    ./fonts.nix
    ];
 }

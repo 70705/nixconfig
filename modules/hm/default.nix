@@ -7,8 +7,6 @@
     ./shells
     ./terminal
     ./utils
-    ./games
-    ./fonts
     ./hypr
   ];
 }
