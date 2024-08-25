@@ -47,6 +47,20 @@ in
           wayland.enable = true;
         };
       };
+
+      stylix = {
+        enable = true;
+        image = ../../hm/hypr/wallpaper.png;
+        autoEnable = true;
+
+        cursor = {
+          package = pkgs.apple-cursor;
+          name = "macOS-Monterey";
+          size = 18;
+        };
+
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
+      };
     };
   };
 }

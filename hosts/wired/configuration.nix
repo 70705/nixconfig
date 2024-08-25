@@ -4,13 +4,12 @@
 
 { 
   pkgs,
-  inputs,
   ...
 }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
       ../../modules/nix
     ];
@@ -26,24 +25,11 @@
   };
 
   nixModules = {
+    nix-ld.enable = false;
+    x11.enable = false;
     audio.enable = true;
     gaming.enable = true;
     wayland.enable = true;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.nur.overlay ];
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes"];
-    auto-optimise-store = true;
-    substituters = [
-      "https://nix-gaming.cachix.org"
-      "https://hyprland.cachix.org"
-    ];
-    trusted-public-keys = [
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
   };
 
   networking = {
@@ -51,19 +37,6 @@
     networkmanager.enable = true;
     firewall.enable = false;
   };
-
-  time.timeZone = "America/Recife";
-  i18n = {
-    defaultLocale = "pt_BR.UTF-8";
-    supportedLocales = [ 
-      "en_US.UTF-8/UTF-8"
-      "pt_BR.UTF-8/UTF-8"
-      "C.UTF-8/UTF-8"
-      "ja_JP.UTF-8/UTF-8"
-    ];
-  };
-
-  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
   
   users = {
     users.victor = {
@@ -74,41 +47,6 @@
     };
   };
 
-  services = {
-    gvfs.enable = true;
-    gnome.gnome-keyring.enable = true;
-    tumbler.enable = true;
-  };
-
-  stylix = {
-    enable = true;
-    image = ../../modules/hm/hypr/wallpaper.png;
-    autoEnable = true;
-
-    cursor = {
-      package = pkgs.apple-cursor;
-      name = "macOS-Monterey";
-      size = 18;
-    };
-
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
-    };
-
-  programs = {
-    steam.platformOptimizations.enable = true;
-    zsh.enable = true;
-    dconf.enable = true;
-    appimage = {
-      enable = true;
-      binfmt = true;
-    };
-  };
-
-  environment.systemPackages = with pkgs; [
-     wget
-     curl
-     nh
-   ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

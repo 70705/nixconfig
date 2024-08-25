@@ -8,5 +8,6 @@ in
     imports = [
       ./gaming
       ./system
+      ./defaultConfig.nix
     ];
   }

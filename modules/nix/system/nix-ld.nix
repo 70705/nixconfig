@@ -1,10 +1,20 @@
 { 
   pkgs,
   options,
+  lib,
+  config,
   ... 
 }:
 
-{
+let
+  cfg = config.nixModules.nix-ld;
+in
+  {
+    options.nixModules.nix-ld = {
+      enable = lib.mkEnableOption "nix-ld";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
         stdenv.cc.cc
@@ -115,4 +125,5 @@
         alsaLib
         expat
    ]);
+ };
 }
