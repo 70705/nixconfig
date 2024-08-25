@@ -10,5 +10,6 @@ imports = [
     ./x11.nix
     ./wayland.nix
     ./fonts.nix
+    ./nix-ld.nix
    ];
 }
