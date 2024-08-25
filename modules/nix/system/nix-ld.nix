@@ -53,9 +53,11 @@ in
 
         # Required
         zlib
+        libz
         glib
         gtk2   
         bzip2
+        mesa
         
         # Without these it silently fails
         xorg.libXinerama

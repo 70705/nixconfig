@@ -23,8 +23,8 @@ in
             extraEnv = { MANGOHUD = true; };
           };
 
+          platformOptimizations.enable = true;
           remotePlay.openFirewall = true;
-          platformOptimizations = true;
           extraCompatPackages = with pkgs; [ proton-ge-bin ];
           extraPackages = with pkgs; [ gamescope ];
         };

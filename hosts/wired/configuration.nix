@@ -25,7 +25,7 @@
   };
 
   nixModules = {
-    nix-ld.enable = false;
+    nix-ld.enable = true;
     x11.enable = false;
     audio.enable = true;
     gaming.enable = true;
