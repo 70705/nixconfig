@@ -11,6 +11,13 @@
     config.allowUnfree = true;
   };
 
+  networking = {
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
+    };
+  };
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes"];
     auto-optimise-store = true;
