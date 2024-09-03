@@ -16,9 +16,10 @@ in
 
     config = lib.mkIf cfg.enable {
       environment.systemPackages = with pkgs; [ 
-        (retroarchBare.override {
+        (retroarch.override {
           cores = with libretro; [
             ppsspp
+            mame
           ];
         })
         retroarch-assets
