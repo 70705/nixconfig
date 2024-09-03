@@ -30,11 +30,11 @@
     audio.enable = true;
     gaming.enable = true;
     wayland.enable = true;
+    gameEmu.enable = true;
   };
 
   networking = {
     hostName = "wired";
-    networkmanager.enable = true;
     firewall.enable = false;
   };
   
