@@ -38,6 +38,8 @@
     neofetch
     qalculate-qt
     wofi
+    lanraragi
+    redis
 
     jq
 
