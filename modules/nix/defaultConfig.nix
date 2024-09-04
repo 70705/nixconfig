@@ -15,6 +15,9 @@
     networkmanager = {
       enable = true;
       insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
+      ethernet.macAddress = "stable";
+      dhcp = "dhcpcd";
+      dns = "systemd-resolved";
     };
   };
 
@@ -53,15 +56,26 @@
   programs = {
     zsh.enable = true;
     dconf.enable = true;
+
     appimage = {
       enable = true;
       binfmt = true;
     };
+
+    nh = {
+      enable = true;
+      flake = /etc/nixos;
+
+      clean = {
+        enable = true;
+        extraArgs = "--keep 10 --keep-since 7d";
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
-     wget
-     curl
-     nh
-   ];
+    wget
+    ethtool
+    curl
+  ];
 }
