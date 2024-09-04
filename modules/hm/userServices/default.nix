@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./redis.nix ];
+  imports = [ 
+    ./redis.nix
+    ./lanraragi.nix
+  ];
 }
