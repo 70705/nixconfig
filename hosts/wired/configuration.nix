@@ -33,6 +33,16 @@
     gameEmu.enable = true;
   };
 
+
+  systemd.services.ethtool = {
+    description = "Ethtool autorun command";
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.ethtool}/sbin/ethtool -s enp3s0f0 speed 100 autoneg off duplex full wol d";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   networking = {
     hostName = "wired";
     firewall.enable = false;
