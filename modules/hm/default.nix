@@ -8,6 +8,7 @@
     ./terminal
     ./utils
     ./hypr
+    ./userServices
   ];
 }
 
