@@ -44,6 +44,7 @@
     jq
 
     todoist-electron
+    anki-bin
 
     trashy
 
