@@ -27,4 +27,31 @@
       platforms = platforms.all;
     };
   };
+  nyancat-youtube-progressbar = buildFirefoxXpiAddon rec {
+    pname = "nyancat-youtube-progressbar";
+    version = "3.0";
+    addonId = "{c3348e96-6d84-47dc-8252-4b8493299efc}";
+    url = "https://addons.mozilla.org/firefox/downloads/file/3975526/nyan_cat_youtube_enhancement-3.0.xpi";
+    sha256 = "ac69aa0e98a6df660c9fdefa6f0b7b9a9de1340cc332f7aeaf13183d75d59b43";
+    meta = with lib; {
+      homepage = "https://github.com/fzramos/nyan-ff-addon";
+      description = "Adds a running Nyan Cat and Rainbow Streak to YouTube video progress bars.";
+      license = licenses.mpl20;
+      platforms = platforms.all;
+    };
+  };
+
+  selecton = buildFirefoxXpiAddon rec {
+    pname = "selecton";
+    version = "3.7.8";
+    addonId = "selection_action@emvaized.com";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4348893/selection_actions-3.7.8.xpi";
+    sha256 = "75112544a3b0cfcce3e641a52f69a15d5e8d1982569c646d69e433fc85fea18f";
+    meta = with lib; {
+      homepage = "https://github.com/emvaized/selecton-extension/";
+      description = "Get customizable pop-up with action buttons on text selection!";
+      license = licenses.mit;
+      platforms = platforms.all;
+    };
+  };
 }

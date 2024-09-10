@@ -58,7 +58,8 @@ in
         search-by-image
         tabliss
         video-downloadhelper
-      ] ++ (with firefox-addons; [ pwas-for-firefox popupoff ]);
+        mal-sync
+      ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar selecton ]);
 
       userChrome = builtins.readFile ./userChrome.css;
 #      userContent = builtins.readFile ./userContent.css;
