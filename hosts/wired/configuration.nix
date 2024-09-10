@@ -38,7 +38,7 @@
     description = "Ethtool autorun command";
     after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.ethtool}/sbin/ethtool -s enp3s0f0 speed 100 autoneg off duplex full wol d";
+      ExecStart = "${pkgs.ethtool}/sbin/ethtool -s enp3s0f0 speed 100 autoneg on duplex full wol d";
     };
     wantedBy = [ "multi-user.target" ];
   };
