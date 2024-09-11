@@ -10,7 +10,7 @@ in
 {
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = with pkgs; [vdhcoapp firefoxpwa];
+    nativeMessagingHosts = with pkgs; [firefoxpwa];
 
     policies = {
       DisablePocket = true;
@@ -43,8 +43,7 @@ in
         languagetool
         web-scrobbler
         raindropio
-        tampermonkey
-        tab-session-manager
+        violentmonkey
         keepassxc-browser
         tree-style-tab
         gesturefy
@@ -53,11 +52,8 @@ in
         control-panel-for-twitter
         faststream
         improved-tube
-        hover-zoom-plus
         localcdn
         search-by-image
-        tabliss
-        video-downloadhelper
         mal-sync
       ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar selecton ]);
 
