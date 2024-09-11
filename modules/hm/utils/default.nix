@@ -18,7 +18,6 @@
   home.packages = with pkgs; [
     ouch
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
-    nix-index
     trashy
     btop
     nil
