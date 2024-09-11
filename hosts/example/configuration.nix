@@ -20,13 +20,22 @@
  };
 
   nixModules = {
-    nix-ld.enable = false;
-    x11.enable = false;
-    audio.enable = false;
-    gaming.enable = false;
-    wayland.enable = false;
-    gameEmu.enable = false;
+    system = {
+      nix-ld.enable = false;
+      audio.enable = false;
+    };
+
+    graphical = {
+      i3.enable = false;
+      hyprland.enable = false;
+    };
+
+    gaming = {
+      enable = false;
+      retroarch.enable = false;
+    };
   };
+
 
   networking = {
     hostName = definedVars.hostname;

@@ -26,12 +26,20 @@
   };
 
   nixModules = {
-    nix-ld.enable = true;
-    x11.enable = false;
-    audio.enable = true;
-    gaming.enable = true;
-    wayland.enable = true;
-    gameEmu.enable = true;
+    system = {
+      nix-ld.enable = true;
+      audio.enable = true;
+    };
+
+    graphical = {
+      i3.enable = false;
+      hyprland.enable = true;
+    };
+
+    gaming = {
+      enable = true;
+      retroarch.enable = true;
+    };
   };
 
   systemd.services.ethtool = {

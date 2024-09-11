@@ -16,13 +16,19 @@
    };
 
    hmModules = {
-     mpv.enable = true;
-     syncthing.enable = true;
-     firefox.enable = true;
-     yazi.enable = true;
-     spotify.enable = true;
-     lanraragi.enable = true;
-     guiUtils.enable = true;
+     browser.firefox.enable = true;
+     userServices.lanraragi.enable = true;
+
+     media = {
+       spotify.enable = true;
+       mpv.enable = true;
+     };
+
+     utils = {
+       syncthing.enable = true;
+       yazi.enable = true;
+       guiUtils.enable = true;
+     };
 
      hypr = {
        enable = true;

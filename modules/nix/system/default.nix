@@ -7,8 +7,8 @@ imports = [
     ./nvidia.nix
     ./grub.nix
     ./audio.nix
-    ./x11.nix
-    ./wayland.nix
+    ./i3.nix
+    ./hyprland.nix
     ./fonts.nix
     ./nix-ld.nix
    ];

@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.hmModules.mpv;
+  cfg = config.hmModules.media.mpv;
 in
   {
-    options.hmModules.mpv = {
+    options.hmModules.media.mpv = {
       enable = lib.mkEnableOption "mpv";
     };
 

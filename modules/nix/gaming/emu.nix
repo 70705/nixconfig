@@ -7,11 +7,11 @@
 
 
 let
-  cfg = config.nixModules.gameEmu;
+  cfg = config.nixModules.gaming.retroarch;
 in
   {
-    options.nixModules.gameEmu = {
-      enable = lib.mkEnableOption "gameEmu";
+    options.nixModules.gaming.retroarch = {
+      enable = lib.mkEnableOption "retroarch";
     };
 
     config = lib.mkIf cfg.enable {

@@ -7,11 +7,11 @@
 }:
 
 let
-  cfg = config.hmModules.spotify;
+  cfg = config.hmModules.media.spotify;
 in
   {
     imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-    options.hmModules.spotify = {
+    options.hmModules.media.spotify = {
       enable = lib.mkEnableOption "spotify";
     };
 

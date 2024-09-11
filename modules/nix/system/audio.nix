@@ -7,7 +7,7 @@
 }:
 
 let 
-  cfg = config.nixModules.audio;
+  cfg = config.nixModules.system.audio;
   pw_rnnoise_config = {
   "context.modules"= [
     { "name" = "libpipewire-module-filter-chain";
@@ -46,7 +46,7 @@ in
 
     imports = [ inputs.nix-gaming.nixosModules.pipewireLowLatency ];
 
-    options.nixModules.audio = {
+    options.nixModules.system.audio = {
       enable = lib.mkEnableOption "audio";
     };
 
