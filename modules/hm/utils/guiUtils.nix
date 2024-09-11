@@ -1,16 +1,25 @@
 { 
   pkgs,
+  lib, 
+  config,
   ... 
 }:
 
-{
+let
+  cfg = config.hmModules.guiUtils;
+in
+  {
+    options.hmModules.guiUtils = {
+      enable = lib.mkEnableOption "guiUtils";
+    };
 
-  home.packages = with pkgs; [
-    keepassxc
-    qalculate-qt
-    todoist-electron
-    anki-bin
-    pcmanfm
-    qbittorrent
-  ];
-}
+    config = lib.mkIf cfg.enable {
+      home.packages = with pkgs; [
+        keepassxc
+        qalculate-qt
+        anki-bin
+        pcmanfm
+        qbittorrent
+      ];
+    };
+  }

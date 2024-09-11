@@ -9,6 +9,7 @@
     ./utils
     ./hypr
     ./userServices
+    ./i3
   ];
 }
 

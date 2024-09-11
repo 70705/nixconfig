@@ -1,282 +1,292 @@
 { 
   pkgs,
+  lib,
+  config,
   ...
 }: let
   firefox-addons = pkgs.callPackage ./customAddons.nix {
     inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
   };
+  cfg = config.hmModules.firefox;
 
 in
-{
-  programs.firefox = {
-    enable = true;
-    nativeMessagingHosts = with pkgs; [firefoxpwa];
-
-    policies = {
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DisableFirefoxScreenshots = true;
-      DisableFormHistory = true;
-      DisableFeedbackCommands = true;
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      DisableSetDesktopBackground = true;
-      DontCheckDefaultBrowser = true;
-      EnableTrackingProtection = true;
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
+  {
+    options.hmModules.firefox = {
+      enable = lib.mkEnableOption "firefox";
     };
 
-    profiles.totos = {
-      id = 0;
+    config = lib.mkIf cfg.enable {
+      
+      programs.firefox = {
+        enable = true;
+        nativeMessagingHosts = with pkgs; [firefoxpwa];
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        auto-tab-discard
-        augmented-steam
-        canvasblocker
-        clearurls
-        darkreader
-        fastforwardteam
-        ublock-origin
-        enhanced-h264ify
-        sponsorblock
-        languagetool
-        web-scrobbler
-        raindropio
-        violentmonkey
-        keepassxc-browser
-        tree-style-tab
-        gesturefy
-        simple-dark-vlasak
-        multi-account-containers
-        control-panel-for-twitter
-        faststream
-        improved-tube
-        localcdn
-        search-by-image
-        mal-sync
-      ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar selecton ]);
+        policies = {
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableFirefoxScreenshots = true;
+          DisableFormHistory = true;
+          DisableFeedbackCommands = true;
+          AutofillAddressEnabled = false;
+          AutofillCreditCardEnabled = false;
+          DisableSetDesktopBackground = true;
+          DontCheckDefaultBrowser = true;
+          EnableTrackingProtection = true;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+        };
 
-      userChrome = builtins.readFile ./userChrome.css;
-#      userContent = builtins.readFile ./userContent.css;
+        profiles.totos = {
+          id = 0;
 
-      settings = {
-        "extensions.autoDisableScopes" = 0;
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            auto-tab-discard
+            augmented-steam
+            canvasblocker
+            clearurls
+            darkreader
+            fastforwardteam
+            ublock-origin
+            enhanced-h264ify
+            sponsorblock
+            languagetool
+            web-scrobbler
+            raindropio
+          violentmonkey
+          keepassxc-browser
+          tree-style-tab
+          gesturefy
+          simple-dark-vlasak
+          multi-account-containers
+          control-panel-for-twitter
+          faststream
+          improved-tube
+          localcdn
+          search-by-image
+          mal-sync
+        ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar selecton ]);
 
-        # BETTERFOX user.js BELOW
+        userChrome = builtins.readFile ./userChrome.css;
+  #      userContent = builtins.readFile ./userContent.css;
 
-        # GENERAL
-        "content.notify.interval" = "100000";
+        settings = {
+          "extensions.autoDisableScopes" = 0;
 
-        # GFX
-        "gfx.canvas.accelerated.cache-items" = "4096";
-        "gfx.canvas.accelerated.cache-size" = "512";
-        "gfx.content.skia-font-cache-size" = "20";
+          # BETTERFOX user.js BELOW
 
-        # DISK CACHE
-        "browser.cache.jsbc_compression_level" = "3";
+          # GENERAL
+          "content.notify.interval" = "100000";
 
-        # MEDIA CACHE
-        "media.memory_cache_max_size" = "65536";
-        "media.cache_readahead_limit" = "7200";
-        "media.cache_resume_threshold" = "3600";
+          # GFX
+          "gfx.canvas.accelerated.cache-items" = "4096";
+          "gfx.canvas.accelerated.cache-size" = "512";
+          "gfx.content.skia-font-cache-size" = "20";
 
-        # IMAGE CACHE
-        "image.mem.decode_bytes_at_a_time" = "32768";
+          # DISK CACHE
+          "browser.cache.jsbc_compression_level" = "3";
 
-        # NETWORK
-        "network.http.max-connections" = "1800";
-        "network.http.max-persistent-connections-per-server" = "10";
-        "network.http.max-urgent-start-excessive-connections-per-host" = "5";
-        "network.http.pacing.requests.enabled" = false;
-        "network.dnsCacheExpiration" = "3600";
-        "network.ssl_tokens_cache_capacity" = "10240";
+          # MEDIA CACHE
+          "media.memory_cache_max_size" = "65536";
+          "media.cache_readahead_limit" = "7200";
+          "media.cache_resume_threshold" = "3600";
 
-        # SPECULATIVE LOADING
-        "network.dns.disablePrefetch" = true;
-        "network.dns.disablePrefetchFromHTTPS" = true;
-        "network.prefetch-next" = false;
-        "network.predictor.enabled" = false;
-        "network.predictor.enable-prefetch" = false;
+          # IMAGE CACHE
+          "image.mem.decode_bytes_at_a_time" = "32768";
 
-        # EXPERIMENTAL
-        "layout.css.grid-template-masonry-value.enabled" = true;
-        "dom.enable_web_task_scheduling" = true;
-        "dom.security.sanitizer.enabled" = true;
+          # NETWORK
+          "network.http.max-connections" = "1800";
+          "network.http.max-persistent-connections-per-server" = "10";
+          "network.http.max-urgent-start-excessive-connections-per-host" = "5";
+          "network.http.pacing.requests.enabled" = false;
+          "network.dnsCacheExpiration" = "3600";
+          "network.ssl_tokens_cache_capacity" = "10240";
 
-        ############################################################################
-        # SECTION: SECUREFOX                                                       #
-        ############################################################################
-        # TRACKING PROTECTION
-        "browser.contentblocking.category" = "strict";
-        "urlclassifier.trackingSkipURLs" = "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
-        "urlclassifier.features.socialtracking.skipURLs" = "*.instagram.com, *.twitter.com, *.twimg.com";
-        "network.cookie.sameSite.noneRequiresSecure" = true;
-        "browser.download.start_downloads_in_tmp_dir" = true;
-        "browser.helperApps.deleteTempFileOnExit" = true;
-        "browser.uitour.enabled" = false;
-        "privacy.globalprivacycontrol.enabled" = true;
+          # SPECULATIVE LOADING
+          "network.dns.disablePrefetch" = true;
+          "network.dns.disablePrefetchFromHTTPS" = true;
+          "network.prefetch-next" = false;
+          "network.predictor.enabled" = false;
+          "network.predictor.enable-prefetch" = false;
 
-        # OCSP & CERTS / HPKP
-        "security.OCSP.enabled" = "0";
-        "security.remote_settings.crlite_filters.enabled" = true;
-        "security.pki.crlite_mode" = "2";
+          # EXPERIMENTAL
+          "layout.css.grid-template-masonry-value.enabled" = true;
+          "dom.enable_web_task_scheduling" = true;
+          "dom.security.sanitizer.enabled" = true;
 
-        # SSL / TLS
-        "security.ssl.treat_unsafe_negotiation_as_broken" = true;
-        "browser.xul.error_pages.expert_bad_cert" = true;
-        "security.tls.enable_0rtt_data" = false;
+          ############################################################################
+          # SECTION: SECUREFOX                                                       #
+          ############################################################################
+          # TRACKING PROTECTION
+          "browser.contentblocking.category" = "strict";
+          "urlclassifier.trackingSkipURLs" = "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
+          "urlclassifier.features.socialtracking.skipURLs" = "*.instagram.com, *.twitter.com, *.twimg.com";
+          "network.cookie.sameSite.noneRequiresSecure" = true;
+          "browser.download.start_downloads_in_tmp_dir" = true;
+          "browser.helperApps.deleteTempFileOnExit" = true;
+          "browser.uitour.enabled" = false;
+          "privacy.globalprivacycontrol.enabled" = true;
 
-        # DISK AVOIDANCE
-        "browser.privatebrowsing.forceMediaMemoryCache" = true;
-        "browser.sessionstore.interval" = "60000";
+          # OCSP & CERTS / HPKP
+          "security.OCSP.enabled" = "0";
+          "security.remote_settings.crlite_filters.enabled" = true;
+          "security.pki.crlite_mode" = "2";
 
-        # SHUTDOWN & SANITIZING
-        "privacy.history.custom" = true;
+          # SSL / TLS
+          "security.ssl.treat_unsafe_negotiation_as_broken" = true;
+          "browser.xul.error_pages.expert_bad_cert" = true;
+          "security.tls.enable_0rtt_data" = false;
 
-        # SEARCH / URL BAR
-        "browser.search.separatePrivateDefault.ui.enabled" = true;
-        "browser.urlbar.update2.engineAliasRefresh" = true;
-        "browser.search.suggest.enabled" = false;
-        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-        "browser.formfill.enable" = false;
-        "security.insecure_connection_text.enabled" = true;
-        "security.insecure_connection_text.pbmode.enabled" = true;
-        "network.IDN_show_punycode" = true;
+          # DISK AVOIDANCE
+          "browser.privatebrowsing.forceMediaMemoryCache" = true;
+          "browser.sessionstore.interval" = "60000";
 
-        # HTTPS-FIRST POLICY
-        "dom.security.https_first" = true;
-        "dom.security.https_first_schemeless" = true;
+          # SHUTDOWN & SANITIZING
+          "privacy.history.custom" = true;
 
-        # PASSWORDS
-        "signon.formlessCapture.enabled" = false;
-        "signon.privateBrowsingCapture.enabled" = false;
-        "network.auth.subresource-http-auth-allow" = "1";
-        "editor.truncate_user_pastes" = false;
+          # SEARCH / URL BAR
+          "browser.search.separatePrivateDefault.ui.enabled" = true;
+          "browser.urlbar.update2.engineAliasRefresh" = true;
+          "browser.search.suggest.enabled" = false;
+          "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+          "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+          "browser.formfill.enable" = false;
+          "security.insecure_connection_text.enabled" = true;
+          "security.insecure_connection_text.pbmode.enabled" = true;
+          "network.IDN_show_punycode" = true;
 
-        # MIXED CONTENT + CROSS-SITE
-        "security.mixed_content.block_display_content" = true;
-        "security.mixed_content.upgrade_display_content" = true;
-        "security.mixed_content.upgrade_display_content.image" = true;
-        "pdfjs.enableScripting" = false;
-        "extensions.postDownloadThirdPartyPrompt" = false;
+          # HTTPS-FIRST POLICY
+          "dom.security.https_first" = true;
+          "dom.security.https_first_schemeless" = true;
 
-        # HEADERS / REFERERS
-        "network.http.referer.XOriginTrimmingPolicy" = "2";
+          # PASSWORDS
+          "signon.formlessCapture.enabled" = false;
+          "signon.privateBrowsingCapture.enabled" = false;
+          "network.auth.subresource-http-auth-allow" = "1";
+          "editor.truncate_user_pastes" = false;
 
-        # CONTAINERS
-        "privacy.userContext.ui.enabled" = true;
+          # MIXED CONTENT + CROSS-SITE
+          "security.mixed_content.block_display_content" = true;
+          "security.mixed_content.upgrade_display_content" = true;
+          "security.mixed_content.upgrade_display_content.image" = true;
+          "pdfjs.enableScripting" = false;
+          "extensions.postDownloadThirdPartyPrompt" = false;
 
-        # WEBRTC
-        "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
-        "media.peerconnection.ice.default_address_only" = true;
+          # HEADERS / REFERERS
+          "network.http.referer.XOriginTrimmingPolicy" = "2";
 
-        # SAFE BROWSING
-        "browser.safebrowsing.downloads.remote.enabled" = false;
+          # CONTAINERS
+          "privacy.userContext.ui.enabled" = true;
 
-        # MOZILLA
-        "permissions.default.desktop-notification" = "2";
-        "permissions.default.geo" = "2";
-        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=0";
-        "permissions.manager.defaultsUrl" = "";
-        "webchannel.allowObject.urlWhitelist" = "";
+          # WEBRTC
+          "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
+          "media.peerconnection.ice.default_address_only" = true;
 
-        # TELEMETRY
-        "datareporting.policy.dataSubmissionEnabled" = false;
-        "datareporting.healthreport.uploadEnabled" = false;
-        "toolkit.telemetry.unified" = false;
-        "toolkit.telemetry.enabled" = false;
-        "toolkit.telemetry.server" = "data:,";
-        "toolkit.telemetry.archive.enabled" = false;
-        "toolkit.telemetry.newProfilePing.enabled" = false;
-        "toolkit.telemetry.shutdownPingSender.enabled" = false;
-        "toolkit.telemetry.updatePing.enabled" = false;
-        "toolkit.telemetry.bhrPing.enabled" = false;
-        "toolkit.telemetry.firstShutdownPing.enabled" = false;
-        "toolkit.telemetry.coverage.opt-out" = true;
-        "toolkit.coverage.opt-out" = true;
-        "toolkit.coverage.endpoint.base" = "";
-        "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-        "browser.newtabpage.activity-stream.telemetry" = false;
+          # SAFE BROWSING
+          "browser.safebrowsing.downloads.remote.enabled" = false;
 
-        # EXPERIMENTS
-        "app.shield.optoutstudies.enabled" = false;
-        "app.normandy.enabled" = false;
-        "app.normandy.api_url" = "";
+          # MOZILLA
+          "permissions.default.desktop-notification" = "2";
+          "permissions.default.geo" = "2";
+          "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=0";
+          "permissions.manager.defaultsUrl" = "";
+          "webchannel.allowObject.urlWhitelist" = "";
 
-        # CRASH REPORTS
-        "breakpad.reportURL" = "";
-        "browser.tabs.crashReporting.sendReport" = false;
-        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+          # TELEMETRY
+          "datareporting.policy.dataSubmissionEnabled" = false;
+          "datareporting.healthreport.uploadEnabled" = false;
+          "toolkit.telemetry.unified" = false;
+          "toolkit.telemetry.enabled" = false;
+          "toolkit.telemetry.server" = "data:,";
+          "toolkit.telemetry.archive.enabled" = false;
+          "toolkit.telemetry.newProfilePing.enabled" = false;
+          "toolkit.telemetry.shutdownPingSender.enabled" = false;
+          "toolkit.telemetry.updatePing.enabled" = false;
+          "toolkit.telemetry.bhrPing.enabled" = false;
+          "toolkit.telemetry.firstShutdownPing.enabled" = false;
+          "toolkit.telemetry.coverage.opt-out" = true;
+          "toolkit.coverage.opt-out" = true;
+          "toolkit.coverage.endpoint.base" = "";
+          "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+          "browser.newtabpage.activity-stream.telemetry" = false;
 
-        # DETECTION
-        "captivedetect.canonicalURL" = "";
-        "network.captive-portal-service.enabled" = false;
-        "network.connectivity-service.enabled" = false;
+          # EXPERIMENTS
+          "app.shield.optoutstudies.enabled" = false;
+          "app.normandy.enabled" = false;
+          "app.normandy.api_url" = "";
 
-        ############################################################################
-        # SECTION: PESKYFOX                                                        #
-        ############################################################################
-        # MOZILLA UI
-        "browser.privatebrowsing.vpnpromourl" = "";
-        "extensions.getAddons.showPane" = false;
-        "extensions.htmlaboutaddons.recommendations.enabled" = false;
-        "browser.discovery.enabled" = false;
-        "browser.shell.checkDefaultBrowser" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-        "browser.preferences.moreFromMozilla" = false;
-        "browser.tabs.tabmanager.enabled" = false;
-        "browser.aboutConfig.showWarning" = false;
-        "browser.aboutwelcome.enabled" = false;
+          # CRASH REPORTS
+          "breakpad.reportURL" = "";
+          "browser.tabs.crashReporting.sendReport" = false;
+          "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
 
-        # THEME ADJUSTMENTS
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "browser.compactmode.show" = true;
-        "browser.display.focus_ring_on_anything" = true;
-        "browser.display.focus_ring_style" = "0";
-        "browser.display.focus_ring_width" = "0";
-        "layout.css.prefers-color-scheme.content-override" = "2";
-        "browser.privateWindowSeparation.enabled" = false; # WINDOWS
+          # DETECTION
+          "captivedetect.canonicalURL" = "";
+          "network.captive-portal-service.enabled" = false;
+          "network.connectivity-service.enabled" = false;
 
-        # COOKIE BANNER HANDLING
-        "cookiebanners.service.mode" = "1";
-        "cookiebanners.service.mode.privateBrowsing" = "1";
+          ############################################################################
+          # SECTION: PESKYFOX                                                        #
+          ############################################################################
+          # MOZILLA UI
+          "browser.privatebrowsing.vpnpromourl" = "";
+          "extensions.getAddons.showPane" = false;
+          "extensions.htmlaboutaddons.recommendations.enabled" = false;
+          "browser.discovery.enabled" = false;
+          "browser.shell.checkDefaultBrowser" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+          "browser.preferences.moreFromMozilla" = false;
+          "browser.tabs.tabmanager.enabled" = false;
+          "browser.aboutConfig.showWarning" = false;
+          "browser.aboutwelcome.enabled" = false;
 
-        # FULLSCREEN NOTICE
-        "full-screen-api.transition-duration.enter" = "0 0";
-        "full-screen-api.transition-duration.leave" = "0 0";
-        "full-screen-api.warning.delay" = "-1";
-        "full-screen-api.warning.timeout" = "0";
+          # THEME ADJUSTMENTS
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.compactmode.show" = true;
+          "browser.display.focus_ring_on_anything" = true;
+          "browser.display.focus_ring_style" = "0";
+          "browser.display.focus_ring_width" = "0";
+          "layout.css.prefers-color-scheme.content-override" = "2";
+          "browser.privateWindowSeparation.enabled" = false; # WINDOWS
 
-        # URL BAR
-        "browser.urlbar.suggest.calculator" = true;
-        "browser.urlbar.unitConversion.enabled" = true;
-        "browser.urlbar.trending.featureGate" = false;
+          # COOKIE BANNER HANDLING
+          "cookiebanners.service.mode" = "1";
+          "cookiebanners.service.mode.privateBrowsing" = "1";
 
-        # NEW TAB PAGE
-        "browser.newtabpage.activity-stream.feeds.topsites" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+          # FULLSCREEN NOTICE
+          "full-screen-api.transition-duration.enter" = "0 0";
+          "full-screen-api.transition-duration.leave" = "0 0";
+          "full-screen-api.warning.delay" = "-1";
+          "full-screen-api.warning.timeout" = "0";
 
-        # STARTUP
-        "browser.startup.page" = "3";
+          # URL BAR
+          "browser.urlbar.suggest.calculator" = true;
+          "browser.urlbar.unitConversion.enabled" = true;
+          "browser.urlbar.trending.featureGate" = false;
 
-        # POCKET
-        "extensions.pocket.enabled" = false;
+          # NEW TAB PAGE
+          "browser.newtabpage.activity-stream.feeds.topsites" = false;
+          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
 
-        # DOWNLOADS
-        "browser.download.always_ask_before_handling_new_types" = true;
-        "browser.download.manager.addToRecentDocs" = false;
+          # STARTUP
+          "browser.startup.page" = "3";
 
-        # PDF
-        "browser.download.open_pdf_attachments_inline" = true;
+          # POCKET
+          "extensions.pocket.enabled" = false;
 
-        # TAB BEHAVIOR
-        "browser.bookmarks.openInTabClosesMenu" = false;
-        "browser.menu.showViewImageInfo" = true;
-        "findbar.highlightAll" = true;
-        "layout.word_select.eat_space_to_next_word" = false;
+          # DOWNLOADS
+          "browser.download.always_ask_before_handling_new_types" = true;
+          "browser.download.manager.addToRecentDocs" = false;
+
+          # PDF
+          "browser.download.open_pdf_attachments_inline" = true;
+
+          # TAB BEHAVIOR
+          "browser.bookmarks.openInTabClosesMenu" = false;
+          "browser.menu.showViewImageInfo" = true;
+          "findbar.highlightAll" = true;
+          "layout.word_select.eat_space_to_next_word" = false;
+        };
       };
     };
   };

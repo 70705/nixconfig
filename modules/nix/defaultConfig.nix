@@ -1,6 +1,7 @@
 { 
   pkgs,
   inputs,
+  definedVars,
   ...
 }:
 
@@ -36,15 +37,10 @@
 
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
-  time.timeZone = "America/Recife";
+  time.timeZone = definedVars.timezone;
   i18n = {
-    defaultLocale = "pt_BR.UTF-8";
-    supportedLocales = [ 
-      "en_US.UTF-8/UTF-8"
-      "pt_BR.UTF-8/UTF-8"
-      "C.UTF-8/UTF-8"
-      "ja_JP.UTF-8/UTF-8"
-    ];
+    defaultLocale = definedVars.locale;
+    supportedLocales = definedVars.extraLocale; 
   };
 
   services = {

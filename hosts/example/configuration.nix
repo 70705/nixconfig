@@ -17,30 +17,15 @@
    
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
-    supportedFilesystems = [ "ntfs" ];
-    postBootCommands = ''
-      echo 2048 > /sys/class/rtc/rtc0/max_user_freq
-      echo 2048 > /proc/sys/dev/hpet/max-user-freq
-    '';
-  };
+ };
 
   nixModules = {
-    nix-ld.enable = true;
+    nix-ld.enable = false;
     x11.enable = false;
-    audio.enable = true;
-    gaming.enable = true;
-    wayland.enable = true;
-    gameEmu.enable = true;
-  };
-
-  systemd.services.ethtool = {
-    description = "Ethtool autorun command";
-    after = [ "network.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.ethtool}/sbin/ethtool -s enp3s0f0 speed 100 autoneg on duplex full wol d";
-    };
-    wantedBy = [ "multi-user.target" ];
+    audio.enable = false;
+    gaming.enable = false;
+    wayland.enable = false;
+    gameEmu.enable = false;
   };
 
   networking = {

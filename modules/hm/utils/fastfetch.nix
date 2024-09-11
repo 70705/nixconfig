@@ -5,8 +5,23 @@
     enable = true;
     settings = {
       logo = {
-        source = "nixos_small";
+        source = "nixos";
       };
+
+      modules = [
+        "os"
+        "kernel"
+        "shell"
+        "de"
+        "wm"
+        "uptime"
+        "terminal"
+        "cpuusage"
+        "memory"
+        "swap"
+        "disk"
+        "localip"
+      ];
     };
   };
 }

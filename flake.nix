@@ -1,6 +1,56 @@
 {
   description = "victor's Flake";
 
+  outputs = { self, nixpkgs, nur, home-manager, ... }@inputs: let
+    definedVars = {
+      username = "victor"; 
+      hostname = "wired";
+      timezone = "America/Recife";
+      locale = "pt_BR.UTF-8";
+      
+      extraLocale = [ 
+        "en_US.UTF-8/UTF-8"
+        "pt_BR.UTF-8/UTF-8"
+        "C.UTF-8/UTF-8"
+        "ja_JP.UTF-8/UTF-8"
+      ];
+      system = "x86_64-linux";
+    };
+
+  in {
+    nixosConfigurations = {
+      ${definedVars.hostname} = nixpkgs.lib.nixosSystem { 
+        system = definedVars.system;
+
+        specialArgs = {
+          inherit inputs;
+          inherit definedVars;
+        };
+
+        modules = [
+          ./hosts/${definedVars.hostname}/configuration.nix
+          
+          home-manager.nixosModules.home-manager
+          
+          inputs.stylix.nixosModules.stylix
+          
+          inputs.nix-gaming.nixosModules.platformOptimizations
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.victor = import ./hosts/${definedVars.hostname}/home.nix;
+              extraSpecialArgs = {
+                inherit inputs;
+                inherit definedVars;
+              };
+            };
+          }
+        ];
+      };
+    };
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim-config.url = "github:70705/nixvim-config";
@@ -37,43 +87,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   }; 
-
-  outputs = { self, nixpkgs, nur, home-manager, ... }@inputs: let
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit system;
-      inherit inputs;
-    };
-
-  in {
-    nixosConfigurations = {
-      wired = nixpkgs.lib.nixosSystem { 
-        inherit system;
-        inherit specialArgs;
-
-        modules = [
-          ./hosts/wired/configuration.nix
-          
-          home-manager.nixosModules.home-manager
-          
-          #({ config, pkgs, ... }: {
-            #nixpkgs.overlays = [ nur.overlay ];
-          
-          #})
-          
-          inputs.stylix.nixosModules.stylix
-          
-          inputs.nix-gaming.nixosModules.platformOptimizations
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.victor = import ./hosts/wired/home.nix;
-              extraSpecialArgs = specialArgs;
-            };
-          }
-        ];
-      };
-    };
-  };
 }

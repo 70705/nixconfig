@@ -16,21 +16,21 @@
    };
 
    hmModules = {
-     mpv.enable = true;
-     syncthing.enable = true;
-     firefox.enable = true;
-     yazi.enable = true;
-     spotify.enable = true;
-     lanraragi.enable = true;
-     guiUtils.enable = true;
+     mpv.enable = false;
+     syncthing.enable = false;
+     firefox.enable = false;
+     yazi.enable = false;
+     spotify.enable = false;
+     lanraragi.enable = false;
+     guiUtils.enable = false;
 
      hypr = {
-       enable = true;
-       hypridle.enable = true;
-       hyprlock.enable = true;
-       hyprpaper.enable = true;
-       mako.enable = true;
-       waybar.enable = true;
+       enable = false;
+       hypridle.enable = false;
+       hyprlock.enable = false;
+       hyprpaper.enable = false;
+       mako.enable = false;
+       waybar.enable = false;
      };
 
      i3 = {

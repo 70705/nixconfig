@@ -1,23 +1,35 @@
 { 
-  pkgs, 
-  inputs, 
+  pkgs,
+  inputs,
+  lib, 
+  config,
   ... 
 }:
-{
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-  programs.spicetify =
-   let
-     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-   in
-   {
-     enable = true;
-     enabledExtensions = with spicePkgs.extensions; [
-       fullAppDisplay
-       shuffle # shuffle+ (special characters are sanitized out of ext names)
-       adblock
-       hidePodcasts
-       history
-     ];
-     theme = spicePkgs.themes.text;
-   };
-}
+
+let
+  cfg = config.hmModules.spotify;
+in
+  {
+    imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+    options.hmModules.spotify = {
+      enable = lib.mkEnableOption "spotify";
+    };
+
+    config = lib.mkIf cfg.enable {
+      programs.spicetify =
+        let
+          spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+        in
+        {
+          enable = true;
+          enabledExtensions = with spicePkgs.extensions; [
+            fullAppDisplay
+            shuffle # shuffle+ (special characters are sanitized out of ext names)
+            adblock
+            hidePodcasts
+            history
+          ];
+          theme = spicePkgs.themes.text;
+        };
+      };
+    }

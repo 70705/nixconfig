@@ -1,20 +1,34 @@
-{
-  inputs,
+{ 
   pkgs,
-  ...
+  inputs,
+  lib, 
+  config,
+  ... 
 }:
 
-{
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    systemd.variables = ["--all"];
+let
+  cfg = config.hmModules.hypr;
+in
+  {
+    options.hmModules.hypr = {
+      enable = lib.mkEnableOption "hypr";
+    };
 
-    plugins = [];
-    extraConfig = builtins.readFile ./config_hyprland.conf;
-  };
+    config = lib.mkIf cfg.enable {
+      wayland.windowManager.hyprland = { 
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        systemd.variables = ["--all"];
 
-  home.packages = with pkgs; [
-    hyprshot
-  ];
-}
+        plugins = [];
+        extraConfig = builtins.readFile ./config_hyprland.conf;
+      };
+
+      home.packages = with pkgs; [
+        hyprshot
+        wofi
+        clipse
+        wl-clipboard
+      ];
+    };
+  }

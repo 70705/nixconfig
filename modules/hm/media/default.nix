@@ -11,7 +11,6 @@
   home.packages = with pkgs; [
 
     stremio
-    mpv
     pavucontrol
     alsa-utils
  #   inputs.audiorelay.packages.${pkgs.system}.audio-relay

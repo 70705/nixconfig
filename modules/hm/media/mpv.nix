@@ -1,9 +1,25 @@
-{ ... }:
+{ 
+  pkgs,
+  lib, 
+  config,
+  ... 
+}:
 
-{
+let
+  cfg = config.hmModules.mpv;
+in
+  {
+    options.hmModules.mpv = {
+      enable = lib.mkEnableOption "mpv";
+    };
 
-  home.file.".config/mpv/" = {
-    source = ./mpv;
-    force = true;
-  };
-}
+    config = lib.mkIf cfg.enable {
+      home.packages = with pkgs; [ mpv ];
+      home.file.".config/mpv/" = { # Will configure MPV in a more Nix way later.
+        source = ./mpv;
+        force = true;
+      };
+    };
+  }
+
+
