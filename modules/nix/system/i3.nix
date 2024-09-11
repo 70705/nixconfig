@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.nixModules.x11;
+  cfg = config.nixModules.graphical.i3;
 in
   {
-    options.nixModules.x11 = {
-      enable = lib.mkEnableOption "x11";
+    options.nixModules.graphical.i3 = {
+      enable = lib.mkEnableOption "i3";
   };
 
   config = lib.mkIf cfg.enable {
