@@ -29,17 +29,17 @@
 
         modules = [
           ./hosts/${definedVars.hostname}/configuration.nix
-          
           home-manager.nixosModules.home-manager
-          
           inputs.stylix.nixosModules.stylix
-          
+          inputs.nix-index-database.nixosModules.nix-index
           inputs.nix-gaming.nixosModules.platformOptimizations
+
+          { programs.nix-index-database.comma.enable = true; }
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.victor = import ./hosts/${definedVars.hostname}/home.nix;
+              users.${definedVars.username} = import ./hosts/${definedVars.hostname}/home.nix;
               extraSpecialArgs = {
                 inherit inputs;
                 inherit definedVars;
@@ -56,6 +56,8 @@
     nixvim-config.url = "github:70705/nixvim-config";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nur.url = "github:nix-community/NUR";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
