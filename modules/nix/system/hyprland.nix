@@ -7,11 +7,11 @@
 }:
 
 let
-  cfg = config.nixModules.wayland;
+  cfg = config.nixModules.graphical.hyprland;
 in
   {
-    options.nixModules.wayland = {
-      enable = lib.mkEnableOption "wayland";
+    options.nixModules.graphical.hyprland = {
+      enable = lib.mkEnableOption "hyprland";
   };
 
   config = lib.mkIf cfg.enable {
