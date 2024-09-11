@@ -7,11 +7,11 @@
   firefox-addons = pkgs.callPackage ./customAddons.nix {
     inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
   };
-  cfg = config.hmModules.firefox;
+  cfg = config.hmModules.browser.firefox;
 
 in
   {
-    options.hmModules.firefox = {
+    options.hmModules.browser.firefox = {
       enable = lib.mkEnableOption "firefox";
     };
 

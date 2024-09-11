@@ -7,10 +7,10 @@
 }:
 
 let
-  cfg = config.nixModules.nix-ld;
+  cfg = config.nixModules.system.nix-ld;
 in
   {
-    options.nixModules.nix-ld = {
+    options.nixModules.system.nix-ld = {
       enable = lib.mkEnableOption "nix-ld";
   };
 

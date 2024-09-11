@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.hmModules.syncthing;
+  cfg = config.hmModules.utils.syncthing;
 in
   {
-    options.hmModules.syncthing = {
+    options.hmModules.utils.syncthing = {
       enable = lib.mkEnableOption "syncthing";
     };
 

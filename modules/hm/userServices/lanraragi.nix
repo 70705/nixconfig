@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.hmModules.lanraragi;
+  cfg = config.hmModules.userServices.lanraragi;
 in
   {
     imports = [ ./redis.nix ];
-    options.hmModules.lanraragi = {
+    options.hmModules.userServices.lanraragi = {
       enable = lib.mkEnableOption "lanraragi";
     };
 

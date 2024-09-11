@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.hmModules.yazi;
+  cfg = config.hmModules.utils.yazi;
 in
   {
-    options.hmModules.yazi = {
+    options.hmModules.utils.yazi = {
       enable = lib.mkEnableOption "yazi";
     };
 

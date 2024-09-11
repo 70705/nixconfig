@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.hmModules.guiUtils;
+  cfg = config.hmModules.utils.guiUtils;
 in
   {
-    options.hmModules.guiUtils = {
+    options.hmModules.utils.guiUtils = {
       enable = lib.mkEnableOption "guiUtils";
     };
 
