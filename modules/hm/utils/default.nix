@@ -10,61 +10,21 @@
     ./yazi.nix
     ./audiothumbs.nix
     ./syncthing.nix
+    ./dependencies.nix
+    ./guiUtils.nix
+    ./fastfetch.nix
   ];
 
   home.packages = with pkgs; [
-
-    keepassxc
-
-    zip
-    unzip
-    rar
-    xz
     ouch
-    
-    ripgrep 
-    fzf
-    bc
-
     inputs.nix-alien.packages.${pkgs.system}.nix-alien
     nix-index
-
-    clipse
-    wl-clipboard
-
-#    file
-#    which
-#    tree
-    neofetch
-    qalculate-qt
-    wofi
-    lanraragi
-    redis
-
-    jq
-
-    todoist-electron
-    anki-bin
-
     trashy
-
-#    sysstat
-#    lm_sensors
-#    ethtool
-#    pciutils 
-#    usbutils 
     btop
-
     nil
     python3
-
     ffmpeg-full
     ffmpegthumbnailer
-    pcmanfm
-    gtk_engines
-
-    qbittorrent
-
     inputs.nixvim-config.packages.${pkgs.system}.default
   ];
 }

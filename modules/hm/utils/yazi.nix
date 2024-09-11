@@ -1,25 +1,35 @@
 { 
   pkgs,
-  ...
+  lib, 
+  config,
+  ... 
 }:
 
-{
-  programs.yazi = {
-     enable = true;
-     enableZshIntegration = true;
-     package = pkgs.yazi;
-   };
+let
+  cfg = config.hmModules.yazi;
+in
+  {
+    options.hmModules.yazi = {
+      enable = lib.mkEnableOption "yazi";
+    };
 
-  xdg.desktopEntries = {
-    yazi = {
-      name = "Yazi";
-      comment = "Blazing fast terminal file manager written in Rust, based on async I/O";
-      exec = "kitty yazi %f";
-      mimeType = [ "inode/directory" ];
-      categories = [ "System" "FileTools" "FileManager" "Utility" "Core" ];
-      terminal = false;
-      icon = "yazi";
+    config = lib.mkIf cfg.enable {
+      programs.yazi = {
+        enable = true;
+        enableZshIntegration = true;
+        package = pkgs.yazi;
+      };
+
+      xdg.desktopEntries = {
+        yazi = {
+          name = "Yazi";
+          comment = "Blazing fast terminal file manager written in Rust, based on async I/O";
+          exec = "kitty yazi %f";
+          mimeType = [ "inode/directory" ];
+          categories = [ "System" "FileTools" "FileManager" "Utility" "Core" ];
+          terminal = false;
+          icon = "yazi";
+      };
     };
   };
-
 }

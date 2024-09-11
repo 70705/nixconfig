@@ -1,22 +1,37 @@
 { 
   pkgs,
-  ... 
+  lib,
+  config,
+  ...
 }:
 
-{
-  systemd.user.services.lanraragi = {
-    Unit = {
-      Description = "Lanraragi  server";
-      Requires = "redis-server-lanraragi.service";
-      After = "redis-server-lanraragi.service";
+let
+  cfg = config.hmModules.lanraragi;
+in
+  {
+    imports = [ ./redis.nix ];
+    options.hmModules.lanraragi = {
+      enable = lib.mkEnableOption "lanraragi";
     };
 
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
+  config = lib.mkIf cfg.enable {
 
-    Service = {
-      ExecStart = "${pkgs.lanraragi}/bin/lanraragi";
+    home.packages = with pkgs; [ lanraragi redis ];
+    systemd.user.services.lanraragi = {
+      
+      Unit = {
+        Description = "Lanraragi  server";
+        Requires = "redis-server-lanraragi.service";
+        After = "redis-server-lanraragi.service";
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+
+      Service = {
+        ExecStart = "${pkgs.lanraragi}/bin/lanraragi";
+      };
     };
   };
 }

@@ -1,35 +1,47 @@
-{ ... }:
-
 {
+  lib, 
+  config,
+  ... 
+}:
 
-  services.picom = {
-    enable = true;
-    shadow = true;
-    vSync = true;
-    extraArgs = [ "--unredir-if-possible" ];
-    backend = "glx";
+let
+  cfg = config.hmModules.i3.picom;
+in
+  {
+    options.hmModules.i3.picom = {
+      enable = lib.mkEnableOption "picom";
+    };
 
-    activeOpacity = 1;
-    inactiveOpacity = 0.85;
-    opacityRules = [ 
-      "100:class_g = 'qutebrowser'"
-      "100:class_g = 'Image Lounge'"
-      "100:class_g = 'Vivaldi-stable'"
-      "100:class_g = 'mpv'"
-      "100:class_g = 'Chromium-browser'"
-      "100:class_g = 'org.wezfurlong.wezterm'"
-    ];
+    config = lib.mkIf cfg.enable {
+      services.picom = { 
+        enable = true;
+        shadow = true;
+        vSync = true;
+        extraArgs = [ "--unredir-if-possible" ];
+        backend = "glx";
 
-    settings = {
-      round-borders = 10;
-      rounded-corners-exclude = [ "class_g = 'Polybar'" ];
-      corner-radius = 10.0;
+        activeOpacity = 1;
+        inactiveOpacity = 0.85;
+        opacityRules = [ 
+          "100:class_g = 'qutebrowser'"
+          "100:class_g = 'Image Lounge'"
+          "100:class_g = 'Vivaldi-stable'"
+          "100:class_g = 'mpv'"
+          "100:class_g = 'Chromium-browser'"
+          "100:class_g = 'org.wezfurlong.wezterm'"
+        ];
 
-      blur = {
-        method = "dual_kawase";
-        size = 10;
-        deviation = 5.0;
+        settings = {
+          round-borders = 10;
+          rounded-corners-exclude = [ "class_g = 'Polybar'" ];
+          corner-radius = 10.0;
+
+          blur = {
+            method = "dual_kawase";
+            size = 10;
+            deviation = 5.0;
+          };
+        };
       };
     };
-  };
-}
+  }
