@@ -1,5 +1,4 @@
 { 
-  pkgs,
   lib, 
   config,
   ... 
@@ -7,7 +6,7 @@
 
 let
   cfg = config.hmModules.utils.yazi;
-  yaziAddons = import ./yaziAddons/nix/sources.nix;
+  yaziAddons = import ./yaziAddons/npins;
   addon = param: yaziAddons.${param}.outPath;
 
 in
@@ -23,11 +22,20 @@ in
 
         plugins = {
           "eza-preview" = addon "eza-preview.yazi";
+          "ouch" = addon "ouch.yazi";
         };
 
         settings = {
           plugin = {
-            prepend_previewers = [ { name = "*/"; run = "eza-preview"; } ];
+            prepend_previewers = [
+              { name = "*/"; run = "eza-preview"; }
+              { mime = "application/*zip"; run = "ouch"; }
+              { mime = "application/x-tar"; run = "ouch"; }
+              { mime = "application/x-bzip2"; run = "ouch"; }
+              { mime = "application/x-7z-compressed"; run = "ouch"; }
+              { mime = "application/x-rar"; run = "ouch"; }
+              { mime = "application/x-xz"; run = "ouch"; }
+            ];
           };
         };
       };

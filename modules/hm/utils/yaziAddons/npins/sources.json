@@ -1,0 +1,35 @@
+{
+  "pins": {
+    "eza-preview.yazi": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "sharklasers996",
+        "repo": "eza-preview.yazi"
+      },
+      "branch": "master",
+      "revision": "7ca4c2558e17bef98cacf568f10ec065a1e5fb9b",
+      "url": "https://github.com/sharklasers996/eza-preview.yazi/archive/7ca4c2558e17bef98cacf568f10ec065a1e5fb9b.tar.gz",
+      "hash": "158vzf379mrs52fpd6381p7r59cd9fga1lm3ppcp7hbp7q58xhwx"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre679969.159be5db480d/nixexprs.tar.xz",
+      "hash": "0x9yczk56qpzjxarjl5p51xl5wn35hh01iizpks1i6wm5p3xqwhd"
+    },
+    "ouch.yazi": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "ndtoan96",
+        "repo": "ouch.yazi"
+      },
+      "branch": "main",
+      "revision": "251da6930ca8b7ee0384810086c3bf644caede3e",
+      "url": "https://github.com/ndtoan96/ouch.yazi/archive/251da6930ca8b7ee0384810086c3bf644caede3e.tar.gz",
+      "hash": "0h5j8aimhvzwk0j65pc3dhj0ampdmk832nwf0jfq6l51irlpvfy8"
+    }
+  },
+  "version": 3
+}
