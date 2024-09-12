@@ -7,6 +7,9 @@
 
 let
   cfg = config.hmModules.utils.yazi;
+  yaziAddons = import ./yaziAddons/nix/sources.nix;
+  addon = param: yaziAddons.${param}.outPath;
+
 in
   {
     options.hmModules.utils.yazi = {
@@ -17,7 +20,16 @@ in
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
-        package = pkgs.yazi;
+
+        plugins = {
+          "eza-preview" = addon "eza-preview.yazi";
+        };
+
+        settings = {
+          plugin = {
+            prepend_previewers = [ { name = "*/"; run = "eza-preview"; } ];
+          };
+        };
       };
 
       xdg.desktopEntries = {

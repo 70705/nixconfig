@@ -21,6 +21,7 @@
     trashy
     btop
     nil
+    niv
     python3
     ffmpeg-full
     ffmpegthumbnailer
