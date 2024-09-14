@@ -26,6 +26,12 @@ in
         };
 
         settings = {
+
+          manager = {
+            sort_dir_first = true;
+            sort_by = "natural";
+          };
+
           plugin = {
             prepend_previewers = [
               { name = "*/"; run = "eza-preview"; }
