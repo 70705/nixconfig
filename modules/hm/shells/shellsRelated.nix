@@ -24,6 +24,11 @@
        package = pkgs.starship;
      };
 
+     thefuck = {
+       enable = true;
+       enableZshIntegration = true;
+     };
+
      carapace = {
        enable = true;
        enableZshIntegration = true;
@@ -34,9 +39,13 @@
       enable = true;
       enableZshIntegration = true;
       package = pkgs.atuin;
+      settings = {
+        style = "full";
+        enter_accept = true;
+      };
     };
 
-     eza = {
+    eza = {
       enable = true;
       enableZshIntegration = true;
       package = pkgs.eza;
