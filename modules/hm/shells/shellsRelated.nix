@@ -18,9 +18,9 @@
      };
 
      starship = {
-       enable = true;
-       enableTransience = true;
-       enableZshIntegration = true;
+       enable = false;
+       enableTransience = false;
+       enableZshIntegration = false;
        package = pkgs.starship;
      };
 

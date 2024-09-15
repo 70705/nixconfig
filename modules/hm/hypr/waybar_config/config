@@ -37,31 +37,32 @@
 		"format-icons": ["", "", ""]
 	},
 	"cpu": {
-        	"format": "   {usage}% ",
+    "format": "   {usage}% ",
 		"tooltip": false
 	},
 	"memory": {
 		"format": "   {}% "	
 	},
 	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-	    	"format-wifi": " {essid} ({signalStrength}%)",
-	    	"format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-	    	"format-linked": " {ifname} (No IP)",
-	    	"format-disconnected": "󰈂 Disconnected",
-	    	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+  //"interface": "wlp2*", // (Optional) To force the use of this interface
+
+	  "format-wifi": " {essid} ({signalStrength}%)",
+	  "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+	  "format-linked": " {ifname} (No IP)",
+	  "format-disconnected": "󰈂 Disconnected",
+	  "format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
 
-    	"pulseaudio": {
-        	"scroll-step": 5, // %, can be a float
-        	"format": "  {volume}%  {format_source}",
-        	"format-bluetooth": "  {volume}%  {format_source}",
-        	"format-bluetooth-muted": "  {format_source}",
-        	"format-muted": "  {format_source}",
-        	"format-source": " {volume}%",
-        	"format-source-muted": " ",
-        	"on-click": "pavucontrol"
-    	},
+	"pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "  {volume}%  {format_source}",
+    "format-bluetooth": "  {volume}%  {format_source}",
+    "format-bluetooth-muted": "  {format_source}",
+    "format-muted": "  {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " ",
+    "on-click": "pavucontrol"
+  },
 	"clock#time": {
 		"interval": 1,
 		"format": "  {:%H:%M:%S}",
@@ -78,30 +79,30 @@
 		"icon-size": 16,
 		"spacing": 10
 	},
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 2,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    }
+	"mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "consume-icons": {
+        "on": " "
+  },
+	"random-icons": {
+    "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " "
+  },
+	"repeat-icons": {
+		"on": " "
+  },
+	"single-icons": {
+    "on": "1 "
+  },
+	"state-icons": {
+    "paused": "",
+    "playing": ""
+  },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  }
 }

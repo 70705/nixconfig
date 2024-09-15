@@ -25,19 +25,6 @@ window#waybar {
 }
 
 #workspaces button {
-	padding: 0 2px;
-	margin: 0px;
-	background: transparent;
-	color: #ffffff;
-	/*
-	color: #ff8700;
-	color: #00afd7;
-	border: 1px solid #00afd7;
-	border: 1px solid #1b1d1e;
-	 */
-	font-weight: bold;
-}
-#workspaces button {
     /* padding: 0 0.4em; */
     /* background-color: transparent; */
     color: #ffffff;

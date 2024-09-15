@@ -1,11 +1,13 @@
-{ 
+{
+  config,
+  lib,
   pkgs, 
   ... 
 }:
 
 {
    programs.kitty = {
-     enable = true;
+     enable = lib.mkIf config.hmModules.i3.enable true; 
      settings = {
        remember_window_size = "yes";
        initial_window_width = 640;

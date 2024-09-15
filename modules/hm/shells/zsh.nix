@@ -1,6 +1,23 @@
 { ... }:
+let
+  theme = import ./typewrittenTheme/npins;
 
-{
+in
+  {
+
+    home.file = {
+      ".omz/themes/typewritten" = { 
+        source = "${theme.typewritten.outPath}/";
+        force = true;
+      };
+    };
+    home.file = {
+      ".omz/shell.sh" = { 
+        source = ./typewrittenTheme/shell.sh;
+        force = true;
+      };
+    };
+
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -11,22 +28,20 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
-      any-nix-shell zsh --info-right | source /dev/stdin
+    initExtraFirst = ''
+      export TYPEWRITTEN_SYMBOL="$"
+      export TYPEWRITTEN_ARROW_SYMBOL="➜"
 
-      function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-      }
-    '';
+      any-nix-shell zsh | source /dev/stdin
+
+      TYPEWRITTEN_RIGHT_PROMPT_PREFIX_FUNCTION=~/.omz/shell.sh
+      '';
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["starship"];
+      custom = "$HOME/.omz";
+      theme = "typewritten/typewritten";
+      # plugins = ["starship"];
     };
   };
 }
