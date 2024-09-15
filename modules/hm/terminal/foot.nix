@@ -1,14 +1,15 @@
-{ 
+{
+  config,
   lib, 
   ...
 }:
 
 {
   programs.foot = {
-    enable = true;
+    enable = lib.mkIf config.hmModules.hypr.enable true;
     settings = {
       main = {
-        font = lib.mkForce "JetBrainsMono Nerd Font:style=Bold:size=11";
+        font = lib.mkForce "JetBrainsMono Nerd Font:style=Bold:size=12";
       };
     };
   };

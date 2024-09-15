@@ -1,4 +1,5 @@
-{ 
+{
+  config,
   definedVars,
   ... 
 }:
@@ -12,8 +13,13 @@
   home = {
      username = definedVars.username;
      homeDirectory = "/home/${definedVars.username}";
-     sessionVariables = { EDITOR = "nvim"; TERM = "kitty"; };
-   };
+     sessionVariables = { 
+       EDITOR = "nvim";  
+       TERM = if config.hmModules.hypr.enable then "foot"
+          else if config.hmModules.i3.enable then "kitty"
+          else null;
+        };
+      };
 
    hmModules = {
      browser.firefox.enable = true;
@@ -80,3 +86,4 @@
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+

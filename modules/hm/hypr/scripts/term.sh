@@ -1,1 +1,1 @@
-hyprctl dispatch exec "[workspace special:term silent] kitty --class kterm"
+hyprctl dispatch exec "[workspace special:term silent] foot -a kterm"
