@@ -1,24 +1,28 @@
-add_newline = false
-format = "$hostname$directory\n$character"
-right_format = "$cmd_duration$git_branch$git_state$git_status${custom.nix}"
+add_newline = true 
+format = "$time${custom.nix}$line_break$cmd_duration$character"
+right_format = "$directory$git_branch$git_state$git_status"
+
+[time]
+disabled = false
+format = '[\[$time\]]($bold white) '
+time_format = '%T'
 
 [hostname]
 ssh_only = false
 format = "[$hostname](#acacac) on "
-disabled = false
+disabled = true 
 
 [directory]
-style = "blue"
+truncation_length = 2
+style = "bold white"
 
 # Got this from https://github.com/vulpi/viperML-dotfiles/blob/0e0dacf03489596359d97fd8292da4921f902f29/packages/overrides/fish/starship.toml#L103-L109
 # Thank you!
 
 [custom.nix]
-command = "nix-shell-info"
-when = "nix-shell-info"
-symbol = ""
-style = "bold cyan"
-format = "[$symbol]($style)  [$output]($style)"
+command = "nix-shell-info | awk '{print substr($0, 8, length($0)-11)}'"
+when = "test 0 -ne $(nix-shell-info | wc -w)" 
+format = "\\[[$output](bold white)\\]"
 os = "linux"
 
 [character]
@@ -27,29 +31,22 @@ error_symbol = "[!](red)"
 vimcmd_symbol = "[%](green)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+format = "➜ [$branch]($style) "
+style = "bold white"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
+format = "[[($all_status)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "bold white"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "bright-white"
+style = "bold white"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+style = "bold white"
 
