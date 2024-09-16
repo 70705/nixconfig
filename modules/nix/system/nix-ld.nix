@@ -19,6 +19,10 @@ in
     programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
         stdenv.cc.cc
         openssl
+        wayland
+        egl-wayland
+        libgit2
+        mono
         xorg.libXcomposite
         xorg.libXtst
         xorg.libXrandr
