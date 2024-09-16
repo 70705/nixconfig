@@ -14,5 +14,7 @@
     bc
     jq
     gtk_engines
+    mono
+    killall
   ];
 }
