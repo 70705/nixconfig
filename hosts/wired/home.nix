@@ -24,6 +24,7 @@
    hmModules = {
      browser.firefox.enable = true;
      userServices.lanraragi.enable = true;
+     hypr.enable = true;
 
      media = {
        spotify.enable = true;
@@ -34,15 +35,6 @@
        syncthing.enable = true;
        yazi.enable = true;
        guiUtils.enable = true;
-     };
-
-     hypr = {
-       enable = true;
-       hypridle.enable = true;
-       hyprlock.enable = true;
-       hyprpaper.enable = true;
-       mako.enable = true;
-       waybar.enable = true;
      };
 
      i3 = {
