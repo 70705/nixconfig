@@ -55,7 +55,7 @@ window#waybar {
 	background: #af005f;
 	color: #1b1d1e;
 }
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
 	padding: 0 10px;
 	margin: 6px 3px;
 }
