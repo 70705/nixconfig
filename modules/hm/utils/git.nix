@@ -1,7 +1,6 @@
 { ... }:
 
 {
-
   programs = {
     git = {
       enable = true;
@@ -12,6 +11,4 @@
     git-credential-oauth.enable = true;
     lazygit.enable = true;
   };
-
-
 }
