@@ -52,19 +52,19 @@ in
             languagetool
             web-scrobbler
             raindropio
-          violentmonkey
-          keepassxc-browser
-          tree-style-tab
-          gesturefy
-          simple-dark-vlasak
-          multi-account-containers
-          control-panel-for-twitter
-          faststream
-          improved-tube
-          localcdn
-          search-by-image
-          mal-sync
-        ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar selecton ]);
+            violentmonkey
+            keepassxc-browser
+            tree-style-tab
+            gesturefy
+            simple-dark-vlasak
+            multi-account-containers
+            control-panel-for-twitter
+            faststream
+            improved-tube
+            localcdn
+            search-by-image
+            mal-sync
+        ] ++ (with firefox-addons; [ pwas-for-firefox popupoff nyancat-youtube-progressbar ]);
 
         userChrome = builtins.readFile ./userChrome.css;
   #      userContent = builtins.readFile ./userContent.css;

@@ -40,18 +40,4 @@
       platforms = platforms.all;
     };
   };
-
-  selecton = buildFirefoxXpiAddon rec {
-    pname = "selecton";
-    version = "3.7.8";
-    addonId = "selection_action@emvaized.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4348893/selection_actions-3.7.8.xpi";
-    sha256 = "75112544a3b0cfcce3e641a52f69a15d5e8d1982569c646d69e433fc85fea18f";
-    meta = with lib; {
-      homepage = "https://github.com/emvaized/selecton-extension/";
-      description = "Get customizable pop-up with action buttons on text selection!";
-      license = licenses.mit;
-      platforms = platforms.all;
-    };
-  };
 }
