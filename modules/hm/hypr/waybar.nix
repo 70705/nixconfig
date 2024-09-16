@@ -4,23 +4,14 @@
   ... 
 }:
 
-let
-  cfg = config.hmModules.hypr.waybar;
-in
-  {
-    options.hmModules.hypr.waybar = {
-      enable = lib.mkEnableOption "waybar";
-    };
+{
+  programs.waybar = {
+    enable = lib.mkIf config.hmModules.hypr.enable true; 
+    systemd.enable = true;
+  };
 
-    config = lib.mkIf cfg.enable {
-      programs.waybar = {
-        enable = true;
-        systemd.enable = true;
-      };
-
-      home.file.".config/waybar/" = {
-        source = ./waybar_config;
-        force = true;
-      };
-    };
-  }
+  home.file.".config/waybar/" = {
+    source = ./waybar_config;
+    force = true;
+  };
+}
