@@ -7,7 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": ["hyprland/workspaces", "hyprland/mode"],
   "modules-center": ["hyprland/window"],
-	"modules-right": [ "cpu", "memory", "network", "pulseaudio", "clock#date", "clock#time", "tray"],
+	"modules-right": [ "cpu", "memory", "network", "pulseaudio", "clock#date", "clock#time", "idle_inhibitor", "tray"],
 
 	// Modules configuration
 	// "hyprland/workspaces": {
@@ -25,6 +25,14 @@
 	// 		"default": ""
 	// 	}
 	// },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+	},
 	"hyprland/window": {
 		"max-length": 70,
 	},
