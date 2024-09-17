@@ -54,7 +54,7 @@ in
             raindropio
             violentmonkey
             keepassxc-browser
-            tree-style-tab
+            sidebery 
             gesturefy
             simple-dark-vlasak
             multi-account-containers
