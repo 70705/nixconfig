@@ -10,5 +10,9 @@
     extraPackages = epkgs: with epkgs; [ vterm ];
   };
 
+  home.packages = with pkgs; [
+    nixfmt-rfc-style
+  ];
+
   stylix.targets.emacs.enable = false;
 }
