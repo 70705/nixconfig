@@ -7,23 +7,13 @@
     enableZshIntegration = true;
     settings = {
       add_newline = true;
-      format = [
-        "$time"
-        "\${custom.nix}"
-        "$line_break"
-        "$cmd_duration"
-        "$character"
-      ];
-      right_format = [
-        "$directory"
-        "$git_branch"
-        "$git_state"
-        "$git_status"
-      ];
+      format = "$time\${custom.nix}$line_break$cmd_duration$character";
+
+      right_format = "$directory$git_branch$git_state$git_status";
 
       time = {
         disabled = false;
-        format = "[''\''[$time''\'']]($bold white) ";
+        format = ''[\[$time\]]($bold white) '';
         time_format = "%T";
       };
 
@@ -32,6 +22,7 @@
         format = "[$hostname](#acacac) on ";
         disabled = true;
       };
+
       directory = {
         truncation_length = 2;
         style = "bold white";
@@ -40,7 +31,7 @@
       custom.nix = {
         command = "nix-shell-info | awk '{print substr($0, 8, length($0)-11)}'";
         when = "test 0 -ne $(nix-shell-info | wc -w)";
-        format = "''\\''[[$output](bold white)''\\'']";
+        format = "\\[$output\\](bold white)";
         os = "linux";
       };
 
