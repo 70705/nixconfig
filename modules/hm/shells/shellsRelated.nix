@@ -1,42 +1,30 @@
-{ 
-  pkgs, 
-  ... 
+{
+  pkgs,
+  ...
 }:
 
 {
 
-  home.file.".config/starship.toml" = {
-    source = ./starship.toml;
-    force = true;
-   };
+  programs = {
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      package = pkgs.zoxide;
+      options = [ "--cmd cd" ];
+    };
 
-   programs = {
-     zoxide = {
-       enable = true;
-       enableZshIntegration = true;
-       package = pkgs.zoxide;
-       options = [ "--cmd cd" ];
-     };
+    thefuck = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
-     starship = {
-       enable = true;
-       enableTransience = true;
-       enableZshIntegration = true;
-       package = pkgs.starship;
-     };
+    carapace = {
+      enable = false;
+      enableZshIntegration = false;
+      package = pkgs.carapace;
+    };
 
-     thefuck = {
-       enable = true;
-       enableZshIntegration = true;
-     };
-
-     carapace = {
-       enable = false;
-       enableZshIntegration = false;
-       package = pkgs.carapace;
-     };
-
-     atuin = {
+    atuin = {
       enable = true;
       enableZshIntegration = true;
       package = pkgs.atuin;
@@ -53,13 +41,13 @@
       git = true;
       icons = true;
 
-      extraOptions = [ 
-       "--group-directories-first"
-       "--header"
-       "--long"
-       "--no-permissions"
-       "--no-user"
-     ];
-   };
- };
+      extraOptions = [
+        "--group-directories-first"
+        "--header"
+        "--long"
+        "--no-permissions"
+        "--no-user"
+      ];
+    };
+  };
 }
