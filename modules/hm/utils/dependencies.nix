@@ -1,4 +1,4 @@
-{ 
+{
   pkgs,
   ...
 }:
@@ -9,7 +9,7 @@
     unzip
     rar
     xz
-    ripgrep 
+    ripgrep
     fzf
     bc
     jq
