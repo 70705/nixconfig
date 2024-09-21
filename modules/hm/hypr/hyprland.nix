@@ -33,6 +33,7 @@ in
           "clipse -listen"
           "sleep 3; keepassxc ~/Downloads/KeePass/Senhas.kdbx"
           "ANKI_WAYLAND=1 anki"
+          "emacs-29.4 --daemon"
         ];
 
         env = [
