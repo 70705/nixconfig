@@ -89,7 +89,6 @@ in
 
       scripts = with pkgs.mpvScripts; [
         uosc
-        autoload
         (quality-menu.override { oscSupport = true; })
         thumbfast
       ];
@@ -196,10 +195,10 @@ in
 
           # If there's no playlist and file ends, load next file in the directory
           # Requires `keep-open=yes` in `mpv.conf`.
-          autoload = "no";
+          autoload = "yes";
           # What types to accept as next item when autoloading or requesting to play next file
           # Can be: video, audio, image, subtitle
-          autoload_types = "video,audio,image";
+          autoload_types = "video,audio";
           # Enable uosc's playlist/directory shuffle mode
           # This simply makes the next selected playlist or directory item be random, just
           # like any other player in the world. It also has an easily togglable control button.
