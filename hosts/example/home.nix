@@ -1,77 +1,75 @@
 {
   config,
   definedVars,
-  ... 
+  ...
 }:
 
 {
-  
-  imports = [ 
+
+  imports = [
     ../../modules/hm
   ];
 
   home = {
-     username = definedVars.username;
-     homeDirectory = "/home/${definedVars.username}";
-     sessionVariables = { 
-       EDITOR = "nvim";  
-       TERM = if config.hmModules.hypr.enable then "foot"
-          else if config.hmModules.i3.enable then "kitty"
-          else null;
-        };
-      };
+    username = definedVars.username;
+    homeDirectory = "/home/${definedVars.username}";
+    sessionVariables = {
+      EDITOR = "nvim";
+      TERM =
+        if config.hmModules.hypr.enable then
+          "foot"
+        else if config.hmModules.i3.enable then
+          "kitty"
+        else
+          null;
+    };
+  };
 
-   hmModules = {
-     browser.firefox.enable = false;
-     userServices.lanraragi.enable = false;
+  hmModules = {
+    browser.firefox.enable = false;
+    userServices.lanraragi.enable = false;
+    hypr.enable = false;
 
-     media = {
-       spotify.enable = false;
-       mpv.enable = false;
-     };
+    media = {
+      spotify.enable = false;
+      mpv.enable = false;
+    };
 
-     utils = {
-       syncthing.enable = false;
-       yazi.enable = false;
-       guiUtils.enable = false;
-     };
+    utils = {
+      syncthing.enable = false;
+      yazi.enable = false;
+      guiUtils.enable = false;
+    };
 
-     hypr = {
-       enable = true;
-       hypridle.enable = false;
-       hyprlock.enable = false;
-       hyprpaper.enable = false;
-       mako.enable = false;
-       waybar.enable = false;
-     };
-
-     i3 = {
-       enable = false;
-       polybar.enable = false;
-       picom.enable = false;
-     };
-   };
+    i3 = {
+      enable = false;
+      polybar.enable = false;
+      picom.enable = false;
+    };
+  };
 
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "x-scheme-handler/https"= "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "text/html" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "application/pdf" = "firefox.desktop";
-      "inode/directory" = ["yazi.desktop"];
+      "inode/directory" = [ "yazi.desktop" ];
       "x-scheme-handler/trash" = "pcmanfm.desktop";
       "image/webp" = "org.nomacs.ImageLounge.desktop";
       "image/png" = "org.nomacs.ImageLounge.desktop";
       "image/jpeg" = "org.nomacs.ImageLounge.desktop";
       "image/jpg" = "org.nomacs.ImageLounge.desktop";
       "image/gif" = "org.nomacs.ImageLounge.desktop";
-#      "application/zip" = ["xarchiver.desktop"];
+      #      "application/zip" = ["xarchiver.desktop"];
     };
   };
 
-  nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

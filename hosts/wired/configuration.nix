@@ -14,7 +14,7 @@
       ./hardware-configuration.nix
       ../../modules/nix
     ];
-   
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
