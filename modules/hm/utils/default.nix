@@ -1,7 +1,7 @@
-{ 
+{
   pkgs,
   inputs,
-  ... 
+  ...
 }:
 
 {
@@ -13,6 +13,7 @@
     ./dependencies.nix
     ./guiUtils.nix
     ./fastfetch.nix
+    ./emacs.nix
   ];
 
   home.packages = with pkgs; [
@@ -25,6 +26,6 @@
     python3
     ffmpeg-full
     ffmpegthumbnailer
-    inputs.nixvim-config.packages.${pkgs.system}.default
+    #    inputs.nixvim-config.packages.${pkgs.system}.default
   ];
 }
