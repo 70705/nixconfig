@@ -15,6 +15,7 @@
        enable = true;
        enableZshIntegration = true;
        package = pkgs.zoxide;
+       options = [ "--cmd cd" ];
      };
 
      starship = {
@@ -30,8 +31,8 @@
      };
 
      carapace = {
-       enable = true;
-       enableZshIntegration = true;
+       enable = false;
+       enableZshIntegration = false;
        package = pkgs.carapace;
      };
 
