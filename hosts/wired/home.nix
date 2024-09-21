@@ -14,7 +14,7 @@
     username = definedVars.username;
     homeDirectory = "/home/${definedVars.username}";
     sessionVariables = {
-      EDITOR = "emacs";
+      EDITOR = ''emacsclient -c --alternate-editor=""'';
       TERM =
         if config.hmModules.hypr.enable then
           "foot"
