@@ -22,7 +22,7 @@
 
     shellAliases = {
       doom = "~/.config/emacs/bin/doom";
-      emacs = ''emacsclient -c --alternate-editor=""'';
+      emacs = ''emacsclient -r --alternate-editor=""'';
     };
 
     oh-my-zsh = {
