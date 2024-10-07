@@ -2,25 +2,24 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ 
+{
   pkgs,
   definedVars,
   ...
 }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../../modules/nix
-    ];
-   
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/system
+  ];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
- };
+  };
 
-  nixModules = {
-    system = {
+  modules.system = {
+    essential = {
       nix-ld.enable = false;
       audio.enable = false;
     };
@@ -36,21 +35,23 @@
     };
   };
 
-
   networking = {
     hostName = definedVars.hostname;
     firewall.enable = false;
   };
-  
+
   users = {
     users.${definedVars.username} = {
       isNormalUser = true;
       initialPassword = "1337";
-      extraGroups = [ "wheel" "video" "render" ];
+      extraGroups = [
+        "wheel"
+        "video"
+        "render"
+      ];
       shell = pkgs.zsh;
     };
   };
-
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -76,4 +77,3 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-
