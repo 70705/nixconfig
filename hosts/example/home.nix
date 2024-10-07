@@ -7,7 +7,7 @@
 {
 
   imports = [
-    ../../modules/hm
+    ../../modules/home
   ];
 
   home = {
@@ -16,16 +16,16 @@
     sessionVariables = {
       EDITOR = "nvim";
       TERM =
-        if config.hmModules.hypr.enable then
+        if config.modules.home.graphical.hypr.enable then
           "foot"
-        else if config.hmModules.i3.enable then
+        else if config.modules.home.graphical.i3.enable then
           "kitty"
         else
           null;
     };
   };
 
-  hmModules = {
+  modules.home = {
     browser.firefox.enable = false;
     userServices.lanraragi.enable = false;
     hypr.enable = false;

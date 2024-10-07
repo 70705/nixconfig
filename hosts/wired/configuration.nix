@@ -2,22 +2,24 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ 
+{
   pkgs,
   definedVars,
   ...
 }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../../modules/nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/system
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+    ];
     supportedFilesystems = [ "ntfs" ];
     postBootCommands = ''
       echo 2048 > /sys/class/rtc/rtc0/max_user_freq
@@ -25,8 +27,8 @@
     '';
   };
 
-  nixModules = {
-    system = {
+  modules.system = {
+    essential = {
       nix-ld.enable = true;
       audio.enable = true;
     };
@@ -51,20 +53,48 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+  services.suwayomi-server = {
+    enable = true;
+
+    settings = {
+      server = {
+        port = 8081;
+        downloadAsCbz = true;
+        socksProxyEnabled = false;
+
+        webUIEnabled = true;
+        webUIInterface = "browser";
+        webUIFlavor = "WebUI";
+
+        initialOpenInBrowserEnabled = false;
+
+        extensionRepos = [
+          "https://raw.githubusercontent.com/komikku-app/extensions/repo/index.min.json"
+          "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
+        ];
+      };
+    };
+  };
+
   networking = {
     hostName = definedVars.hostname;
     firewall.enable = false;
   };
-  
+
   users = {
     users.${definedVars.username} = {
       isNormalUser = true;
       initialPassword = "1337";
-      extraGroups = [ "wheel" "video" "render" ];
-      shell = pkgs.zsh;
+      extraGroups = [
+        "wheel"
+        "video"
+        "render"
+        "media"
+        "audio"
+      ];
+      shell = pkgs.${definedVars.shell};
     };
   };
-
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -90,4 +120,3 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-

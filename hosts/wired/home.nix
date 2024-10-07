@@ -7,7 +7,7 @@
 {
 
   imports = [
-    ../../modules/hm
+    ../../modules/home
   ];
 
   home = {
@@ -15,20 +15,29 @@
     homeDirectory = "/home/${definedVars.username}";
     sessionVariables = {
       EDITOR = ''emacsclient -r --alternate-editor=""'';
+      NIXOS_OZONE_WL = "1";
       TERM =
-        if config.hmModules.hypr.enable then
+        if config.modules.home.graphical.hypr.enable then
           "foot"
-        else if config.hmModules.i3.enable then
+        else if config.modules.home.graphical.i3.enable then
           "kitty"
         else
           null;
     };
   };
 
-  hmModules = {
+  modules.home = {
     browser.firefox.enable = true;
     userServices.lanraragi.enable = true;
-    hypr.enable = true;
+    graphical = {
+      hypr.enable = true;
+
+      i3 = {
+        enable = false;
+        polybar.enable = false;
+        picom.enable = false;
+      };
+    };
 
     media = {
       spotify.enable = true;
@@ -41,11 +50,6 @@
       guiUtils.enable = true;
     };
 
-    i3 = {
-      enable = false;
-      polybar.enable = false;
-      picom.enable = false;
-    };
   };
 
   xdg.mimeApps = {
