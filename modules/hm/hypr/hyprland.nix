@@ -8,6 +8,8 @@
 
 let
   cfg = config.hmModules.hypr;
+  toggleterm = pkgs.writeShellScriptBin "toggleterm" ''hyprctl dispatch exec "[workspace special:term silent] foot -a kterm"'';
+  audiorelay = pkgs.writeShellScriptBin "audiorelay" ''hyprctl dispatch exec "[workspace special:minimized silent] audiorelay"'';
 in
 {
   options.hmModules.hypr = {
@@ -28,7 +30,7 @@ in
         "$menu" = "wofi --show drun";
 
         exec-once = [
-          "/etc/nixos/modules/hm/hypr/scripts/term.sh"
+          "${toggleterm}/bin/toggleterm"
           "qbittorrent --no-splash"
           "clipse -listen"
           "sleep 3; keepassxc ~/Downloads/KeePass/Senhas.kdbx"
