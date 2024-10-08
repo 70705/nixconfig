@@ -52,7 +52,7 @@ in
 
     stylix = {
       enable = true;
-      image = ../../hm/hypr/wallpaper.png;
+      image = ../../home/graphical/hypr/wallpaper.png;
       autoEnable = true;
 
       cursor = {

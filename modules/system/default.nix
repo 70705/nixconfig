@@ -36,7 +36,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_sysVar.kernel;
+    kernelPackages = pkgs.${sysVar.kernel};
     supportedFilesystems = [ "ntfs" ];
     kernelParams =
       if sysVar.gpu == "nvidia" then
