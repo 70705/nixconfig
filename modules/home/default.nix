@@ -21,7 +21,7 @@
     homeDirectory = "/home/${sysVar.username}";
     sessionVariables = {
       EDITOR = ''emacsclient -r --alternate-editor=""'';
-      NIXOS_OZONE_WL = if config.modules.graphical.hypr.enable then "1" else "0";
+      NIXOS_OZONE_WL = if config.modules.home.graphical.hypr.enable then "1" else "0";
       TERM =
         if config.modules.home.graphical.hypr.enable then
           "foot"
