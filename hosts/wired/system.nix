@@ -2,11 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{
-  pkgs,
-  definedVars,
-  ...
-}:
+{ ... }:
 
 {
   imports = [
@@ -14,43 +10,28 @@
     ../../modules/system
   ];
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  };
-
   modules.system = {
     essential = {
-      nix-ld.enable = false;
-      audio.enable = false;
+      nix-ld.enable = true;
+      audio.enable = true;
     };
 
     graphical = {
       i3.enable = false;
-      hyprland.enable = false;
+      hyprland.enable = true;
     };
 
     gaming = {
-      enable = false;
-      retroarch.enable = false;
+      enable = true;
+      retroarch.enable = true;
     };
   };
 
-  networking = {
-    hostName = definedVars.hostname;
-    firewall.enable = false;
-  };
-
-  users = {
-    users.${definedVars.username} = {
-      isNormalUser = true;
-      initialPassword = "1337";
-      extraGroups = [
-        "wheel"
-        "video"
-        "render"
-      ];
-      shell = pkgs.zsh;
-    };
+  boot = {
+    postBootCommands = ''
+      echo 2048 > /sys/class/rtc/rtc0/max_user_freq
+      echo 2048 > /proc/sys/dev/hpet/max-user-freq
+    '';
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
