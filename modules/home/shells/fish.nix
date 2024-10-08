@@ -1,23 +1,16 @@
 {
-  pkgs,
+  sysVar,
   ...
 }:
 
 {
   programs.fish = {
-    enable = true;
-    package = pkgs.fish;
+    enable = if sysVar.shell == "fish" then true else false;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
       any-nix-shell fish --info-right | source
     '';
-    plugins = [
-      {
-        name = "pisces";
-        src = pkgs.fishPlugins.pisces.src;
-      }
-    ];
 
     functions = {
       yy = ''
@@ -31,8 +24,8 @@
     };
 
     shellAliases = {
-      n-rebuild = "sudo nixos-rebuild switch";
-      n-trash = "nix-collect-garbage && sudo nix-collect-garbage && sudo nix-collect-garbage -d";
+      doom = "~/.config/emacs/bin/doom";
+      emacs = ''emacsclient -r --alternate-editor=""'';
     };
   };
 }

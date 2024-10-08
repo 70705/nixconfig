@@ -1,8 +1,11 @@
-{ ... }:
+{
+  sysVar,
+  ...
+}:
 
 {
   programs.zsh = {
-    enable = true;
+    enable = if sysVar.shell == "zsh" then true else false;
     autocd = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;

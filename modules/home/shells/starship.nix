@@ -1,10 +1,12 @@
-{ ... }:
+{
+  sysVar,
+  ...
+}:
 
 {
   programs.starship = {
     enable = true;
-    enableTransience = true;
-    enableZshIntegration = true;
+    enableTransience = if sysVar.shell == "fish" then true else false;
     settings = {
       add_newline = true;
       format = "$time\${custom.nix}$line_break$cmd_duration$character";

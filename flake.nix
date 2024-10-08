@@ -10,34 +10,40 @@
       ...
     }@inputs:
     let
-      definedVars = {
+      sysVar = {
         username = "victor";
         hostname = "wired";
+        shell = "zsh"; # OPTIONS: zsh, fish
         timezone = "America/Recife";
-        locale = "pt_BR.UTF-8";
+        gpu = "nvidia";
 
+        kernel = "xanmod_latest"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
+        system = "x86_64-linux";
+
+        networkInterface = "enp3s0f0";
+
+        locale = "pt_BR.UTF-8";
         extraLocale = [
           "en_US.UTF-8/UTF-8"
           "pt_BR.UTF-8/UTF-8"
           "C.UTF-8/UTF-8"
           "ja_JP.UTF-8/UTF-8"
         ];
-        system = "x86_64-linux";
       };
 
     in
     {
       nixosConfigurations = {
-        ${definedVars.hostname} = nixpkgs.lib.nixosSystem {
-          system = definedVars.system;
+        ${sysVar.hostname} = nixpkgs.lib.nixosSystem {
+          system = sysVar.system;
 
           specialArgs = {
             inherit inputs;
-            inherit definedVars;
+            inherit sysVar;
           };
 
           modules = [
-            ./hosts/${definedVars.hostname}/configuration.nix
+            ./hosts/${sysVar.hostname}/system.nix
             home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             inputs.nix-index-database.nixosModules.nix-index
@@ -48,10 +54,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.${definedVars.username} = import ./hosts/${definedVars.hostname}/home.nix;
+                users.${sysVar.username} = import ./hosts/${sysVar.hostname}/home.nix;
                 extraSpecialArgs = {
                   inherit inputs;
-                  inherit definedVars;
+                  inherit sysVar;
                 };
               };
             }
