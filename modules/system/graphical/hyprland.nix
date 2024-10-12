@@ -39,8 +39,11 @@ in
         enable = true;
 
         defaultSession = "hyprland";
-        autoLogin.user = "victor";
-        autoLogin.enable = true;
+
+        autoLogin = {
+          user = "victor";
+          enable = true;
+        };
 
         sddm = {
           enable = true;
@@ -56,9 +59,28 @@ in
       autoEnable = true;
 
       cursor = {
-        package = pkgs.apple-cursor;
-        name = "macOS";
+        package = pkgs.quintom-cursor-theme;
+        name = "Quintom_Ink";
         size = 22;
+      };
+
+      fonts = {
+        serif = {
+          package = (pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; });
+          name = "Ubuntu Nerd Font";
+        };
+
+        sansSerif = config.stylix.fonts.serif;
+
+        monospace = {
+          package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+          name = "JetBrainsMono Nerd Font";
+        };
+
+        emoji = {
+          package = pkgs.noto-fonts-emoji;
+          name = "Noto Color Emoji";
+        };
       };
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
