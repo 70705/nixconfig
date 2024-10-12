@@ -27,7 +27,7 @@ in
         monitor = ",highrr,auto,1";
         "$terminal" = "foot";
         "$fileManager" = "yazi";
-        "$menu" = "wofi --show drun";
+        "$menu" = "fuzzel";
 
         exec-once = [
           "${toggleterm}/bin/toggleterm"
@@ -39,8 +39,8 @@ in
         ];
 
         env = [
-          "XCURSOR_SIZE,22"
-          "HYPRCURSOR_SIZE,22"
+          "XCURSOR_SIZE,${toString config.stylix.cursor.size}"
+          "HYPRCURSOR_SIZE,${toString config.stylix.cursor.size}"
         ];
 
         general = {
@@ -350,6 +350,9 @@ in
 
         windowrulev2 = opacity 1.0 override 1.0 override,class:(org.libretro.RetroArch|pinta|mpv|anki|org.nomacs.ImageLounge)
         windowrulev2 = opacity 1.0 override 1.0 override,title:(Picture-in-Picture|.*\- YouTube.*)
+
+        layerrule = dimaround, launcher
+        layerrule = blur, launcher
       '';
 
       plugins = [ ];
@@ -357,7 +360,6 @@ in
 
     home.packages = with pkgs; [
       hyprshot
-      wofi
       clipse
       wl-clipboard
     ];
