@@ -69,7 +69,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim-config.url = "github:70705/nixvim-config";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
     nur.url = "github:nix-community/NUR";
 
     nix-index-database = {
