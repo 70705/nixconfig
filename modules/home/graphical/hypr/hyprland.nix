@@ -344,6 +344,7 @@ in
 
         windowrulev2 = size 1152 870, class:(kterm)
         windowrulev2 = float, class:^(kterm)$
+        windowrulev2 = immediate,class:^(Rhythia)$
 
         windowrulev2 = float,center,class:(pavucontrol|pcmanfm|clipse|io.github.Qalculate.qalculate-qt|.*KeePassXC.*)
         windowrulev2 = size 950 657,class:(clipse)
