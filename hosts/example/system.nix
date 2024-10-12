@@ -24,6 +24,7 @@
     gaming = {
       enable = false;
       retroarch.enable = false;
+      soundspaceplus.enable = false;
     };
   };
 
