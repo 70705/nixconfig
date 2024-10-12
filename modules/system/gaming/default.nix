@@ -9,6 +9,12 @@ let
   cfg = config.modules.system.gaming;
 in
 {
+
+  imports = [
+    ./retroarch.nix
+    ./soundspaceplus.nix
+  ];
+
   options.modules.system.gaming = {
     enable = lib.mkEnableOption "gaming";
   };
