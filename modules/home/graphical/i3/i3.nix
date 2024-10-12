@@ -1,114 +1,134 @@
 {
   pkgs,
-  lib, 
+  lib,
   config,
-  ... 
+  ...
 }:
 
 let
   cfg = config.modules.home.graphical.i3;
 in
-  {
-    imports = [./keybindings.nix];
-    options.modules.home.graphical.i3 = {
-      enable = lib.mkEnableOption "i3";
-    };
+{
+  imports = [ ./keybindings.nix ];
+  options.modules.home.graphical.i3 = {
+    enable = lib.mkEnableOption "i3";
+  };
 
-    config = lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        autotiling
-        setroot
-        rofi
-        zscroll
-        xclip
-        maim
-      ];
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      autotiling
+      setroot
+      rofi
+      zscroll
+      xclip
+      pcmanfm
+      maim
+    ];
 
-      home = {
-        file = {
-          ".config/pcmanfm/default/pcmanfm.conf" = {
-            source = ./pcmanfm.conf;
-            force = true;
-          };
+    home = {
+      file = {
+        ".config/pcmanfm/default/pcmanfm.conf" = {
+          source = ./pcmanfm.conf;
+          force = true;
+        };
 
-          ".themes" = {
-            source = ./themes;
-          };
+        ".themes" = {
+          source = ./themes;
+        };
 
-#          ".icons" = {
-#            source = ./icons;
-#          };
-          
-#          ".local/share/fonts" = {
-#            source = ./fonts;
-#          };
+        #          ".icons" = {
+        #            source = ./icons;
+        #          };
 
-#          gtk = {
-#            enable = true;
-#            iconTheme.name = "Chicago95-tux";
-#            theme.name = "TokyoNight";  
-#          };
+        #          ".local/share/fonts" = {
+        #            source = ./fonts;
+        #          };
 
-          xsession.windowManager.i3 = {
-            enable = true;
+        #          gtk = {
+        #            enable = true;
+        #            iconTheme.name = "Chicago95-tux";
+        #            theme.name = "TokyoNight";
+        #          };
 
-            config = {
-              bars = [];
-              modifier = "Mod4";
-              terminal = "kitty";
-              floating.titlebar = false;
-              defaultWorkspace = "workspace number 1";
+        xsession.windowManager.i3 = {
+          enable = true;
 
-              assigns = {
-                "1" = [{class="Vivaldi-stable";}];
-                "2" = [{class="vesktop";} {class="steam";}];
-              };
+          config = {
+            bars = [ ];
+            modifier = "Mod4";
+            terminal = "kitty";
+            floating.titlebar = false;
+            defaultWorkspace = "workspace number 1";
 
-              gaps = {
-                smartBorders = "on";
-                top = 29;
-                inner = 10;
-                outer = 10;
-              };
-
-              window = {
-                hideEdgeBorders = "smart";
-                border = 0;
-                titlebar = false;
-
-                commands = [
-                  {
-                    command = "move scratchpad";
-                    criteria = {
-                      class = "com-azefsw-audioconnect-desktop-app-MainKt";
-                    };
-                  }
-
-                  {
-                    command = "floating enable";
-                    criteria = {
-                      class = "Pavucontrol";
-                    };
-                  }
-
-                  {
-                    command = "floating enable";
-                    criteria = {
-                      class = "Pcmanfm";
-                    };
-                  }
-                ];
-              };
-
-              startup = [
-                { command = "/etc/nixos/modules/home/graphical/i3/polybar/launch.sh"; always = true; notification = false; }
-                { command = "setroot -z /etc/nixos/modules/home/graphical/i3/wallpaper.png"; always = true; notification = false; }
-                { command = "autotiling"; always = true; notification = false; }
-                { command = "AudioRelay"; always = true; notification = false; }
+            assigns = {
+              "1" = [ { class = "Vivaldi-stable"; } ];
+              "2" = [
+                { class = "vesktop"; }
+                { class = "steam"; }
               ];
             };
+
+            gaps = {
+              smartBorders = "on";
+              top = 29;
+              inner = 10;
+              outer = 10;
+            };
+
+            window = {
+              hideEdgeBorders = "smart";
+              border = 0;
+              titlebar = false;
+
+              commands = [
+                {
+                  command = "move scratchpad";
+                  criteria = {
+                    class = "com-azefsw-audioconnect-desktop-app-MainKt";
+                  };
+                }
+
+                {
+                  command = "floating enable";
+                  criteria = {
+                    class = "Pavucontrol";
+                  };
+                }
+
+                {
+                  command = "floating enable";
+                  criteria = {
+                    class = "Pcmanfm";
+                  };
+                }
+              ];
+            };
+
+            startup = [
+              {
+                command = "/etc/nixos/modules/home/graphical/i3/polybar/launch.sh";
+                always = true;
+                notification = false;
+              }
+              {
+                command = "setroot -z /etc/nixos/modules/home/graphical/i3/wallpaper.png";
+                always = true;
+                notification = false;
+              }
+              {
+                command = "autotiling";
+                always = true;
+                notification = false;
+              }
+              {
+                command = "AudioRelay";
+                always = true;
+                notification = false;
+              }
+            ];
           };
         };
       };
     };
-  }
+  };
+}
