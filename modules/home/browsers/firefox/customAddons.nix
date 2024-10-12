@@ -5,8 +5,8 @@
     pname = "pwas-for-firefox";
     version = "2.12.3";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4350177/pwas_for_firefox-2.12.3.xpi";
-    sha256 = "71ac6fd32740cf6bbaf8a1ba24b6b8b6d68e291b0d750ce3dabb8aa009d5c12a";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4360044/pwas_for_firefox-2.12.5.xpi";
+    sha256 = "cc8caf700222fc062795bde1081a14395e55b1b6a50a4519c8741d74346b6b11";
     meta = with lib; {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       description = "A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox";
