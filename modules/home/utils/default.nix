@@ -6,14 +6,10 @@
 
 {
   imports = [
-    ./git.nix
-    ./yazi.nix
-    ./audiothumbs.nix
-    ./syncthing.nix
-    ./dependencies.nix
-    ./guiUtils.nix
-    ./fastfetch.nix
-    ./emacs.nix
+    ./yazi
+    ./editors
+    ./general
+    ./tools
   ];
 
   home.packages = with pkgs; [

@@ -8,12 +8,11 @@
   imports = [
     ./browsers
     ./media
-    ./shells
+    ./cli
     ./terminal
     ./utils
-    ./userServices
-    ./graphical/hypr
-    ./graphical/i3
+    ./services
+    ./wm
   ];
 
   home = {
@@ -21,11 +20,11 @@
     homeDirectory = "/home/${sysVar.username}";
     sessionVariables = {
       EDITOR = ''emacsclient -r --alternate-editor=""'';
-      NIXOS_OZONE_WL = if config.modules.home.graphical.hypr.enable then "1" else "0";
+      NIXOS_OZONE_WL = if config.modules.home.wm.hypr.enable then "1" else "0";
       TERM =
-        if config.modules.home.graphical.hypr.enable then
+        if config.modules.home.wm.hypr.enable then
           "foot"
-        else if config.modules.home.graphical.i3.enable then
+        else if config.modules.home.wm.i3.enable then
           "kitty"
         else
           null;
