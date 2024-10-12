@@ -7,7 +7,7 @@
 
 {
    programs.kitty = {
-     enable = lib.mkIf config.modules.home.graphical.i3.enable true; 
+     enable = lib.mkIf config.modules.home.wm.i3.enable true; 
      settings = {
        remember_window_size = "yes";
        initial_window_width = 640;

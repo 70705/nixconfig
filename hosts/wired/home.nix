@@ -8,8 +8,8 @@
 
   modules.home = {
     browser.firefox.enable = true;
-    userServices.lanraragi.enable = true;
-    graphical = {
+    services.lanraragi.enable = true;
+    wm = {
       hypr.enable = true;
 
       i3 = {
@@ -28,7 +28,7 @@
     utils = {
       syncthing.enable = true;
       yazi.enable = true;
-      guiUtils.enable = true;
+      gui-tools.enable = true;
     };
 
   };

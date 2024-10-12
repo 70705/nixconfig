@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ./firefox/firefox.nix
+    ./firefox
   ];
 
   #  home.packages = with pkgs; [

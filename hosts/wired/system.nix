@@ -16,7 +16,7 @@
       audio.enable = true;
     };
 
-    graphical = {
+    wm = {
       i3.enable = false;
       hyprland.enable = true;
     };
