@@ -1,0 +1,23 @@
+{
+  "pins": {
+    "Betterfox": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "yokoffing",
+        "repo": "Betterfox"
+      },
+      "branch": "main",
+      "revision": "ab5ede0fef39f02f0ef2bd119879226e3ab71f9f",
+      "url": "https://github.com/yokoffing/Betterfox/archive/ab5ede0fef39f02f0ef2bd119879226e3ab71f9f.tar.gz",
+      "hash": "0piai2dal5nhad714c4zg18g7852kmmw1j749wvdwnvvikl1i7mk"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre691017.b69de56fac8c/nixexprs.tar.xz",
+      "hash": "0z32pj0lh5ng2a6cn0qfmka8cynnygckn5615mkaxq2aplkvgzx3"
+    }
+  },
+  "version": 3
+}
