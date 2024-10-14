@@ -11,8 +11,8 @@ in
 {
 
   imports = [
+    ./soundspaceplus
     ./retroarch.nix
-    ./soundspaceplus.nix
   ];
 
   options.modules.system.gaming = {

@@ -19,7 +19,7 @@ let
     homepage = "https://github.com/David20122/sound-space-plus";
     platforms = [ "x86_64-linux" ];
 
-    buildInputs = [ pkgs.unzip ];
+    buildInputs = with pkgs; [ unzip ];
 
     unpackPhase = ''
       mkdir -p $out
@@ -27,16 +27,20 @@ let
     '';
 
     installPhase = ''
-            mkdir -p $out/bin
-            mv $out/SoundSpacePlus.x86_64 $out/bin/SoundSpacePlus
-            chmod +x $out/bin/SoundSpacePlus
-            mv $out/*.so $out/bin
-            mv $out/*.pck $out/bin
-            mkdir -p $out/share/applications
-            cat > $out/share/applications/soundspaceplus.desktop <<EOF
+      mkdir -p $out/bin
+      mv $out/SoundSpacePlus.x86_64 $out/bin/SoundSpacePlus
+      mv $out/*.{so,pck} $out/bin
+      chmod +x $out/bin/SoundSpacePlus
+      mkdir -p $out/share/applications
+      mkdir -p $out/share/icons
+
+      cp ${./icon.png} $out/share/icons/soundspaceplus.png
+
+      cat > $out/share/applications/soundspaceplus.desktop <<EOF
       [Desktop Entry]
       Name=SoundSpacePlus
       Exec=$out/bin/SoundSpacePlus
+      Icon=$out/share/icons/soundspaceplus.png
       Type=Application
       EOF
     '';
