@@ -8,16 +8,9 @@
 {
 
   imports = [
-    ./disks.nix
-    ./nvidia.nix
-    ./grub.nix
-    ./graphical/i3.nix
-    ./graphical/hyprland.nix
-    ./fonts.nix
-    ./essential/audio.nix
-    ./essential/nix-ld.nix
+    ./wm
+    ./essential
     ./gaming
-    ./gaming/retroarch.nix
   ];
 
   users = {
@@ -36,7 +29,23 @@
   };
 
   boot = {
-    kernelPackages = pkgs.${sysVar.kernel};
+    kernelPackages = pkgs.linuxPackagesFor (
+      pkgs.linux_xanmod_latest.override {
+        argsOverride = rec {
+          modDirVersion = "${version}-${suffix}";
+          suffix = "xanmod1";
+          version = "6.10.11";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "xanmod";
+            repo = "linux";
+            rev = "${version}-${suffix}";
+            hash = "sha256-FDWFpiN0VvzdXcS3nZHm1HFgASazNX5+pL/8UJ3hkI8=";
+          };
+        };
+      }
+    );
+
     supportedFilesystems = [ "ntfs" ];
     kernelParams =
       if sysVar.gpu == "nvidia" then
