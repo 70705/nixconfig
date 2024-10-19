@@ -351,6 +351,7 @@ in
 
         windowrulev2 = opacity 1.0 override 1.0 override,class:(org.libretro.RetroArch|pinta|mpv|anki|org.nomacs.ImageLounge)
         windowrulev2 = opacity 1.0 override 1.0 override,title:(Picture-in-Picture|.*\- YouTube.*)
+        windowrulev2 = opacity 1.0 override 1.0 override,title:(.*\- Twitch.*)
 
         layerrule = dimaround, launcher
         layerrule = blur, launcher
