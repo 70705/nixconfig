@@ -13,6 +13,7 @@ in
   imports = [
     ./soundspaceplus
     ./retroarch.nix
+    ./zenless.nix
   ];
 
   options.modules.system.gaming = {
