@@ -20,9 +20,15 @@ in
 
   config = lib.mkIf cfg.enable {
     stylix.targets.firefox.profileNames = [ "totos" ];
+    home.sessionVariables = {
+      MOZ_DISABLE_RDD_SANDBOX = 1;
+    };
     programs.firefox = {
       enable = true;
-      nativeMessagingHosts = with pkgs; [ firefoxpwa ];
+      nativeMessagingHosts = with pkgs; [
+        firefoxpwa
+        vdhcoapp
+      ];
 
       policies = {
         DisablePocket = true;
@@ -47,8 +53,6 @@ in
           [
             auto-tab-discard
             augmented-steam
-            canvasblocker
-            clearurls
             darkreader
             fastforwardteam
             ublock-origin
@@ -66,13 +70,13 @@ in
             control-panel-for-twitter
             faststream
             improved-tube
-            localcdn
             search-by-image
             mal-sync
+            video-downloadhelper
+            hover-zoom-plus
           ]
           ++ (with firefox-addons; [
             pwas-for-firefox
-            popupoff
             nyancat-youtube-progressbar
           ]);
 
@@ -88,6 +92,11 @@ in
           "svg.context-properties.content.enabled" = true;
           "font.size.variable.x-western" = 18;
           "font.size.monospace.x-western" = 14;
+          "media.ffmpeg.vaapi.enabled" = true;
+          "media.rdd-ffmpeg.enabled" = true;
+          "media.av1.enabled" = false;
+          "gfx.x11-egl.force-enabled" = true;
+          "widget.dmabuf.force-enabled" = true;
         };
         extraConfig = ''
           ${builtins.readFile "${betterfox}/user.js"}
