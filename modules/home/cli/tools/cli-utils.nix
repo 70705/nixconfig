@@ -23,7 +23,7 @@
     eza = {
       enable = true;
       git = true;
-      icons = true;
+      icons = "always";
 
       extraOptions = [
         "--group-directories-first"
