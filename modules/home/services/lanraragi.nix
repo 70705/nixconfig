@@ -22,7 +22,7 @@ in
     systemd.user.services.lanraragi = {
 
       Unit = {
-        Description = "Lanraragi  server";
+        Description = "Lanraragi server";
         Requires = "redis-server-lanraragi.service";
         After = "redis-server-lanraragi.service";
       };
