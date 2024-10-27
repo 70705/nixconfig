@@ -72,6 +72,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     nur.url = "github:nix-community/NUR";
 
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
