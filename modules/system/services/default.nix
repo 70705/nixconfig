@@ -1,5 +1,9 @@
 { ... }:
 
 {
-  imports = [ ./searx.nix ];
+  imports = [
+    ./searx.nix
+    ./homepage.nix
+    ./caddy.nix
+  ];
 }
