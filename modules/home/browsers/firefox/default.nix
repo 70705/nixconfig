@@ -23,6 +23,7 @@ in
     home.sessionVariables = {
       MOZ_DISABLE_RDD_SANDBOX = 1;
     };
+
     programs.firefox = {
       enable = true;
       nativeMessagingHosts = with pkgs; [
@@ -74,6 +75,7 @@ in
             mal-sync
             video-downloadhelper
             hover-zoom-plus
+            new-tab-override
           ]
           ++ (with firefox-addons; [
             pwas-for-firefox
@@ -82,6 +84,87 @@ in
 
         userChrome = builtins.readFile ./userChrome.css;
         #userContent = builtins.readFile ./userContent.css;
+
+        search = {
+          default = "SearXNG";
+          privateDefault = "SearXNG";
+          force = true;
+          engines = {
+            "SearXNG" = {
+              urls = [
+                { template = "http://searxng.totos.home.arpa/?q={searchTerms}"; }
+                {
+                  template = "http://searxng.totos.home.arpa/autocompleter?q={searchTerms}";
+                  type = "application/x-suggestions+json";
+                }
+              ];
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+              iconUpdateURL = "https://raw.githubusercontent.com/searxng/searxng/refs/heads/master/src/brand/searxng-wordmark.svg";
+              definedAliases = [ "@sx" ];
+            };
+
+            "Firefox Addons API" = {
+              urls = [ { template = "https://addons.mozilla.org/api/v5/addons/search/?q={searchTerms}"; } ];
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+              iconUpdateURL = "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo,_2019.svg";
+
+              definedAliases = [ "@fex" ];
+            };
+
+            "Home Manager Options" = {
+              urls = [
+                { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+
+              definedAliases = [ "@hm" ];
+            };
+
+            "Nix Packages" = {
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages?channel=unstable";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            "Nix Options" = {
+              urls = [
+                {
+                  template = "https://search.nixos.org/options?channel=unstable";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@no" ];
+            };
+
+            "Google".metaData.alias = "@g";
+          };
+        };
 
         settings = {
           "extensions.autoDisableScopes" = 0;
