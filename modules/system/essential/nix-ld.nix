@@ -130,7 +130,7 @@ in
         fontconfig
         freetype
         dbus
-        alsaLib
+        alsa-lib
         expat
       ]);
   };

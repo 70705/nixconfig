@@ -11,6 +11,7 @@
     ./wm
     ./essential
     ./gaming
+    ./services
   ];
 
   users = {
@@ -29,22 +30,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackagesFor (
-      pkgs.linux_xanmod_latest.override {
-        argsOverride = rec {
-          modDirVersion = "${version}-${suffix}";
-          suffix = "xanmod1";
-          version = "6.10.11";
-
-          src = pkgs.fetchFromGitHub {
-            owner = "xanmod";
-            repo = "linux";
-            rev = "${version}-${suffix}";
-            hash = "sha256-FDWFpiN0VvzdXcS3nZHm1HFgASazNX5+pL/8UJ3hkI8=";
-          };
-        };
-      }
-    );
+    kernelPackages = pkgs.${sysVar.kernel};
 
     supportedFilesystems = [ "ntfs" ];
     kernelParams =
@@ -60,6 +46,13 @@
   nixpkgs = {
     overlays = [ inputs.nur.overlay ];
     config.allowUnfree = true;
+  };
+
+  documentation = {
+    man.enable = false;
+    doc.enable = false;
+    info.enable = false;
+    nixos.enable = false;
   };
 
   networking = {
@@ -99,10 +92,12 @@
     substituters = [
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
+      "https://ezkea.cachix.org"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
     ];
   };
 
@@ -136,7 +131,7 @@
 
     nh = {
       enable = true;
-      flake = /etc/nixos;
+      flake = "/home/${sysVar.username}/nixos";
 
       clean = {
         enable = true;
@@ -159,28 +154,4 @@
     };
     wantedBy = [ "multi-user.target" ];
   };
-
-  services.suwayomi-server = {
-    enable = true;
-
-    settings = {
-      server = {
-        port = 8081;
-        downloadAsCbz = true;
-        socksProxyEnabled = false;
-
-        webUIEnabled = true;
-        webUIInterface = "browser";
-        webUIFlavor = "WebUI";
-
-        initialOpenInBrowserEnabled = false;
-
-        extensionRepos = [
-          "https://raw.githubusercontent.com/komikku-app/extensions/repo/index.min.json"
-          "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
-        ];
-      };
-    };
-  };
-
 }

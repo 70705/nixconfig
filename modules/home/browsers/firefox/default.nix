@@ -11,6 +11,13 @@ let
   cfg = config.modules.home.browser.firefox;
   pins = import ./npins;
   betterfox = pins.Betterfox.outPath;
+  betterfoxPatched = pkgs.runCommand "betterfox-patched" { } ''
+    cp ${betterfox}/user.js user.js
+    sed -i 's/user_pref("browser.search.suggest.enabled", false);/user_pref("browser.search.suggest.enabled", true);/' user.js
+    cp ${betterfox}/Smoothfox.js Smoothfox.js
+    mkdir -p $out
+    mv user.js Smoothfox.js $out
+  '';
 
 in
 {
@@ -103,6 +110,14 @@ in
               definedAliases = [ "@sx" ];
             };
 
+            "YouTube" = {
+              urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+              iconUpdateURL = "https://www.svgrepo.com/show/13671/youtube.svg";
+
+              definedAliases = [ "@yt" ];
+            };
+
             "Firefox Addons API" = {
               urls = [ { template = "https://addons.mozilla.org/api/v5/addons/search/?q={searchTerms}"; } ];
               updateInterval = 24 * 60 * 60 * 1000; # every day
@@ -182,8 +197,8 @@ in
           "widget.dmabuf.force-enabled" = true;
         };
         extraConfig = ''
-          ${builtins.readFile "${betterfox}/user.js"}
-          ${builtins.readFile "${betterfox}/Smoothfox.js"}
+          ${builtins.readFile "${betterfoxPatched}/user.js"}
+          ${builtins.readFile "${betterfoxPatched}/Smoothfox.js"}
         '';
       };
     };

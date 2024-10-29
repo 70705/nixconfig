@@ -32,7 +32,7 @@
         }
         {
           name = "duckduckgo";
-          disabled = false;
+          disabled = true;
         }
         {
           name = "brave";
@@ -145,7 +145,7 @@
         }
         {
           name = "wikidata";
-          disabled = true;
+          disabled = false;
         }
         {
           name = "mixcloud";
@@ -178,6 +178,22 @@
         {
           name = "bing images";
           disabled = true;
+        }
+        {
+          name = "bing";
+          disabled = false;
+        }
+        {
+          name = "mojeek";
+          disabled = false;
+        }
+        {
+          name = "yahoo";
+          disabled = false;
+        }
+        {
+          name = "ddg definitions";
+          disabled = false;
         }
       ];
     };

@@ -31,6 +31,9 @@
     };
   };
 
+  programs.man.enable = false;
+  manual.manpages.enable = false;
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
