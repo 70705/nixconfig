@@ -1,5 +1,4 @@
 {
-  config,
   ...
 }:
 
@@ -8,7 +7,7 @@
     git = {
       enable = true;
       userName = "70705";
-      userEmail = config.sops.secrets.email.path;
+      userEmail = "70705@riseup.net";
     };
 
     git-credential-oauth.enable = true;
