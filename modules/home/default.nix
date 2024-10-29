@@ -34,6 +34,17 @@
   programs.man.enable = false;
   manual.manpages.enable = false;
 
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+
+    age.keyFile = "/home/${sysVar.username}/.config/sops/age/keys.txt";
+
+    secrets = {
+      email = { };
+    };
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

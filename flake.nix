@@ -53,6 +53,7 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
+                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
                 useUserPackages = true;
                 users.${sysVar.username} = import ./hosts/${sysVar.hostname}/home.nix;
                 extraSpecialArgs = {
@@ -71,6 +72,11 @@
     nixvim-config.url = "github:70705/nixvim-config";
     hyprland.url = "github:hyprwm/Hyprland";
     nur.url = "github:nix-community/NUR";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
