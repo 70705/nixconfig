@@ -12,7 +12,7 @@ let
     version = "latest";
     src = pkgs.fetchurl {
       url = "https://github.com/David20122/sound-space-plus/releases/latest/download/linux.zip";
-      sha256 = "0p62v7lday01hrh361gy440agrnp4s8rqhnk6v3kz33ln1ag1nqf";
+      sha256 = "0q9kdw7fczrp0q21h1d2m76qcgw1b44aqkr66dy4i3q1gdwn8gnv";
     };
 
     description = "Rhythm-based aim game";
