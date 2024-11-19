@@ -67,18 +67,6 @@
     hostName = sysVar.hostname;
     firewall.enable = false;
 
-    interfaces.${sysVar.networkInterface}.ipv4.addresses = [
-      {
-        address = "192.168.0.120";
-        prefixLength = 24;
-      }
-    ];
-
-    defaultGateway = {
-      address = "192.168.0.1";
-      interface = sysVar.networkInterface;
-    };
-
     networkmanager = {
       enable = true;
       insertNameservers = [

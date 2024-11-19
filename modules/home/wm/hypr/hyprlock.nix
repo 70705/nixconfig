@@ -1,12 +1,13 @@
-{ 
-  lib, 
+{
+  lib,
   config,
-  ... 
+  ...
 }:
 
 {
+  stylix.targets.hyprlock.enable = false;
   programs.hyprlock = {
-    enable = lib.mkIf config.modules.home.wm.hypr.enable true; 
+    enable = lib.mkIf config.modules.home.wm.hypr.enable true;
     settings = {
       general = {
         no_fade_in = true;

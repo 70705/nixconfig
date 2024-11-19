@@ -8,5 +8,6 @@
     ./disks.nix
     ./fonts.nix
     ./nvidia.nix
+    ./keyd.nix
   ];
 }

@@ -25,7 +25,7 @@
       enable = true;
       retroarch.enable = true;
       soundspaceplus.enable = true;
-      zenless.enable = true;
+      zenless.enable = false;
     };
   };
 

@@ -83,6 +83,8 @@ in
             video-downloadhelper
             hover-zoom-plus
             new-tab-override
+            surfingkeys
+            tab-session-manager
           ]
           ++ (with firefox-addons; [
             pwas-for-firefox

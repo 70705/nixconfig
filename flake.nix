@@ -93,11 +93,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rhythia = {
-      url = "github:70705/rhythia-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
