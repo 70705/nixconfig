@@ -11,6 +11,11 @@
     };
 
     git-credential-oauth.enable = true;
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        os.editPreset = "emacs";
+      };
+    };
   };
 }
