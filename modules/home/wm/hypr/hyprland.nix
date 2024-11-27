@@ -44,10 +44,13 @@ in
         ];
 
         general = {
-          gaps_in = 5;
-          gaps_out = 20;
-
+          gaps_in = 3;
+          gaps_out = 10;
           border_size = 2;
+
+          snap = {
+            enabled = true;
+          };
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
           "col.active_border" = "rgb(c1c1c1) rgb(999999) 45deg";
@@ -63,14 +66,13 @@ in
         };
 
         decoration = {
-          rounding = 10;
+          rounding = 0; # 10
 
           # Change transparency of focused and unfocused windows
           active_opacity = 0.94;
           inactive_opacity = 0.94;
 
           shadow = {
-
             enabled = true;
             range = 4;
             render_power = 3;

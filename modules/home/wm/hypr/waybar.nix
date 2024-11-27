@@ -13,17 +13,18 @@
 
     settings = [
       {
-        # "layer" = "top", # Waybar at top layer
+        name = "top";
+        layer = "top"; # Waybar at top layer
         # "position" = "bottom", # Waybar position (top|bottom|left|right)
         height = 10; # Waybar height (to be removed for auto height)
+        margin-left = 36;
         # "width" = 1280, # Waybar width
 
         # Choose the order of the modules
         modules-left = [
-          "hyprland/workspaces"
-          "hyprland/mode"
+          "hyprland/window"
         ];
-        modules-center = [ "hyprland/window" ];
+        modules-center = [ ];
         modules-right = [
           "cpu"
           "memory"
@@ -31,42 +32,11 @@
           "pulseaudio"
           "clock#date"
           "clock#time"
-          "tray"
-          "idle_inhibitor"
-          "custom/wlogout"
         ];
 
-        # Modules configuration
-        # "hyprland/workspaces" = {
-        # 	"disable-scroll" = true,
-        # 	"all-outputs" = true,
-        # 	format = "{name}: {icon}",
-        # 	format-icons = {
-        # 		"1" = "",
-        # 		"2" = "",
-        # 		"3" = "",
-        # 		"4" = "",
-        # 		"5" = "",
-        # 		"urgent" = "",
-        # 		"focused" = "",
-        # 		"default" = ""
-        # 	}
-        # };
-
-        "custom/wlogout" = {
-          format = "{}";
-          on-click = "wlogout";
-        };
-
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-        };
         "hyprland/window" = {
-          max-length = 70;
+          format = "       [{}]";
+          #max-length = 70;
         };
         "temperature" = {
           # "thermal-zone" = 2,
@@ -119,10 +89,6 @@
           tooltip-format = "{:%e %B %Y}";
         };
 
-        "tray" = {
-          icon-size = 16;
-          spacing = 10;
-        };
         "mpd" = {
           format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
           format-disconnected = "Disconnected ";
@@ -151,74 +117,134 @@
         };
       }
 
+      {
+        name = "left";
+        layer = "top"; # Waybar at top layer
+        position = "left"; # Waybar position(top|bottom|left|right)
+        margin-top = -29;
+
+        # Choose the order of the modules
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ "mpris" ];
+        modules-right = [
+          "tray"
+          "idle_inhibitor"
+          "custom/wlogout"
+        ];
+
+        "mpris" = {
+          format = "{player_icon} {artist} - {title}";
+          format-paused = "{status_icon} {artist} - {title}";
+          format-len = 30;
+          ellipsis = "";
+          rotate = 90;
+          player-icons = {
+            default = "▶ ";
+            mpv = "🎵";
+          };
+          "status-icons" = {
+            paused = "⏸";
+          };
+        };
+
+        "custom/wlogout" = {
+          format = "{}";
+          on-click = "wlogout";
+        };
+
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
+
+        "tray" = {
+          icon-size = 16;
+          spacing = 10;
+        };
+      }
+
     ];
 
     style = ''
       * {
-      	border: none;
-      	border-radius: 0;
+        border: none;
+        border-radius: 0;
         font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
-      	font-size: 11px;
-      	min-height: 0;
-      	margin: 0px;
+        font-size: 11px;
+        min-height: 0;
+        margin: 0px;
       }
 
       window#waybar {
         background-color: rgba(0, 0, 0, 0.9);
-      	/*background: rgba(0, 0, 0, 0.7);*/
-      	color: gray;
-      	color: #ffffff;
+        /*background: rgba(0, 0, 0, 0.7);*/
+        color: gray;
+        color: #ffffff;
+      }
+
+      window#waybar.left {
+        background-color: rgba(0, 0, 0, 0.9);
+        /*background: rgba(0, 0, 0, 0.7);*/
+        color: gray;
+        color: #ffffff;
+      }
+
+      #mpris {
+        font-weight: bold;
       }
 
       #window {
-      	color: #e4e4e4;
-      	font-weight: bold;
+        color: #e4e4e4;
+        font-weight: bold;
       }
 
       #workspaces {
-      	padding: 0px;
-      	margin: 0px;
+        padding: 0px;
+        margin: 0px;
       }
 
       #workspaces button {
-          /* padding: 0 0.4em; */
-          /* background-color: transparent; */
-          color: #ffffff;
-          /* Use box-shadow instead of border so the text isn't offset */
-          box-shadow: inset 0 -3px transparent;
+        /* padding: 0 0.4em; */
+        /* background-color: transparent; */
+        color: #ffffff;
+        /* Use box-shadow instead of border so the text isn't offset */
+        box-shadow: inset 3px 0 transparent;
       }
 
       /* https:#github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
       #workspaces button:hover {
-          background: rgba(0, 0, 0, 0.9);
-          box-shadow: inset 0 -3px #ffffff;
+        background: rgba(0, 0, 0, 0.9);
+        box-shadow: inset 3px 0 #ffffff;
       }
 
       #workspaces button.active {
-          box-shadow: inset 0 -3px #fffff0;
+        box-shadow: inset 3px 0 #fffff0;
       }
 
       #workspaces button.focused {
-          background-color: #64727D;
-          /* box-shadow: inset 0 -3px #ffffff; */
+        background-color: #64727D;
+        /* box-shadow: inset 0 -3px #ffffff; */
       }
 
       #workspaces button.urgent {
-          background-color: #eb4d4b;
+        background-color: #eb4d4b;
       }
 
       #mode {
-      	background: #af005f;
-      	color: #1b1d1e;
+        background: #af005f;
+        color: #1b1d1e;
       }
       #clock, #battery, #cpu, #memory, #network, #pulseaudio, #mode, #tray {
-      	padding: 0 6px;
-      	margin: 6px 4px;
+        padding: 0 6px;
+        margin: 6px 4px;
       }
 
       #custom-wlogout, #idle_inhibitor {
-      	padding: 0 3px;
-      	margin: 6px 7px 6px 4px;
+        padding: 0 3px;
+        margin: 6px 7px 6px 4px;
       }
 
       @keyframes blink {
