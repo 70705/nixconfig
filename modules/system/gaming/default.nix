@@ -43,6 +43,9 @@ in
       vesktop
       prismlauncher
       wineWow64Packages.stagingFull
+      (tetrio-desktop.override {
+        withTetrioPlus = true;
+      })
       #inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
       #inputs.rhythia.packages.${pkgs.system}.sound-space-plus
       # (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg; tricks = [ "gdiplus" "dotnet48" "meiryo" "allfonts"]; })

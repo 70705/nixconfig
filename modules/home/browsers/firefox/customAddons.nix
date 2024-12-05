@@ -14,15 +14,15 @@
       platforms = platforms.all;
     };
   };
-  popupoff = buildFirefoxXpiAddon rec {
-    pname = "popupoff";
-    version = "2.1.3";
-    addonId = "{154cddeb-4c8b-4627-a478-c7e5b427ffdf}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4150911/popupoff-2.1.3.xpi";
-    sha256 = "1fzq1vlzbqzgq2knqlxrrff889js5ll03r35njs4z6vs5r4czani";
+  maxurl = buildFirefoxXpiAddon rec {
+    pname = "Image Max URL";
+    version = "2024.8.0";
+    addonId = "maxurl@qsniyg";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4338616/image_max_url-2024.8.0.xpi";
+    sha256 = "e4beedf432789d35cbddec2a01e59e7f95ced09b9cf7e49cb7985e2055aba17e";
     meta = with lib; {
-      homepage = "https://popupoff.org/";
-      description = "Removes and prevents popups, overlays and cookie notifications, other tools do not. Enjoy the original look of the internet.";
+      homepage = "https://github.com/qsniyg/maxurl";
+      description = "Finds larger/original versions of images (supporting 9400+ websites), including a powerful image popup feature";
       license = licenses.mpl20;
       platforms = platforms.all;
     };

@@ -10,16 +10,12 @@
     packages = with pkgs; [
       noto-fonts-cjk-sans
       font-awesome
-      (pkgs.nerdfonts.override {
-        fonts = [
-          "NerdFontsSymbolsOnly"
-          "Iosevka"
-          "IosevkaTerm"
-          "MartianMono"
-          "Hack"
-        ];
-      })
-
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
+      nerd-fonts.iosevka
+      nerd-fonts.iosevka-term
+      nerd-fonts.martian-mono
+      nerd-fonts.hack
       xorg.fontcronyxcyrillic
       weather-icons
     ];

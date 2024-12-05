@@ -81,13 +81,12 @@ in
             search-by-image
             mal-sync
             video-downloadhelper
-            hover-zoom-plus
             new-tab-override
-            surfingkeys
             tab-session-manager
           ]
           ++ (with firefox-addons; [
             pwas-for-firefox
+            maxurl
             nyancat-youtube-progressbar
           ]);
 

@@ -66,14 +66,14 @@ in
 
       fonts = {
         serif = {
-          package = (pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; });
+          package = pkgs.nerd-fonts.ubuntu;
           name = "Ubuntu Nerd Font";
         };
 
         sansSerif = config.stylix.fonts.serif;
 
         monospace = {
-          package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+          package = pkgs.nerd-fonts.jetbrains-mono;
           name = "JetBrainsMono Nerd Font";
         };
 

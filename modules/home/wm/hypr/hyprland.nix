@@ -34,7 +34,7 @@ in
           "qbittorrent --no-splash"
           "clipse -listen"
           "sleep 3; keepassxc ~/Downloads/KeePass/Senhas.kdbx"
-          "ANKI_WAYLAND=1 anki"
+          #        "ANKI_WAYLAND=1 anki"
           "emacs-29.4 --daemon"
         ];
 
@@ -198,7 +198,7 @@ in
         bind = $mainMod, F, fullscreen
         bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, J, togglesplit, # dwindle
-        bind = $mainMod, C, exec, foot -a clipse clipse
+        bind = $mainMod, C, exec, foot -T clipse -a clipse clipse
 
         # Resize mode
         bind = $mainMod, R,submap,resize
@@ -312,13 +312,6 @@ in
 
         bind = $mainMod, O, exec, hyprctl setprop active opaque toggle
 
-        # Mouse Magnifier
-        binde = $mainMod SHIFT, mouse_down, exec, current=$(hyprctl getoption cursor:zoom_factor | head -n 1 | awk '{print $2;}') && hyprctl keyword cursor:zoom_factor $(echo "$current + 0.5"|bc)
-
-        binde = $mainMod SHIFT, mouse_up, exec, current=$(hyprctl getoption cursor:zoom_factor | head -n 1 | awk '{print $2;}') && hyprctl keyword cursor:zoom_factor $(echo "$current - 0.5"|bc)
-
-        bind = $mainMod, mouse:274, exec, hyprctl keyword cursor:zoom_factor 1
-
         ##############################
         ### WINDOWS AND WORKSPACES ###
         ##############################
@@ -335,6 +328,8 @@ in
         windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
 
         # windowrulev2 = workspace special:minimized,noinitialfocus,class:(com-azefsw-audioconnect-desktop-app-MainKt)
+
+        windowrulev2 = plugin:hyprbars:nobar,floating:0
 
         windowrulev2 = workspace 1 silent,class:(firefox)
         windowrulev2 = workspace 2 silent,class:(steam|vesktop)
@@ -361,8 +356,6 @@ in
         layerrule = dimaround, launcher
         layerrule = blur, launcher
       '';
-
-      plugins = [ ];
     };
 
     home.packages = with pkgs; [
