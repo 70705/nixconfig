@@ -6,6 +6,8 @@
     ../../modules/home
   ];
 
+  services.arrpc.enable = true;
+
   modules.home = {
     browser.firefox.enable = true;
     services.lanraragi.enable = true;
