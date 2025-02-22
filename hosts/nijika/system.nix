@@ -18,13 +18,13 @@
 
     wm = {
       i3.enable = false;
-      hyprland.enable = true;
+      hyprland.enable = false;
     };
 
     gaming = {
-      enable = true;
-      retroarch.enable = true;
-      soundspaceplus.enable = true;
+      enable = false;
+      retroarch.enable = false;
+      soundspaceplus.enable = false;
       zenless.enable = false;
     };
   };

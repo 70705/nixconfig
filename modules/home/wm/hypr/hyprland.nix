@@ -35,7 +35,7 @@ in
           "clipse -listen"
           "sleep 3; keepassxc ~/Downloads/KeePass/Senhas.kdbx"
           #        "ANKI_WAYLAND=1 anki"
-          "emacs-29.4 --daemon"
+          #"emacs-29.4 --daemon"
         ];
 
         env = [
@@ -69,8 +69,8 @@ in
           rounding = 0; # 10
 
           # Change transparency of focused and unfocused windows
-          active_opacity = 0.94;
-          inactive_opacity = 0.94;
+          active_opacity = 1;
+          inactive_opacity = 1;
 
           shadow = {
             enabled = true;
@@ -187,7 +187,7 @@ in
         ####################
 
         # See https://wiki.hyprland.org/Configuring/Keywords/
-        $mainMod = SUPER # Sets "Windows" key as main modifier
+        $mainMod = ALT # Sets "Windows" key as main modifier
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, Return, exec, $terminal

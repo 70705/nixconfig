@@ -8,19 +8,10 @@
 {
 
   imports = [
-    inputs.sops-nix.nixosModules.sops
     ./wm
     ./essential
     ./gaming
-    ./services
   ];
-
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-
-    age.keyFile = "/home/${sysVar.username}/.config/sops/age/keys.txt";
-  };
 
   users = {
     users.${sysVar.username} = {

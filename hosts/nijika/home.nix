@@ -6,13 +6,13 @@
     ../../modules/home
   ];
 
-  services.arrpc.enable = true;
+  services.arrpc.enable = false;
 
   modules.home = {
     browser.firefox.enable = true;
-    services.lanraragi.enable = true;
+    services.lanraragi.enable = false;
     wm = {
-      hypr.enable = true;
+      hypr.enable = false;
 
       i3 = {
         enable = false;
@@ -23,8 +23,8 @@
     };
 
     media = {
-      spotify.enable = true;
-      mpv.enable = true;
+      spotify.enable = false;
+      mpv.enable = false;
     };
 
     utils = {
