@@ -7,6 +7,7 @@
       nixpkgs,
       nur,
       home-manager,
+      flatpaks,
       ...
     }@inputs:
     let
@@ -48,6 +49,7 @@
             inputs.stylix.nixosModules.stylix
             inputs.nix-index-database.nixosModules.nix-index
             inputs.nix-gaming.nixosModules.platformOptimizations
+            flatpaks.nixosModules.declarative-flatpak
 
             { programs.nix-index-database.comma.enable = true; }
             {
@@ -72,6 +74,7 @@
     nixvim-config.url = "github:70705/nixvim-config";
     hyprland.url = "github:hyprwm/Hyprland";
     nur.url = "github:nix-community/NUR";
+    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";

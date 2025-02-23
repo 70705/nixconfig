@@ -14,6 +14,7 @@ in
     ./soundspaceplus
     ./retroarch.nix
     ./zenless.nix
+    ./roblox.nix
   ];
 
   options.modules.system.gaming = {

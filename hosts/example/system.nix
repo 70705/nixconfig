@@ -26,6 +26,7 @@
       retroarch.enable = false;
       soundspaceplus.enable = false;
       zenless.enable = false;
+      roblox.enable = false;
     };
   };
 
