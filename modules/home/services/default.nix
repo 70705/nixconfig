@@ -1,4 +1,8 @@
 { ... }:
-{
-  imports = [ ./lanraragi.nix ];
+
+{ 
+  imports = [ 
+    ./lanraragi.nix 
+    ./seanime.nix
+  ];
 }

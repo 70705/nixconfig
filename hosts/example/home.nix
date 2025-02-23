@@ -8,8 +8,21 @@
 
   modules.home = {
     browser.firefox.enable = false;
-    services.lanraragi.enable = false;
-    hypr.enable = false;
+    
+    services = {
+      lanraragi.enable = false;
+      seanime.enable = false;
+    };
+
+    wm = {
+      hypr.enable = false;
+
+      i3 = {
+        enable = false;
+        polybar.enable = false;
+        picom.enable = false;
+      };
+    };
 
     media = {
       spotify.enable = false;
@@ -20,12 +33,6 @@
       syncthing.enable = false;
       yazi.enable = false;
       gui-tools.enable = false;
-    };
-
-    i3 = {
-      enable = false;
-      polybar.enable = false;
-      picom.enable = false;
     };
   };
 

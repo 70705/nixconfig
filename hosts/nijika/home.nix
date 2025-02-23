@@ -8,7 +8,12 @@
   
   modules.home = {
     browser.firefox.enable = true;
-    services.lanraragi.enable = false;
+
+    services = {
+      lanraragi.enable = false;
+      seanime.enable = true;
+    };
+
     wm = {
       hypr.enable = true;
 
@@ -17,7 +22,6 @@
         polybar.enable = false;
         picom.enable = false;
       };
-
     };
 
     media = {
