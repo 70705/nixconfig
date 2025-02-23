@@ -33,6 +33,7 @@
       syncthing.enable = true;
       yazi.enable = true;
       gui-tools.enable = true;
+      discord.enable = true;
     };
 
   };
