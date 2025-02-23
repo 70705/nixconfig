@@ -17,7 +17,6 @@ in
     home.packages = with pkgs; [
       keepassxc
       qalculate-qt
-      anki-bin
       qbittorrent
     ];
   };
