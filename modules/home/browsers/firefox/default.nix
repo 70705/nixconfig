@@ -33,9 +33,10 @@ in
 
     programs.firefox = {
       enable = true;
-#      nativeMessagingHosts = with pkgs; [
+      nativeMessagingHosts = with pkgs; [
+        ff2mpv-rust
 #        firefoxpwa
-#      ];
+      ];
 
       policies = {
         DisablePocket = true;
