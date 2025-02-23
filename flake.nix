@@ -12,7 +12,7 @@
     let
       sysVar = {
         username = "victor";
-        hostname = "wired";
+        hostname = "nijika";
         shell = "zsh"; # OPTIONS: zsh, fish
         timezone = "America/Recife";
         gpu = "nvidia";
@@ -53,7 +53,7 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
-                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+                sharedModules = [ inputs.nixcord.homeManagerModules.nixcord ];
                 useUserPackages = true;
                 users.${sysVar.username} = import ./hosts/${sysVar.hostname}/home.nix;
                 extraSpecialArgs = {
@@ -76,6 +76,10 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixcord = {
+      url = "github:kaylorben/nixcord";
     };
 
     aagl = {

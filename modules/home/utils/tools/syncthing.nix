@@ -16,7 +16,12 @@ in
     config = lib.mkIf cfg.enable {
       
       systemd.user.services.syncthingtray.Service.ExecStart = lib.mkForce
-      "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray-minimal}/bin/syncthingtray'";
+      "${pkgs.syncthingtray-minimal}/bin/syncthingtray --wait";
+
+      systemd.user.services = {
+        syncthingtray.Unit.After = lib.mkForce ["graphical-session.target"];
+        syncthing.Unit.After = lib.mkForce ["graphical-session.target"];
+    };
 
       services = {
         syncthing = {

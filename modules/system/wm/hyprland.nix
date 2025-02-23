@@ -37,7 +37,6 @@ in
 
       displayManager = {
         enable = true;
-
         defaultSession = "hyprland";
 
         autoLogin = {
@@ -85,6 +84,10 @@ in
       };
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
+    };
+
+    systemd.user.services = {
+      xdg-desktop-portal.Unit.After = lib.mkForce ["graphical-session.target"];
     };
 
     xdg.portal = {

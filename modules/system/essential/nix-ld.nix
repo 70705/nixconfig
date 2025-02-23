@@ -109,7 +109,7 @@ in
         pixman
         speex
         SDL_image
-        SDL_ttf
+        # SDL_ttf INSECURE!
         SDL_mixer
         SDL2_ttf
         SDL2_mixer
@@ -123,7 +123,7 @@ in
         librsvg
         xorg.libXft
         libvdpau
-        gnome2.pango
+        pango
         cairo
         atk
         gdk-pixbuf

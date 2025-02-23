@@ -19,7 +19,7 @@
     username = sysVar.username;
     homeDirectory = "/home/${sysVar.username}";
     sessionVariables = {
-      EDITOR = ''emacsclient -r --alternate-editor=""'';
+      EDITOR = "code";
       NIXOS_OZONE_WL = if config.modules.home.wm.hypr.enable then "1" else "0";
       TERM =
         if config.modules.home.wm.hypr.enable then
@@ -27,19 +27,12 @@
         else if config.modules.home.wm.i3.enable then
           "kitty"
         else
-          null;
+          ""; #null
     };
   };
 
   programs.man.enable = false;
   manual.manpages.enable = false;
-
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-
-    age.keyFile = "/home/${sysVar.username}/.config/sops/age/keys.txt";
-  };
 
   xdg.mimeApps = {
     enable = true;
@@ -49,8 +42,8 @@
       "text/html" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "application/pdf" = "firefox.desktop";
-      "inode/directory" = [ "yazi.desktop" ];
-      "x-scheme-handler/trash" = "pcmanfm.desktop";
+      #inode/directory" = [ "yazi.desktop" ];
+      #"x-scheme-handler/trash" = "pcmanfm.desktop";
       "image/webp" = "org.nomacs.ImageLounge.desktop";
       "image/png" = "org.nomacs.ImageLounge.desktop";
       "image/jpeg" = "org.nomacs.ImageLounge.desktop";

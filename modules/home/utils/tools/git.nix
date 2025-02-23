@@ -14,7 +14,7 @@
     lazygit = {
       enable = true;
       settings = {
-        os.editPreset = "emacs";
+        os.editPreset = "vscode";
       };
     };
   };

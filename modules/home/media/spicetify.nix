@@ -22,8 +22,6 @@ in
       in
       {
         enable = true;
-        spicetifyPackage = pkgs.spicetify-cli;
-        spotifyPackage = pkgs.spotify;
         enabledExtensions = with spicePkgs.extensions; [
           shuffle
           adblock

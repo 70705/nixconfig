@@ -55,9 +55,8 @@ in
       profiles.totos = {
         id = 0;
 
-        extensions =
-          with pkgs.nur.repos.rycee.firefox-addons;
-          [
+        extensions = {
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
             auto-tab-discard
             augmented-steam
             darkreader
@@ -83,6 +82,8 @@ in
             pwas-for-firefox
             maxurl
           ]);
+        };
+        
 
         userChrome = builtins.readFile ./userChrome.css;
         #userContent = builtins.readFile ./userContent.css;

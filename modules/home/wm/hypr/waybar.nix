@@ -35,7 +35,7 @@
         ];
 
         "hyprland/window" = {
-          format = "       [{}]";
+          format = "       {}";
           #max-length = 70;
         };
         "temperature" = {
