@@ -20,7 +20,7 @@ in
         plugins = {
           alwaysTrust.enable = true;
           callTimer.enable = true;
-          clearURLS.enable = true;
+          clearURLs.enable = true;
           disableCallIdle.enable = true;
           fakeNitro.enable = true;
           fixImagesQuality.enable = true;
