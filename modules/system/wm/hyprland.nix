@@ -57,6 +57,7 @@ in
       enable = true;
       image = ../../home/wm/hypr/wallpaper.png;
       autoEnable = true;
+      polarity = "dark";
 
       cursor = {
         package = pkgs.quintom-cursor-theme;

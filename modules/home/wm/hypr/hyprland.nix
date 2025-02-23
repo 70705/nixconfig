@@ -62,7 +62,7 @@ in
           # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
           allow_tearing = true;
 
-          layout = "master";
+          layout = "dwindle";
         };
 
         decoration = {
@@ -91,7 +91,7 @@ in
         };
 
         render = {
-          explicit_sync = false;
+          explicit_sync = true;
         };
 
         cursor = {
@@ -187,7 +187,7 @@ in
         ####################
 
         # See https://wiki.hyprland.org/Configuring/Keywords/
-        $mainMod = ALT # Sets "Windows" key as main modifier
+        $mainMod = SUPER # Sets "Windows" key as main modifier
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, Return, exec, $terminal
@@ -305,7 +305,7 @@ in
         bind =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 10%-
         bind =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle
         bind =, XF86AudioPlay, exec, playerctl play-pause
-        bind =, Insert, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle
+        # bind =, Insert, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle
 
         # Utils
         bind = , PRINT, exec, hyprshot -m region output --clipboard-only

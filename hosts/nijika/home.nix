@@ -5,14 +5,12 @@
   imports = [
     ../../modules/home
   ];
-
-  services.arrpc.enable = false;
-
+  
   modules.home = {
     browser.firefox.enable = true;
     services.lanraragi.enable = false;
     wm = {
-      hypr.enable = false;
+      hypr.enable = true;
 
       i3 = {
         enable = false;
@@ -23,8 +21,8 @@
     };
 
     media = {
-      spotify.enable = false;
-      mpv.enable = false;
+      spotify.enable = true;
+      mpv.enable = true;
     };
 
     utils = {

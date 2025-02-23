@@ -33,10 +33,9 @@ in
 
     programs.firefox = {
       enable = true;
-      nativeMessagingHosts = with pkgs; [
-        firefoxpwa
-        vdhcoapp
-      ];
+#      nativeMessagingHosts = with pkgs; [
+#        firefoxpwa
+#      ];
 
       policies = {
         DisablePocket = true;
@@ -67,9 +66,8 @@ in
             enhanced-h264ify
             sponsorblock
             languagetool
-            web-scrobbler
-            raindropio
             violentmonkey
+            canvasblocker
             keepassxc-browser
             sidebery
             gesturefy
@@ -78,39 +76,22 @@ in
             control-panel-for-twitter
             faststream
             improved-tube
-            search-by-image
             mal-sync
-            video-downloadhelper
-            new-tab-override
             tab-session-manager
           ]
           ++ (with firefox-addons; [
             pwas-for-firefox
             maxurl
-            nyancat-youtube-progressbar
           ]);
 
         userChrome = builtins.readFile ./userChrome.css;
         #userContent = builtins.readFile ./userContent.css;
 
         search = {
-          default = "SearXNG";
-          privateDefault = "SearXNG";
+          default = "Google";
+          privateDefault = "Google";
           force = true;
           engines = {
-            "SearXNG" = {
-              urls = [
-                { template = "http://searxng.totos.home.arpa/?q={searchTerms}"; }
-                {
-                  template = "http://searxng.totos.home.arpa/autocompleter?q={searchTerms}";
-                  type = "application/x-suggestions+json";
-                }
-              ];
-              updateInterval = 24 * 60 * 60 * 1000; # every day
-              iconUpdateURL = "https://raw.githubusercontent.com/searxng/searxng/refs/heads/master/src/brand/searxng-wordmark.svg";
-              definedAliases = [ "@sx" ];
-            };
-
             "YouTube" = {
               urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
               updateInterval = 24 * 60 * 60 * 1000; # every day
@@ -196,6 +177,7 @@ in
           "media.av1.enabled" = false;
           "gfx.x11-egl.force-enabled" = true;
           "widget.dmabuf.force-enabled" = true;
+          "ui.key.menuAccessKeyFocuses" = false;
         };
         extraConfig = ''
           ${builtins.readFile "${betterfoxPatched}/user.js"}

@@ -26,12 +26,6 @@ in
 
       steam = {
         enable = true;
-        package = pkgs.steam.override {
-          extraEnv = {
-            MANGOHUD = true;
-          };
-        };
-
         platformOptimizations.enable = true;
         remotePlay.openFirewall = true;
         extraCompatPackages = with pkgs; [ proton-ge-bin ];
@@ -40,7 +34,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      vesktop
+      #vesktop
       prismlauncher
       wineWow64Packages.stagingFull
       (tetrio-desktop.override {
