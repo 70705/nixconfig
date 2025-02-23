@@ -15,8 +15,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre679969.159be5db480d/nixexprs.tar.xz",
-      "hash": "0x9yczk56qpzjxarjl5p51xl5wn35hh01iizpks1i6wm5p3xqwhd"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre755883.dad564433178/nixexprs.tar.xz",
+      "hash": "13b4ywwnid3pqy1fzlf5hz165xzrwrd80diyiy2mdvarwphs18wp"
     },
     "ouch.yazi": {
       "type": "Git",
@@ -26,9 +26,9 @@
         "repo": "ouch.yazi"
       },
       "branch": "main",
-      "revision": "251da6930ca8b7ee0384810086c3bf644caede3e",
-      "url": "https://github.com/ndtoan96/ouch.yazi/archive/251da6930ca8b7ee0384810086c3bf644caede3e.tar.gz",
-      "hash": "0h5j8aimhvzwk0j65pc3dhj0ampdmk832nwf0jfq6l51irlpvfy8"
+      "revision": "ce6fb75431b9d0d88efc6ae92e8a8ebb9bc1864a",
+      "url": "https://github.com/ndtoan96/ouch.yazi/archive/ce6fb75431b9d0d88efc6ae92e8a8ebb9bc1864a.tar.gz",
+      "hash": "1w7wjaq70j2xjz5xsah0cdfkfhvq8gzxwy104385hvlm0wd18hd1"
     }
   },
   "version": 3

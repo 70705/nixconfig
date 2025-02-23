@@ -39,7 +39,7 @@
           "nvidia-drm.fbdev=1"
         ]
       else
-        null;
+        ""; # null
   };
 
   nixpkgs = {
@@ -131,16 +131,6 @@
 
   environment.systemPackages = with pkgs; [
     wget
-    ethtool
     curl
   ];
-
-  systemd.services.ethtool = {
-    description = "Ethtool autorun command";
-    after = [ "network.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.ethtool}/sbin/ethtool -s enp3s0f0 speed 100 autoneg on duplex full wol d";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
 }
