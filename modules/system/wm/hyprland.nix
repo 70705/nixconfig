@@ -17,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
+      withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
@@ -37,7 +38,7 @@ in
 
       displayManager = {
         enable = true;
-        defaultSession = "hyprland";
+        defaultSession = "hyprland-uwsm";
 
         autoLogin = {
           user = "victor";
@@ -86,10 +87,6 @@ in
       base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-mayhem.yaml";
     };
 
-    systemd.user.services = {
-      xdg-desktop-portal.Unit.After = lib.mkForce ["graphical-session.target"];
-    };
-
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
@@ -98,6 +95,8 @@ in
         pkgs.xdg-desktop-portal-gtk
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
       ];
+
+      config.common.default = [ "gtk" ];
 
       configPackages = [
         pkgs.xdg-desktop-portal-gtk
