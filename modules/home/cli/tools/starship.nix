@@ -5,7 +5,7 @@
 
 {
   programs.starship = {
-    enable = true;
+    enable = false;
     enableTransience = if sysVar.shell == "fish" then true else false;
     settings = {
       add_newline = true;
