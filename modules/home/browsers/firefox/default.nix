@@ -11,6 +11,111 @@ let
   cfg = config.modules.home.browser.firefox;
   pins = import ./npins;
   betterfox = pins.Betterfox.outPath;
+
+  chrome = ''
+    /* Hide horizontal tabs at the top of the window */
+    #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #main-window #TabsToolbar {
+        visibility: collapse !important;
+    }
+    /* Hide the "Tree Style Tab" header at the top of the sidebar */
+    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+      display: none;
+    }
+
+    #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
+      display: none;
+    }
+
+    .sidebar-splitter {
+      width: 0 !important;
+    }
+  '';
+
+  content = ''
+    /*************************************************** Home_screen_wallpaper ***************************************************/
+
+    @-moz-document url("about:newtab"), url("about:home") {
+        body {
+            overflow: hidden !important;
+        }
+        #root {
+            background-image: url("my_wallpaper.jpg") !important;
+            background-size: cover !important;
+        }
+        /* Hide the ugly logo & wordmark sorry Mozilla */
+        .logo-and-wordmark {
+            visibility: hidden !important;
+        }
+        /* Make the search bar rounded */
+        #newtab-search-text,
+        #searchSubmit {
+        border-radius: 50px !important;
+      }
+      .search-wrapper .search-inner-wrapper {
+        margin: 10px !important; }
+      .search-wrapper{ padding-top: 9px !important}
+    }
+
+    /*********************************************** TOP_sites_settings **************************************************/
+    @-moz-document url-prefix(about:newtab){
+    .top-site-outer .title {
+      /*color: black !important;*/ /*change color of the texts of the "top_sites"*/
+      }
+    .top-site-outer .title {
+      font-size: 100px;
+      }
+    .top-site-outer .title {
+      font-weight: bold;
+      }
+    .top-site-outer .top-site-inner {
+      width: 50px !important;
+      height: 50px !important;
+      }
+    .top-site-outer .tile {
+      width: 40px !important;
+      height: 40px !important;
+      }
+    }
+    .top-site-outer:is(.active, :focus, :hover) { /*Remove dark-gray mouse hover box*/
+        box-shadow: none !important;
+        background:transparent !important;
+    }
+    @-moz-document url("about:home"), url("about:newtab"){
+      .tile > .icon-wrapper{
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .icon-pin-small{ display: none !important; }
+    }
+
+    /*********************************************** Dark_mode_pdf **************************************************/
+    @-moz-document regexp(".+\.pdf$"){
+        .pdfViewer .page{ background: #38383D !important }
+        .loadingIcon+.canvasWrapper{ visibility: hidden }
+    }
+    @-moz-document regexp("^(?!.*\\.pdf\\?n).*") {
+        #sidebarContainer > #sidebarContent > #thumbnailView {
+            --sidebaritem-bg-color: #38383D;
+        }
+
+        #viewerContainer > #viewer .page > .canvasWrapper > canvas {
+            filter: grayscale(10%) invert(90%);
+        }
+
+        #sidebarContainer > #sidebarContent > #thumbnailView .thumbnailImage {
+            filter: grayscale(10%) invert(90%);
+            box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.5), 0 2px 8px hsla(0, 0%, 100%, 0.3) !important;
+        }
+    }
+
+    /*********************************************** Thin_scroll_bar *****************************************************/
+    :root{ scrollbar-color: rgb(210,210,210) rgb(42,42,46) }
+    *{ scrollbar-width: thin } '';
+
   betterfoxPatched = pkgs.runCommand "betterfox-patched" { } ''
     cp ${betterfox}/user.js user.js
     sed -i 's/user_pref("browser.search.suggest.enabled", false);/user_pref("browser.search.suggest.enabled", true);/' user.js
@@ -86,8 +191,8 @@ in
         };
         
 
-        userChrome = builtins.readFile ./userChrome.css;
-        #userContent = builtins.readFile ./userContent.css;
+        userChrome = chrome;
+        #userContent = content;
 
         search = {
           default = "Google";
@@ -183,7 +288,6 @@ in
         };
         extraConfig = ''
           ${builtins.readFile "${betterfoxPatched}/user.js"}
-          ${builtins.readFile "${betterfoxPatched}/Smoothfox.js"}
         '';
       };
     };

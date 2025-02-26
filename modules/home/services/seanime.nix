@@ -49,6 +49,7 @@ in
       Unit = {
         Description = "Seanime WebServer ";
         After = "network.service";
+        X-SwitchMethod = "restart";
       };
 
       Install = {

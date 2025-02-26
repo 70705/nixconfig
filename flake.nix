@@ -18,7 +18,7 @@
         timezone = "America/Recife";
         gpu = "nvidia";
 
-        kernel = "linuxPackages_xanmod_latest"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
+        kernel = "linuxPackages_lqx"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
         system = "x86_64-linux";
 
         networkInterface = "enp3s0f0";

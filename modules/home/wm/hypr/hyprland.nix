@@ -10,6 +10,19 @@ let
   cfg = config.modules.home.wm.hypr;
   toggleterm = pkgs.writeShellScriptBin "toggleterm" ''hyprctl dispatch exec "[workspace special:term silent] foot -a kterm"'';
   audiorelay = pkgs.writeShellScriptBin "audiorelay" ''hyprctl dispatch exec "[workspace special:minimized silent] audiorelay"'';
+  limitterm = pkgs.writeShellScriptBin "limitterm" ''
+  handle() {
+	line=$1
+	if [[ "$line" = openwindow* ]]; then
+		read -r window_address workspace window_class window_title <<<$(echo "$line" | awk -F "[>,]" '{print $3,$4,$5,$6}')
+		if [[ "$workspace" == special:term && "$window_class" != kterm ]]; then
+			hyprctl dispatch movetoworkspace e+0,address:0x''${window_address}
+		fi
+	fi
+}
+
+socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done'';
+# Got this from here: https://www.reddit.com/r/hyprland/comments/14pzqi6/comment/lgh8b2u/!
 in
 {
   options.modules.home.wm.hypr = {
@@ -18,10 +31,15 @@ in
 
   config = lib.mkIf cfg.enable {
     stylix.targets.hyprland.enable = false;
-    home.file.".config/uwsm/env".text = ''
-      export HYPRCURSOR_SIZE=${toString config.stylix.cursor.size}
-      export XCURSOR_SIZE=${toString config.stylix.cursor.size}"]
-    '';
+    home.file = {
+      ".config/uwsm/env".text = '' # export NIXOS_OZONE_WL=1
+        export XCURSOR_SIZE=${toString config.stylix.cursor.size}
+      '';
+      ".config/uwsm/env-hyprland".text = ''
+        export HYPRCURSOR_SIZE=${toString config.stylix.cursor.size}
+      '';
+    };
+
     
     wayland.windowManager.hyprland = {
       enable = true;
@@ -35,18 +53,14 @@ in
         "$menu" = "fuzzel";
 
         exec-once = [
-          "${toggleterm}/bin/toggleterm"
-          "qbittorrent --no-splash"
-          "clipse -listen"
-          "sleep 3; keepassxc ~/Downloads/KeePass/Senhas.kdbx"
+          #"uwsm app -- ${toggleterm}/bin/toggleterm"
+          "uwsm app -- qbittorrent --no-splash"
+          "uwsm app -- clipse -listen"
+          "uwsm app -- ${limitterm}/bin/limitterm"
+          "sleep 3; uwsm app -- keepassxc ~/Downloads/KeePass/Senhas.kdbx"
           #        "ANKI_WAYLAND=1 anki"
           #"emacs-29.4 --daemon"
         ];
-
-#        env = [
-#          "XCURSOR_SIZE,${toString config.stylix.cursor.size}"
-#          "HYPRCURSOR_SIZE,${toString config.stylix.cursor.size}"
-#       ];
 
         general = {
           gaps_in = 3;
@@ -201,8 +215,9 @@ in
         bind = $mainMod, S, togglefloating,
         bind = $mainMod, Space, exec, $menu
         bind = $mainMod, F, fullscreen
-        bind = $mainMod, P, pseudo, # dwindle
-        bind = $mainMod, J, togglesplit, # dwindle
+        bind = $mainMod SHIFT, F, fullscreen, 1 # maximize
+        #bind = $mainMod, P, pseudo, # dwindle
+        #bind = $mainMod, J, togglesplit, # dwindle
         bind = $mainMod, C, exec, foot -T clipse -a clipse clipse
 
         # Resize mode
@@ -270,7 +285,7 @@ in
         bind = $mainMod SHIFT, 9, movetoworkspace, 9
         bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
-        # scratchpad
+        # Minimized stuff
 
         bind = $mainMod, V, movetoworkspacesilent, special:minimized
         bind = $mainMod, H, togglespecialworkspace, minimized
@@ -289,12 +304,11 @@ in
         bind = , escape, submap, reset
         submap = reset
 
-        #bind = $mainMod, T, togglespecialworkspace, term
+        bind = $mainMod, K, layoutmsg, cycleprev
+        bind = $mainMod, J, layoutmsg, cyclenext
 
-        bind = $mainMod, T, togglespecialworkspace, term
-        bind = $mainMod, T, movetoworkspace, +0
-        bind = $mainMod, T, togglespecialworkspace, term
-        bind = $mainMod, T, movetoworkspace, special:term
+        # Toggle Terminal
+        workspace = special:term, on-created-empty:[float; move 25% 25%; size 50% 50%] foot -a kterm
         bind = $mainMod, T, togglespecialworkspace, term
 
         # Scroll through existing workspaces with mainMod + scroll
@@ -334,10 +348,8 @@ in
 
         # windowrulev2 = workspace special:minimized,noinitialfocus,class:(com-azefsw-audioconnect-desktop-app-MainKt)
 
-        windowrulev2 = plugin:hyprbars:nobar,floating:0
-
         windowrulev2 = workspace 1 silent,class:(firefox)
-        windowrulev2 = workspace 2 silent,class:(steam|vesktop)
+        windowrulev2 = workspace 2 silent,class:(steam|discord)
         windowrulev2 = workspace 3,class:(steam_app_.*|.*\.exe.*|osu!|hoi4|org.libretro.RetroArch)
         windowrulev2 = workspace 4 silent,class:(anki)
 
@@ -347,16 +359,14 @@ in
         windowrulev2 = float, title:^(Picture-in-Picture)$
         windowrulev2 = pin, title:^(Picture-in-Picture)$
 
-        windowrulev2 = size 1152 870, class:(kterm)
-        windowrulev2 = float, class:^(kterm)$
         windowrulev2 = immediate,class:^(Rhythia)$
 
         windowrulev2 = float,center,class:(pavucontrol|pcmanfm|clipse|io.github.Qalculate.qalculate-qt|.*KeePassXC.*)
         windowrulev2 = size 950 657,class:(clipse)
 
-        windowrulev2 = opacity 1.0 override 1.0 override,class:(org.libretro.RetroArch|pinta|mpv|anki|org.nomacs.ImageLounge)
-        windowrulev2 = opacity 1.0 override 1.0 override,title:(Picture-in-Picture|.*\- YouTube.*)
-        windowrulev2 = opacity 1.0 override 1.0 override,title:(.*\- Twitch.*)
+        #windowrulev2 = opacity 1.0 override 1.0 override,class:(org.libretro.RetroArch|pinta|mpv|anki|org.nomacs.ImageLounge)
+        #windowrulev2 = opacity 1.0 override 1.0 override,title:(Picture-in-Picture|.*\- YouTube.*)
+        #windowrulev2 = opacity 1.0 override 1.0 override,title:(.*\- Twitch.*)
 
         layerrule = dimaround, launcher
         layerrule = blur, launcher
@@ -366,6 +376,7 @@ in
     home.packages = with pkgs; [
       hyprshot
       clipse
+      socat
       wl-clipboard
     ];
   };

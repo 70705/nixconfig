@@ -42,6 +42,11 @@ in
           volumeBooster.enable = true;
           youtubeAdblock.enable = true;
           showHiddenChannels.enable = true;
+
+          notificationVolume = {
+            enable = true;
+            notificationVolume = 25.00;
+          };
         };
       };
     };

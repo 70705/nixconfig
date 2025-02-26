@@ -90,10 +90,17 @@
     ];
   };
 
-  environment.pathsToLink = [
-    "/share/xdg-desktop-portal"
-    "/share/applications"
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      wget
+      curl
+    ];
+
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
+  };
 
   time.timeZone = sysVar.timezone;
   i18n = {
@@ -128,9 +135,4 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    wget
-    curl
-  ];
 }

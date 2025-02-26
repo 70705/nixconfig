@@ -4,13 +4,13 @@
       "type": "Git",
       "repository": {
         "type": "GitHub",
-        "owner": "sharklasers996",
+        "owner": "ahkohd",
         "repo": "eza-preview.yazi"
       },
-      "branch": "master",
-      "revision": "7ca4c2558e17bef98cacf568f10ec065a1e5fb9b",
-      "url": "https://github.com/sharklasers996/eza-preview.yazi/archive/7ca4c2558e17bef98cacf568f10ec065a1e5fb9b.tar.gz",
-      "hash": "158vzf379mrs52fpd6381p7r59cd9fga1lm3ppcp7hbp7q58xhwx"
+      "branch": "main",
+      "revision": "5ef05bcee141291566276e62cc16e265a387dca4",
+      "url": "https://github.com/ahkohd/eza-preview.yazi/archive/5ef05bcee141291566276e62cc16e265a387dca4.tar.gz",
+      "hash": "1kh1mvj4rnr7h0sx3ziydvd1bskndcs06i5yab01s0x4pnwbxf1g"
     },
     "nixpkgs": {
       "type": "Channel",

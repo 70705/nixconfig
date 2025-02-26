@@ -20,7 +20,6 @@
     homeDirectory = "/home/${sysVar.username}";
     sessionVariables = {
       EDITOR = "code";
-      NIXOS_OZONE_WL = if config.modules.home.wm.hypr.enable then "1" else "0";
       TERM =
         if config.modules.home.wm.hypr.enable then
           "foot"
