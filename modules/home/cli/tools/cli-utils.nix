@@ -1,7 +1,6 @@
 { ... }:
 
 {
-
   programs = {
     zoxide = {
       enable = true;
@@ -18,6 +17,10 @@
         style = "full";
         enter_accept = true;
       };
+    };
+
+    zellij = {
+      enable = true;
     };
 
     eza = {
