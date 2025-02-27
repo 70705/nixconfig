@@ -347,7 +347,7 @@ in {
         windowrulev2 = workspace 1 silent,class:(firefox)
         windowrulev2 = workspace 2 silent,class:(steam|discord)
         windowrulev2 = workspace 3,class:(steam_app_.*|.*\.exe.*|osu!|hoi4|org.libretro.RetroArch)
-        windowrulev2 = workspace 4 silent,class:(anki)
+        windowrulev2 = workspace 4 silent,class:(Spotify)
 
         windowrulev2 = fullscreen,class:(steam_app_.*|.*\.exe.*|osu!|org.libretro.RetroArch|hoi4)
 

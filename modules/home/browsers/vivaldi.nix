@@ -16,4 +16,8 @@
       "--disable-gpu-sandbox"
     ];
   };
+  home.packages = with pkgs; [
+    ungoogled-chromium
+    widevine-cdm
+  ];
 }
