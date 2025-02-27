@@ -3,12 +3,9 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.wm.i3;
-in
-{
+in {
   options.modules.system.wm.i3 = {
     enable = lib.mkEnableOption "i3";
   };
@@ -17,7 +14,7 @@ in
     services.xserver = {
       enable = true;
       xkb.layout = "br";
-      excludePackages = with pkgs; [ xterm ];
+      excludePackages = with pkgs; [xterm];
       windowManager.i3 = {
         enable = true;
       };

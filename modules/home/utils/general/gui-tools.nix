@@ -3,12 +3,9 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.utils.gui-tools;
-in
-{
+in {
   options.modules.home.utils.gui-tools = {
     enable = lib.mkEnableOption "gui-tools";
   };

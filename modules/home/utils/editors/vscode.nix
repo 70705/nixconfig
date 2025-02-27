@@ -2,27 +2,29 @@
   pkgs,
   lib,
   ...
-}:
-
-{
+}: {
   programs.vscode = {
     enable = true;
-    
+
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
 
-      extensions = [
-        pkgs.vscode-extensions.ms-python.python
-        pkgs.vscode-extensions.enkia.tokyo-night
-        pkgs.vscode-extensions.esbenp.prettier-vscode
-        pkgs.vscode-extensions.formulahendry.code-runner
-        pkgs.vscode-extensions.jnoortheen.nix-ide
+      extensions = with pkgs; [
+        vscode-extensions.ms-python.python
+        vscode-extensions.enkia.tokyo-night
+        vscode-extensions.esbenp.prettier-vscode
+        vscode-extensions.formulahendry.code-runner
+        vscode-extensions.jnoortheen.nix-ide
+        vscode-extensions.kamadorueda.alejandra
+        vscode-extensions.jeff-hykin.better-nix-syntax
       ];
       userSettings = {
         "[python]"."editor.formatOnSave" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
+        "nix.formatterPath" = "alejandra";
+        "nix.formatOnSave" = true;
         "zenMode.centerLayout" = false;
         "zenMode.fullScreen" = false;
         "explorer.compactFolders" = false;

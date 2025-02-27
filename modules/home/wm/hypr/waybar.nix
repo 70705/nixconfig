@@ -2,10 +2,7 @@
   lib,
   config,
   ...
-}:
-
-{
-
+}: {
   stylix.targets.waybar.enable = false;
   programs.waybar = {
     enable = lib.mkIf config.modules.home.wm.hypr.enable true;
@@ -24,7 +21,7 @@
         modules-left = [
           "hyprland/window"
         ];
-        modules-center = [ ];
+        modules-center = [];
         modules-right = [
           "cpu"
           "memory"
@@ -124,8 +121,8 @@
         margin-top = -29;
 
         # Choose the order of the modules
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "mpris" ];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["mpris"];
         modules-right = [
           "tray"
           "idle_inhibitor"
@@ -165,7 +162,6 @@
           spacing = 10;
         };
       }
-
     ];
 
     style = ''
@@ -262,5 +258,4 @@
       }
     '';
   };
-
 }

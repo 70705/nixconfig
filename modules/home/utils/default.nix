@@ -2,9 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-
-{
+}: {
   imports = [
     ./yazi
     ./editors

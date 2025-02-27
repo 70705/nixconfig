@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   firefox-addons = pkgs.callPackage ./customAddons.nix {
     inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
   };
@@ -116,22 +115,20 @@ let
     :root{ scrollbar-color: rgb(210,210,210) rgb(42,42,46) }
     *{ scrollbar-width: thin } '';
 
-  betterfoxPatched = pkgs.runCommand "betterfox-patched" { } ''
+  betterfoxPatched = pkgs.runCommand "betterfox-patched" {} ''
     cp ${betterfox}/user.js user.js
     sed -i 's/user_pref("browser.search.suggest.enabled", false);/user_pref("browser.search.suggest.enabled", true);/' user.js
     cp ${betterfox}/Smoothfox.js Smoothfox.js
     mkdir -p $out
     mv user.js Smoothfox.js $out
   '';
-
-in
-{
+in {
   options.modules.home.browser.firefox = {
     enable = lib.mkEnableOption "firefox";
   };
 
   config = lib.mkIf cfg.enable {
-    stylix.targets.firefox.profileNames = [ "totos" ];
+    stylix.targets.firefox.profileNames = ["totos"];
     home.sessionVariables = {
       MOZ_DISABLE_RDD_SANDBOX = 1;
     };
@@ -140,7 +137,7 @@ in
       enable = true;
       nativeMessagingHosts = with pkgs; [
         ff2mpv-rust
-#        firefoxpwa
+        #        firefoxpwa
       ];
 
       policies = {
@@ -162,34 +159,34 @@ in
         id = 0;
 
         extensions = {
-          packages = with pkgs.nur.repos.rycee.firefox-addons; [
-            auto-tab-discard
-            augmented-steam
-            darkreader
-            fastforwardteam
-            ublock-origin
-            enhanced-h264ify
-            sponsorblock
-            languagetool
-            violentmonkey
-            canvasblocker
-            keepassxc-browser
-            sidebery
-            gesturefy
-            simple-dark-vlasak
-            multi-account-containers
-            control-panel-for-twitter
-            faststream
-            improved-tube
-            mal-sync
-            tab-session-manager
-          ]
-          ++ (with firefox-addons; [
-            pwas-for-firefox
-            maxurl
-          ]);
+          packages = with pkgs.nur.repos.rycee.firefox-addons;
+            [
+              auto-tab-discard
+              augmented-steam
+              darkreader
+              fastforwardteam
+              ublock-origin
+              enhanced-h264ify
+              sponsorblock
+              languagetool
+              violentmonkey
+              canvasblocker
+              keepassxc-browser
+              sidebery
+              gesturefy
+              simple-dark-vlasak
+              multi-account-containers
+              control-panel-for-twitter
+              faststream
+              improved-tube
+              mal-sync
+              tab-session-manager
+            ]
+            ++ (with firefox-addons; [
+              pwas-for-firefox
+              maxurl
+            ]);
         };
-        
 
         userChrome = chrome;
         #userContent = content;
@@ -200,28 +197,28 @@ in
           force = true;
           engines = {
             "YouTube" = {
-              urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
+              urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
               updateInterval = 24 * 60 * 60 * 1000; # every day
               iconUpdateURL = "https://www.svgrepo.com/show/13671/youtube.svg";
 
-              definedAliases = [ "@yt" ];
+              definedAliases = ["@yt"];
             };
 
             "Firefox Addons API" = {
-              urls = [ { template = "https://addons.mozilla.org/api/v5/addons/search/?q={searchTerms}"; } ];
+              urls = [{template = "https://addons.mozilla.org/api/v5/addons/search/?q={searchTerms}";}];
               updateInterval = 24 * 60 * 60 * 1000; # every day
               iconUpdateURL = "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo,_2019.svg";
 
-              definedAliases = [ "@fex" ];
+              definedAliases = ["@fex"];
             };
 
             "Home Manager Options" = {
               urls = [
-                { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+                {template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";}
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
 
-              definedAliases = [ "@hm" ];
+              definedAliases = ["@hm"];
             };
 
             "Nix Packages" = {
@@ -242,7 +239,7 @@ in
               ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@np" ];
+              definedAliases = ["@np"];
             };
 
             "Nix Options" = {
@@ -263,7 +260,7 @@ in
               ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@no" ];
+              definedAliases = ["@no"];
             };
 
             "Google".metaData.alias = "@g";

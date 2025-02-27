@@ -3,24 +3,19 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.services.lanraragi;
-in
-{
+in {
   options.modules.home.services.lanraragi = {
     enable = lib.mkEnableOption "lanraragi";
   };
 
   config = lib.mkIf cfg.enable {
-
     home.packages = with pkgs; [
       lanraragi
       redis
     ];
     systemd.user.services.lanraragi = {
-
       Unit = {
         Description = "Lanraragi server";
         Requires = "redis-server-lanraragi.service";
@@ -28,7 +23,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = ["default.target"];
       };
 
       Service = {
@@ -42,7 +37,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = ["default.target"];
       };
 
       Service = {

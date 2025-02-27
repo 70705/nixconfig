@@ -1,14 +1,11 @@
-{ ... }:
-
-{
-
+{...}: {
   imports = [
     ../../modules/home
   ];
 
   modules.home = {
     browser.firefox.enable = false;
-    
+
     services = {
       lanraragi.enable = false;
       seanime.enable = false;

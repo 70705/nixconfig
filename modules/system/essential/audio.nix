@@ -4,9 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.essential.audio;
   pw_rnnoise_config = {
     "context.modules" = [
@@ -44,11 +42,8 @@ let
       }
     ];
   };
-
-in
-{
-
-  imports = [ inputs.nix-gaming.nixosModules.pipewireLowLatency ];
+in {
+  imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
 
   options.modules.system.essential.audio = {
     enable = lib.mkEnableOption "audio";

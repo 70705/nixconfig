@@ -4,27 +4,24 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.wm.hypr;
   toggleterm = pkgs.writeShellScriptBin "toggleterm" ''hyprctl dispatch exec "[workspace special:term silent] foot -a kterm"'';
   audiorelay = pkgs.writeShellScriptBin "audiorelay" ''hyprctl dispatch exec "[workspace special:minimized silent] audiorelay"'';
   limitterm = pkgs.writeShellScriptBin "limitterm" ''
-  handle() {
-	line=$1
-	if [[ "$line" = openwindow* ]]; then
-		read -r window_address workspace window_class window_title <<<$(echo "$line" | awk -F "[>,]" '{print $3,$4,$5,$6}')
-		if [[ "$workspace" == special:term && "$window_class" != kterm ]]; then
-			hyprctl dispatch movetoworkspace e+0,address:0x''${window_address}
-		fi
-	fi
-}
+      handle() {
+    	line=$1
+    	if [[ "$line" = openwindow* ]]; then
+    		read -r window_address workspace window_class window_title <<<$(echo "$line" | awk -F "[>,]" '{print $3,$4,$5,$6}')
+    		if [[ "$workspace" == special:term && "$window_class" != kterm ]]; then
+    			hyprctl dispatch movetoworkspace e+0,address:0x''${window_address}
+    		fi
+    	fi
+    }
 
-socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done'';
-# Got this from here: https://www.reddit.com/r/hyprland/comments/14pzqi6/comment/lgh8b2u/!
-in
-{
+    socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done'';
+  # Got this from here: https://www.reddit.com/r/hyprland/comments/14pzqi6/comment/lgh8b2u/!
+in {
   options.modules.home.wm.hypr = {
     enable = lib.mkEnableOption "hypr";
   };
@@ -32,15 +29,14 @@ in
   config = lib.mkIf cfg.enable {
     stylix.targets.hyprland.enable = false;
     home.file = {
-      ".config/uwsm/env".text = '' # export NIXOS_OZONE_WL=1
-        export XCURSOR_SIZE=${toString config.stylix.cursor.size}
+      ".config/uwsm/env".text = ''        # export NIXOS_OZONE_WL=1
+               export XCURSOR_SIZE=${toString config.stylix.cursor.size}
       '';
       ".config/uwsm/env-hyprland".text = ''
         export HYPRCURSOR_SIZE=${toString config.stylix.cursor.size}
       '';
     };
 
-    
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

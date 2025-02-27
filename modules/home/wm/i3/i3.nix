@@ -3,13 +3,10 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.wm.i3;
-in
-{
-  imports = [ ./keybindings.nix ];
+in {
+  imports = [./keybindings.nix];
   options.modules.home.wm.i3 = {
     enable = lib.mkEnableOption "i3";
   };
@@ -54,17 +51,17 @@ in
           enable = true;
 
           config = {
-            bars = [ ];
+            bars = [];
             modifier = "Mod4";
             terminal = "kitty";
             floating.titlebar = false;
             defaultWorkspace = "workspace number 1";
 
             assigns = {
-              "1" = [ { class = "Vivaldi-stable"; } ];
+              "1" = [{class = "Vivaldi-stable";}];
               "2" = [
-                { class = "vesktop"; }
-                { class = "steam"; }
+                {class = "vesktop";}
+                {class = "steam";}
               ];
             };
 

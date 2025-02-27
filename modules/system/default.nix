@@ -3,10 +3,7 @@
   inputs,
   sysVar,
   ...
-}:
-
-{
-
+}: {
   imports = [
     ./wm
     ./essential
@@ -31,20 +28,19 @@
   boot = {
     kernelPackages = pkgs.${sysVar.kernel};
 
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
     kernelParams =
-      if sysVar.gpu == "nvidia" then
-        [
-          "nvidia-drm.modeset=1"
-          "nvidia-drm.fbdev=1"
-        ]
-      else
-        ""; # null
+      if sysVar.gpu == "nvidia"
+      then [
+        "nvidia-drm.modeset=1"
+        "nvidia-drm.fbdev=1"
+      ]
+      else ""; # null
   };
 
   nixpkgs = {
-    overlays = [ 
-      inputs.nur.overlays.default 
+    overlays = [
+      inputs.nur.overlays.default
     ];
     config.allowUnfree = true;
   };
@@ -115,8 +111,14 @@
   };
 
   programs = {
-    zsh.enable = if sysVar.shell == "zsh" then true else false;
-    fish.enable = if sysVar.shell == "fish" then true else false;
+    zsh.enable =
+      if sysVar.shell == "zsh"
+      then true
+      else false;
+    fish.enable =
+      if sysVar.shell == "fish"
+      then true
+      else false;
 
     dconf.enable = true;
 

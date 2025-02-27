@@ -4,12 +4,9 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.essential.nix-ld;
-in
-{
+in {
   options.modules.system.essential.nix-ld = {
     enable = lib.mkEnableOption "nix-ld";
   };

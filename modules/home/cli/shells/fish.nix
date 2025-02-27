@@ -1,11 +1,9 @@
-{
-  sysVar,
-  ...
-}:
-
-{
+{sysVar, ...}: {
   programs.fish = {
-    enable = if sysVar.shell == "fish" then true else false;
+    enable =
+      if sysVar.shell == "fish"
+      then true
+      else false;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 

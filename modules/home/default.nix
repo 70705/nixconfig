@@ -2,9 +2,7 @@
   sysVar,
   config,
   ...
-}:
-
-{
+}: {
   imports = [
     ./browsers
     ./media
@@ -21,12 +19,11 @@
     sessionVariables = {
       EDITOR = "code";
       TERM =
-        if config.modules.home.wm.hypr.enable then
-          "foot"
-        else if config.modules.home.wm.i3.enable then
-          "kitty"
-        else
-          ""; #null
+        if config.modules.home.wm.hypr.enable
+        then "foot"
+        else if config.modules.home.wm.i3.enable
+        then "kitty"
+        else ""; #null
     };
   };
 

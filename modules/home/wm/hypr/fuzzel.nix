@@ -3,9 +3,7 @@
   config,
   lib,
   ...
-}:
-
-{
+}: {
   programs.fuzzel = {
     enable = lib.mkIf config.modules.home.wm.hypr.enable true;
     settings = {
@@ -19,5 +17,4 @@
       };
     };
   };
-
 }

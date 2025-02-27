@@ -3,13 +3,9 @@
   lib,
   inputs,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.gaming.zenless;
-in
-{
-
+in {
   imports = [
     inputs.aagl.nixosModules.default
   ];

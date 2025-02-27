@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs = {
     oh-my-posh = {
       enable = true;
@@ -74,12 +72,12 @@
                 properties = {
                   style = "folder";
                 };
-
               }
               {
                 foreground = "yellow";
                 style = "plain";
-                template = " <#FFFFFF>➜</> {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#FF0000>!</> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} <#FFFF00>|</>{{ end }}{{ if .Staging.Changed }} <#00FFFF>+</> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#FF00FF>$</> {{ .StashCount }}{{ end }}";                type = "git";
+                template = " <#FFFFFF>➜</> {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#FF0000>!</> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} <#FFFF00>|</>{{ end }}{{ if .Staging.Changed }} <#00FFFF>+</> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#FF00FF>$</> {{ .StashCount }}{{ end }}";
+                type = "git";
 
                 properties = {
                   branch_icon = "";
@@ -93,6 +91,14 @@
             type = "rprompt";
           }
         ];
+        transient_prompt = {
+          foreground = "#ffffff";
+          template = "% ";
+        };
+        secondary_prompt = {
+          foreground = "#ffffff";
+          template = "-> ";
+        };
         version = 3;
       };
     };

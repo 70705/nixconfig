@@ -1,12 +1,10 @@
-{
-  sysVar,
-  ...
-}:
-
-{
+{sysVar, ...}: {
   programs.starship = {
     enable = false;
-    enableTransience = if sysVar.shell == "fish" then true else false;
+    enableTransience =
+      if sysVar.shell == "fish"
+      then true
+      else false;
     settings = {
       add_newline = true;
       format = "$time\${custom.nix}$line_break$cmd_duration$character";
@@ -67,7 +65,6 @@
         format = "[$virtualenv]($style) ";
         style = "bold white";
       };
-
     };
   };
 }

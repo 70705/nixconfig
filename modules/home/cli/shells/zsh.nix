@@ -1,17 +1,15 @@
-{
-  sysVar,
-  ...
-}:
-
-{
+{sysVar, ...}: {
   programs.zsh = {
-    enable = if sysVar.shell == "zsh" then true else false;
+    enable =
+      if sysVar.shell == "zsh"
+      then true
+      else false;
     autocd = true;
     enableCompletion = true;
     enableVteIntegration = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" "cursor" ];
+      highlighters = ["main" "brackets" "cursor"];
     };
 
     autosuggestion = {
@@ -24,6 +22,7 @@
     };
 
     initExtraFirst = ''
+      zstyle ':completion:*' menu select
       any-nix-shell zsh | source /dev/stdin
     '';
 

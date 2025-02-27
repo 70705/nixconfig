@@ -2,12 +2,9 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.utils.discord;
-in
-{
+in {
   options.modules.home.utils.discord = {
     enable = lib.mkEnableOption "discord";
   };

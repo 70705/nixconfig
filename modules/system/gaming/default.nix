@@ -3,13 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.gaming;
-in
-{
-
+in {
   imports = [
     ./soundspaceplus
     ./retroarch.nix
@@ -29,8 +25,8 @@ in
         enable = true;
         platformOptimizations.enable = true;
         remotePlay.openFirewall = true;
-        extraCompatPackages = with pkgs; [ proton-ge-bin ];
-        extraPackages = with pkgs; [ gamescope ];
+        extraCompatPackages = with pkgs; [proton-ge-bin];
+        extraPackages = with pkgs; [gamescope];
       };
     };
 
@@ -45,6 +41,5 @@ in
       #inputs.rhythia.packages.${pkgs.system}.sound-space-plus
       # (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override { wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg; tricks = [ "gdiplus" "dotnet48" "meiryo" "allfonts"]; })
     ];
-
   };
 }

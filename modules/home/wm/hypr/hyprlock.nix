@@ -2,9 +2,7 @@
   lib,
   config,
   ...
-}:
-
-{
+}: {
   stylix.targets.hyprlock.enable = false;
   programs.hyprlock = {
     enable = lib.mkIf config.modules.home.wm.hypr.enable true;

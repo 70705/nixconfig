@@ -1,6 +1,7 @@
-{ buildFirefoxXpiAddon, lib }:
-
 {
+  buildFirefoxXpiAddon,
+  lib,
+}: {
   pwas-for-firefox = buildFirefoxXpiAddon rec {
     pname = "pwas-for-firefox";
     version = "2.12.3";

@@ -3,12 +3,9 @@
   config,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.gaming.retroarch;
-in
-{
+in {
   options.modules.system.gaming.retroarch = {
     enable = lib.mkEnableOption "retroarch";
   };

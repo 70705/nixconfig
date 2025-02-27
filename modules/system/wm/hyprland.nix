@@ -4,12 +4,9 @@
   inputs,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.wm.hyprland;
-in
-{
+in {
   options.modules.system.wm.hyprland = {
     enable = lib.mkEnableOption "hyprland";
   };
@@ -96,7 +93,7 @@ in
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
       ];
 
-      config.common.default = [ "gtk" ];
+      config.common.default = ["gtk"];
 
       configPackages = [
         pkgs.xdg-desktop-portal-gtk

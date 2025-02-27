@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./gui-tools.nix
     # ./audiothumbs.nix

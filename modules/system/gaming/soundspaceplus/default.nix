@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.system.gaming.soundspaceplus;
   soundspaceplus = pkgs.stdenv.mkDerivation {
     pname = "soundspaceplus";
@@ -17,9 +15,9 @@ let
 
     description = "Rhythm-based aim game";
     homepage = "https://github.com/David20122/sound-space-plus";
-    platforms = [ "x86_64-linux" ];
+    platforms = ["x86_64-linux"];
 
-    buildInputs = with pkgs; [ unzip ];
+    buildInputs = with pkgs; [unzip];
 
     unpackPhase = ''
       mkdir -p $out
@@ -45,13 +43,12 @@ let
       EOF
     '';
   };
-in
-{
+in {
   options.modules.system.gaming.soundspaceplus = {
     enable = lib.mkEnableOption "soundspaceplus";
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ soundspaceplus ];
+    environment.systemPackages = [soundspaceplus];
   };
 }

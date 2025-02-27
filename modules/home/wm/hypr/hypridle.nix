@@ -1,12 +1,10 @@
-{ 
-  lib, 
-  config,
-  ... 
-}:
-
 {
+  lib,
+  config,
+  ...
+}: {
   services.hypridle = {
-    enable = lib.mkIf config.modules.home.wm.hypr.enable true; 
+    enable = lib.mkIf config.modules.home.wm.hypr.enable true;
     settings = {
       general = {
         before_sleep_cmd = "loginctl lock-session";

@@ -1,13 +1,8 @@
-{
-  pkgs,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: with epkgs; [ vterm ];
+    extraPackages = epkgs: with epkgs; [vterm];
   };
 
   home.packages = with pkgs; [
@@ -51,7 +46,6 @@
         "TextEditor"
       ];
       startupNotify = true;
-
     };
   };
 

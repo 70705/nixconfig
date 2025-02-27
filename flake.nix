@@ -1,73 +1,71 @@
 {
   description = "victor's Flake";
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nur,
-      home-manager,
-      flatpaks,
-      ...
-    }@inputs:
-    let
-      sysVar = {
-        username = "victor";
-        hostname = "nijika";
-        shell = "zsh"; # OPTIONS: zsh, fish
-        timezone = "America/Recife";
-        gpu = "nvidia";
+  outputs = {
+    self,
+    nixpkgs,
+    nur,
+    home-manager,
+    flatpaks,
+    lix-module,
+    ...
+  } @ inputs: let
+    sysVar = {
+      username = "victor";
+      hostname = "nijika";
+      shell = "zsh"; # OPTIONS: zsh, fish
+      timezone = "America/Recife";
+      gpu = "nvidia";
 
-        kernel = "linuxPackages_lqx"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
-        system = "x86_64-linux";
+      kernel = "linuxPackages_lqx"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
+      system = "x86_64-linux";
 
-        networkInterface = "enp3s0f0";
+      networkInterface = "enp3s0f0";
 
-        locale = "pt_BR.UTF-8";
-        extraLocale = [
-          "en_US.UTF-8/UTF-8"
-          "pt_BR.UTF-8/UTF-8"
-          "C.UTF-8/UTF-8"
-          "ja_JP.UTF-8/UTF-8"
+      locale = "pt_BR.UTF-8";
+      extraLocale = [
+        "en_US.UTF-8/UTF-8"
+        "pt_BR.UTF-8/UTF-8"
+        "C.UTF-8/UTF-8"
+        "ja_JP.UTF-8/UTF-8"
+      ];
+    };
+  in {
+    nixosConfigurations = {
+      ${sysVar.hostname} = nixpkgs.lib.nixosSystem {
+        system = sysVar.system;
+
+        specialArgs = {
+          inherit inputs;
+          inherit sysVar;
+        };
+
+        modules = [
+          ./hosts/${sysVar.hostname}/system.nix
+          home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.nix-index-database.nixosModules.nix-index
+          inputs.nix-gaming.nixosModules.platformOptimizations
+          flatpaks.nixosModules.declarative-flatpak
+          lix-module.nixosModules.default
+
+          {programs.nix-index-database.comma.enable = true;}
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              sharedModules = [inputs.nixcord.homeManagerModules.nixcord];
+              useUserPackages = true;
+              users.${sysVar.username} = import ./hosts/${sysVar.hostname}/home.nix;
+              extraSpecialArgs = {
+                inherit inputs;
+                inherit sysVar;
+              };
+            };
+          }
         ];
       };
-
-    in
-    {
-      nixosConfigurations = {
-        ${sysVar.hostname} = nixpkgs.lib.nixosSystem {
-          system = sysVar.system;
-
-          specialArgs = {
-            inherit inputs;
-            inherit sysVar;
-          };
-
-          modules = [
-            ./hosts/${sysVar.hostname}/system.nix
-            home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.nix-index-database.nixosModules.nix-index
-            inputs.nix-gaming.nixosModules.platformOptimizations
-            flatpaks.nixosModules.declarative-flatpak
-
-            { programs.nix-index-database.comma.enable = true; }
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                sharedModules = [ inputs.nixcord.homeManagerModules.nixcord ];
-                useUserPackages = true;
-                users.${sysVar.username} = import ./hosts/${sysVar.hostname}/home.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                  inherit sysVar;
-                };
-              };
-            }
-          ];
-        };
-      };
     };
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -75,14 +73,16 @@
     hyprland.url = "github:hyprwm/Hyprland";
     nur.url = "github:nix-community/NUR";
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+    nixcord.url = "github:kaylorben/nixcord";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixcord = {
-      url = "github:kaylorben/nixcord";
     };
 
     aagl = {

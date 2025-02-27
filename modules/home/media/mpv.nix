@@ -3,9 +3,7 @@
   lib,
   config,
   ...
-}:
-
-let
+}: let
   cfg = config.modules.home.media.mpv;
   shaders = "${pkgs.mpv-shim-default-shaders}/share/mpv-shim-default-shaders/shaders/";
   ssimsuperres = pkgs.fetchgit {
@@ -13,9 +11,7 @@ let
     rev = "15d93440d0a24fc4b8770070be6a9fa2af6f200b";
     sha256 = "1xj4r54i0y03hnyjvwaqb7lpn6k0anyblqb1fqj7k9ijambwqava";
   };
-
-in
-{
+in {
   options.modules.home.media.mpv = {
     enable = lib.mkEnableOption "mpv";
   };
@@ -30,11 +26,11 @@ in
         # restyle subtitles by pressing k
         k = ''cycle_values sub-ass-override "force" "no"'';
 
-        WHEEL_UP = "add volume 5";    # forward
-        WHEEL_DOWN = "add volume -5";    # backward
+        WHEEL_UP = "add volume 5"; # forward
+        WHEEL_DOWN = "add volume -5"; # backward
         # Seek by exactly 30s instead of relative+keyframes 60s
-        UP = "seek 30 exact";           # forward
-        DOWN = "seek -30 exact";           # backward
+        UP = "seek 30 exact"; # forward
+        DOWN = "seek -30 exact"; # backward
         TAB = "script-binding skip-to-silence";
 
         d = "cycle deband                                                            #! Video > Filters > Toggle Deband";
@@ -86,123 +82,123 @@ in
       '';
 
       config = {
-        profile="high-quality";
-        vo="gpu-next";
+        profile = "high-quality";
+        vo = "gpu-next";
 
-        gpu-api="vulkan";
+        gpu-api = "vulkan";
 
-        hwdec="auto-copy";
-        hwdec-codecs="all";
-        script-opts="ytdl_hook-ytdl_path=${pkgs.yt-dlp}/bin/yt-dlp";
+        hwdec = "auto-copy";
+        hwdec-codecs = "all";
+        script-opts = "ytdl_hook-ytdl_path=${pkgs.yt-dlp}/bin/yt-dlp";
 
-        scale="ewa_lanczos4sharpest";
-        dscale="catmull_rom";
-        cscale="ewa_lanczos4sharpest";
-        glsl-shader = [ 
+        scale = "ewa_lanczos4sharpest";
+        dscale = "catmull_rom";
+        cscale = "ewa_lanczos4sharpest";
+        glsl-shader = [
           "${ssimsuperres}/SSimSuperRes.glsl"
-          "${shaders}KrigBilateral.glsl" 
+          "${shaders}KrigBilateral.glsl"
         ];
-        
+
         # Dither
         # This must be set to match your monitor's bit depth
         # fruit: 8-Bit/8-Bit+FRC display
         # ordered: true 10-Bit/12-Bit display
         # error-diffusion: high-end GPUs
-        dither="fruit";
-        dither-depth="auto";
+        dither = "fruit";
+        dither-depth = "auto";
 
         ## Behavior (personal preference)
-        osd-bar="no";
-        border="no";
-        volume-max=300;
-        autofit="90%";
-        snap-window="yes";
-        keep-open="yes";
+        osd-bar = "no";
+        border = "no";
+        volume-max = 300;
+        autofit = "90%";
+        snap-window = "yes";
+        keep-open = "yes";
         #keepaspect-window=no
-        input-doubleclick-time=200;
+        input-doubleclick-time = 200;
         sub-scale = 0.75;
 
         ###### Antiring
-        scale-antiring=0.5;
-        dscale-antiring=0.5;
-        cscale-antiring=0.5;
-        
+        scale-antiring = 0.5;
+        dscale-antiring = 0.5;
+        cscale-antiring = 0.5;
+
         ###### Debanding
-        deband="no";
-        deband-iterations=4;
-        deband-threshold=48;
-        deband-range=24;
-        deband-grain=16;
+        deband = "no";
+        deband-iterations = 4;
+        deband-threshold = 48;
+        deband-range = 24;
+        deband-grain = 16;
 
         ## Screenshots
-        screenshot-format="webp";
-        screenshot-webp-lossless="yes";
-        screenshot-high-bit-depth="yes";
-        screenshot-sw="no";
-        screenshot-dir="~/Pictures/mpv";
-        screenshot-template="%f-%wH.%wM.%wS.%wT-#%#00n";
+        screenshot-format = "webp";
+        screenshot-webp-lossless = "yes";
+        screenshot-high-bit-depth = "yes";
+        screenshot-sw = "no";
+        screenshot-dir = "~/Pictures/mpv";
+        screenshot-template = "%f-%wH.%wM.%wS.%wT-#%#00n";
 
         ## Language Priority
         ## Sub
         ## Add enm before eng for honorifics
-        slang="eng,en,por";
+        slang = "eng,en,por";
       };
 
       profiles = {
         "Deband-Medium" = {
-          deband-iterations=2;
-          deband-threshold=64;
-          deband-range=16;
-          deband-grain=24;
+          deband-iterations = 2;
+          deband-threshold = 64;
+          deband-range = 16;
+          deband-grain = 24;
         };
 
         "Deband-Strong" = {
-          deband-iterations=3;
-          deband-threshold=64;
-          deband-range=16;
-          deband-grain=24;
+          deband-iterations = 3;
+          deband-threshold = 64;
+          deband-range = 16;
+          deband-grain = 24;
         };
 
         "8bitDeband" = {
-          profile-cond=''p["video-params/pixelformat"] == "yuv420p"'';
-          deband="yes";
-          profile-restore="copy";
+          profile-cond = ''p["video-params/pixelformat"] == "yuv420p"'';
+          deband = "yes";
+          profile-restore = "copy";
         };
 
         "Only420chromaUpscale" = {
-          profile-desc=''cond:((p["video-params/pixelformat"] == "yuv420p10" or p["video-params/pixelformat"] == "yuv420p"))'';
-          glsl-shader="${shaders}KrigBilateral.glsl";
-          profile-restore="copy";
+          profile-desc = ''cond:((p["video-params/pixelformat"] == "yuv420p10" or p["video-params/pixelformat"] == "yuv420p"))'';
+          glsl-shader = "${shaders}KrigBilateral.glsl";
+          profile-restore = "copy";
         };
 
         "not1080pbut720pOrHigher" = {
-          profile-desc=''cond:((p["video-params/h"] >= 720 and p["video-params/h"] < 1080))'';
-          glsl-shader="${shaders}FSRCNNX_x2_8-0-4-1.glsl";
-          profile-restore="copy";
+          profile-desc = ''cond:((p["video-params/h"] >= 720 and p["video-params/h"] < 1080))'';
+          glsl-shader = "${shaders}FSRCNNX_x2_8-0-4-1.glsl";
+          profile-restore = "copy";
         };
 
         "WebdlDeband" = {
-          profile-cond=''string.match(p.filename, "%[Web%-DL%]")~=nil'';
-          deband="yes";
-          profile-restore="copy";
+          profile-cond = ''string.match(p.filename, "%[Web%-DL%]")~=nil'';
+          deband = "yes";
+          profile-restore = "copy";
         };
 
         "crunchyroll" = {
-          profile-cond=''filename:match("SubsPlease") or filename:match("Erai%-raws") or filename:match("HorribleSubs")'';
-          profile-restore="copy";
-          sub-ass-use-video-data="aspect-ratio";
+          profile-cond = ''filename:match("SubsPlease") or filename:match("Erai%-raws") or filename:match("HorribleSubs")'';
+          profile-restore = "copy";
+          sub-ass-use-video-data = "aspect-ratio";
         };
 
         "simulcast" = {
-          profile-cond=''(function(a)for b,c in ipairs(a)do if filename:match(c)then return true end end end)({"SubsPlease","Erai%-raws","Tsundere%-Raws","%-VARYG","HorribleSubs","SubsPlus%+", "Yameii"})'';
-          profile-restore="copy";
-          deband="yes";
+          profile-cond = ''(function(a)for b,c in ipairs(a)do if filename:match(c)then return true end end end)({"SubsPlease","Erai%-raws","Tsundere%-Raws","%-VARYG","HorribleSubs","SubsPlus%+", "Yameii"})'';
+          profile-restore = "copy";
+          deband = "yes";
         };
       };
 
       scripts = with pkgs.mpvScripts; [
         uosc
-        (quality-menu.override { oscSupport = true; })
+        (quality-menu.override {oscSupport = true;})
         thumbfast
         videoclip
         smart-copy-paste-2
