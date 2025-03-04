@@ -6,10 +6,18 @@
 }: let
   cfg = config.modules.home.media.mpv;
   shaders = "${pkgs.mpv-shim-default-shaders}/share/mpv-shim-default-shaders/shaders/";
+
   ssimsuperres = pkgs.fetchgit {
     url = "https://gist.github.com/igv/2364ffa6e81540f29cb7ab4c9bc05b6b";
     rev = "15d93440d0a24fc4b8770070be6a9fa2af6f200b";
     sha256 = "1xj4r54i0y03hnyjvwaqb7lpn6k0anyblqb1fqj7k9ijambwqava";
+  };
+
+  inputevent = pkgs.fetchFromGitHub {
+    owner = "natural-harmonia-gropius";
+    repo = "input-event";
+    rev = "d1ff3f7a44692ae39a296e48476214f21334206d";
+    hash = "sha256-2JHgJE5CYLZ17RXpgiBOZ/xk1VN0K8EIkev3QAUYwOM=";
   };
 in {
   options.modules.home.media.mpv = {
@@ -17,6 +25,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.file.".config/mpv/scripts/inputevent.lua".source = "${inputevent}/inputevent.lua";
     programs.mpv = {
       enable = true;
       bindings = {
@@ -77,8 +86,12 @@ in {
         # script-binding uosc/update                                                                #! Utilities > Update uosc
         / script-binding console/enable                                                             #! Utilities > Console
 
-        MBTN_LEFT       cycle pause
-        MBTN_LEFT_DBL   cycle fullscreen
+        MBTN_LEFT       cycle pause                         #event: click
+        MBTN_LEFT       cycle fullscreen                    #event: double_click
+        MBTN_LEFT_DBL   ignore
+
+        MBTN_LEFT           script-binding evafast/speedup      #event: press
+        MBTN_LEFT           script-binding evafast/slowdown     #event: release
       '';
 
       config = {
@@ -115,7 +128,7 @@ in {
         snap-window = "yes";
         keep-open = "yes";
         #keepaspect-window=no
-        input-doubleclick-time = 200;
+        input-doubleclick-time = 150;
         sub-scale = 0.75;
 
         ###### Antiring
@@ -208,12 +221,19 @@ in {
       ];
 
       scriptOpts = {
-        quality-menu = {
-          ytdl_ver = "yt-dlp";
-        };
         thumbfast = {
           network = "yes";
           hwdec = "yes";
+        };
+        evafast = {
+          lookahead = "yes";
+          speed_cap = 2.5;
+          subs_speed_cap = 2;
+        };
+        SmartCopyPaste_II = {
+          device = "linux";
+          linux_copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+          linux_paste = "${pkgs.wl-clipboard}/bin/wl-paste";
         };
       };
     };
