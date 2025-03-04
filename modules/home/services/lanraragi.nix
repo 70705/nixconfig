@@ -34,6 +34,7 @@ in {
     systemd.user.services.redis-server-lanraragi = {
       Unit = {
         Description = "Lanraragi's Redis server";
+        After = "network.service";
       };
 
       Install = {
