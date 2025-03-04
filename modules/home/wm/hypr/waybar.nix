@@ -122,7 +122,7 @@
 
         # Choose the order of the modules
         modules-left = ["hyprland/workspaces"];
-        modules-center = ["mpris"];
+        modules-center = [];
         modules-right = [
           "tray"
           "idle_inhibitor"

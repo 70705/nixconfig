@@ -17,6 +17,7 @@
     trashy
     btop
     nil
+    alejandra
     npins
     python3
     ffmpeg-full

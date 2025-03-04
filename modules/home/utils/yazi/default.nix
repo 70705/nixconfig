@@ -17,7 +17,6 @@ in {
       enableZshIntegration = true;
 
       plugins = {
-        "eza-preview" = addon "eza-preview.yazi";
         "ouch" = addon "ouch.yazi";
       };
 
@@ -29,10 +28,6 @@ in {
 
         plugin = {
           prepend_previewers = [
-            {
-              name = "*/";
-              run = "eza-preview";
-            }
             {
               mime = "application/*zip";
               run = "ouch";
