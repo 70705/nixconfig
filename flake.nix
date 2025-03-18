@@ -8,6 +8,7 @@
     home-manager,
     flatpaks,
     lix-module,
+    chaotic,
     ...
   } @ inputs: let
     sysVar = {
@@ -17,7 +18,7 @@
       timezone = "America/Recife";
       gpu = "nvidia";
 
-      kernel = "linuxPackages_lqx"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
+      kernel = "linuxPackages_cachyos"; # OPTIONS: xanmod, xanmod_latest, lqx, zen, latest
       system = "x86_64-linux";
 
       networkInterface = "enp3s0f0";
@@ -48,6 +49,7 @@
           inputs.nix-gaming.nixosModules.platformOptimizations
           flatpaks.nixosModules.declarative-flatpak
           lix-module.nixosModules.default
+          chaotic.nixosModules.default
 
           {programs.nix-index-database.comma.enable = true;}
           {
@@ -74,6 +76,7 @@
     nur.url = "github:nix-community/NUR";
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
     nixcord.url = "github:kaylorben/nixcord";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
