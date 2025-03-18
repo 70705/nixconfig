@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }: {
@@ -10,11 +9,6 @@
   };
 
   services.xserver.videoDrivers = ["nvidia"];
-  environment.variables = {
-    NVD_BACKEND = "direct";
-    LIBVA_DRIVER_NAME = "nvidia";
-    NVD_MAX_INSTANCES = 50;
-  };
   environment.systemPackages = with pkgs; [nvidia-vaapi-driver];
 
   hardware.nvidia = {

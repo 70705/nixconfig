@@ -129,9 +129,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     stylix.targets.firefox.profileNames = ["totos"];
-    home.sessionVariables = {
-      MOZ_DISABLE_RDD_SANDBOX = 1;
-    };
 
     programs.firefox = {
       enable = true;
