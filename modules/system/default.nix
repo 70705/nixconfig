@@ -108,6 +108,18 @@
     gvfs.enable = true;
     gnome.gnome-keyring.enable = true;
     tumbler.enable = true;
+
+    ananicy = {
+      enable = true;
+      package = pkgs.ananicy-cpp;
+      rulesProvider = pkgs.ananicy-rules-cachyos_git;
+    };
+
+    scx = {
+      enable = true;
+      package = pkgs.scx-full_git;
+      scheduler = "scx_lavd";
+    };
   };
 
   programs = {
