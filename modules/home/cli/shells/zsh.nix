@@ -21,6 +21,12 @@
       ];
     };
 
+    initExtra = ''
+      bindkey "\e[1;5C" forward-word
+      bindkey "\e[1;5D" backward-word
+      bindkey '^H' backward-kill-word
+    '';
+
     initExtraFirst = ''
       zstyle ':completion:*' menu select
       any-nix-shell zsh | source /dev/stdin
