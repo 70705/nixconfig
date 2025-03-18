@@ -11,11 +11,11 @@ let
   cfg = config.modules.home.services.seanime;
   seanime = pkgs.stdenv.mkDerivation rec {
     pname = "seanime";
-    version = "2.7.4";
+    version = "2.7.5";
 
     src = pkgs.fetchurl {
       url = "https://github.com/5rahim/seanime/releases/download/v${version}/seanime-${version}_Linux_x86_64.tar.gz";
-      sha256 = "06gmykbdycy2qwrrlmnrb2f7g39c2irzn9lgn1n0z3pym860z1wa";
+      sha256 = "0ihn8184gxjqw83mc13bwhq5g4p6bjx9wy0484aljkfl995bxnan";
     };
 
     phases = ["installPhase"];
