@@ -4,7 +4,7 @@
   ...
 }: {
   programs.vscode = {
-    enable = true;
+    enable = false;
 
     profiles.default = {
       enableUpdateCheck = false;
@@ -36,6 +36,7 @@
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.largeFileOptimizations" = false;
         "editor.fontSize" = lib.mkForce 16;
+        "window.titleBarStyle" = "custom";
         "editor.minimap.enabled" = false;
         "editor.glyphMargin" = false;
         "editor.fontLigatures" = true;
