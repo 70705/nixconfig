@@ -10,6 +10,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    stylix.targets.nixcord.enable = false;
     programs.nixcord = {
       enable = true;
       config = {
