@@ -189,14 +189,14 @@ in {
         #userContent = content;
 
         search = {
-          default = "Google";
-          privateDefault = "Google";
+          default = "google";
+          privateDefault = "google";
           force = true;
           engines = {
-            "YouTube" = {
+            "youtube" = {
               urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
               updateInterval = 24 * 60 * 60 * 1000; # every day
-              iconUpdateURL = "https://www.svgrepo.com/show/13671/youtube.svg";
+              icon = "https://www.svgrepo.com/show/13671/youtube.svg";
 
               definedAliases = ["@yt"];
             };
@@ -204,7 +204,7 @@ in {
             "Firefox Addons API" = {
               urls = [{template = "https://addons.mozilla.org/api/v5/addons/search/?q={searchTerms}";}];
               updateInterval = 24 * 60 * 60 * 1000; # every day
-              iconUpdateURL = "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo,_2019.svg";
+              icon = "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo,_2019.svg";
 
               definedAliases = ["@fex"];
             };
@@ -260,7 +260,7 @@ in {
               definedAliases = ["@no"];
             };
 
-            "Google".metaData.alias = "@g";
+            "google".metaData.alias = "@g";
           };
         };
 
