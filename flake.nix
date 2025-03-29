@@ -7,7 +7,6 @@
     nur,
     home-manager,
     flatpaks,
-    lix-module,
     chaotic,
     ...
   } @ inputs: let
@@ -48,7 +47,6 @@
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nix-gaming.nixosModules.platformOptimizations
           flatpaks.nixosModules.declarative-flatpak
-          lix-module.nixosModules.default
           chaotic.nixosModules.default
 
           {programs.nix-index-database.comma.enable = true;}
@@ -77,11 +75,6 @@
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
