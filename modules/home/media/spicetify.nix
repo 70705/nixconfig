@@ -20,6 +20,9 @@ in {
       enabledExtensions = with spicePkgs.extensions; [
         shuffle
         adblock
+        betterGenres
+        autoSkip
+        autoVolume
         hidePodcasts
         history
       ];
